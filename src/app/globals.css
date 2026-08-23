@@ -110,3 +110,21 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #03E5B7;
 }
+/* Gov Portal Overrides */
+#gov-portal .bg-\[\#07080E\] { background-color: #f8f9fa !important; }
+#gov-portal .bg-\[\#0D0F17\] { background-color: #ffffff !important; }
+#gov-portal .border-\[\#1D2133\] { border-color: #e5e7eb !important; }
+#gov-portal .text-white { color: #111827 !important; }
+#gov-portal .text-slate-400 { color: #6b7280 !important; }
+#gov-portal .text-slate-300 { color: #4b5563 !important; }
+#gov-portal .text-\[\#FF007A\] { color: #f97316 !important; }
+#gov-portal .text-\[\#03E5B7\] { color: #1e3a8a !important; }
+#gov-portal .bg-\[\#FF007A\] { background-color: #f97316 !important; }
+#gov-portal .bg-\[\#03E5B7\] { background-color: #1e3a8a !important; color: #ffffff !important; }
+#gov-portal .glow-pink { box-shadow: none !important; }
+#gov-portal .glow-teal { box-shadow: none !important; }
+#gov-portal .border-\[\#FF007A\] { border-color: #f97316 !important; }
+#gov-portal .border-\[\#03E5B7\] { border-color: #1e3a8a !important; }
+#gov-portal .bg-gradient-to-r { background: #f97316 !important; }
+#gov-portal .font-mono { font-family: ui-sans-serif, system-ui, sans-serif !important; }
+#gov-portal img[src*='squid'], #gov-portal div[class*='bg-[url'] { display: none !important; }

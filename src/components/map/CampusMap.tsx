@@ -3,6 +3,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { MapPin, AlertTriangle, CheckCircle, Zap, Droplet, Trash2, X, RefreshCw, Building2 } from 'lucide-react';
 
+const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon/2) * Math.sin(dLon/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return (R * c).toFixed(1);
+};
+
 export interface CityNode {
   id: string;
   name: string;
@@ -19,6 +28,18 @@ export const CampusMap: React.FC = () => {
   const mapInstanceRef = useRef<any>(null);
   const [selectedNode, setSelectedNode] = useState<CityNode | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [userLoc, setUserLoc] = useState<{lat: number, lng: number} | null>(null);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => setUserLoc({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+        () => setUserLoc({ lat: 22.7200, lng: 75.8500 }) // Fallback location
+      );
+    } else {
+      setUserLoc({ lat: 22.7200, lng: 75.8500 });
+    }
+  }, []);
 
   const nodes: CityNode[] = [
     {
@@ -93,21 +114,42 @@ export const CampusMap: React.FC = () => {
         mapInstanceRef.current = null;
       }
 
+      const mapCenter = userLoc ? [userLoc.lat, userLoc.lng] : [22.7196, 75.8577];
+
       // Initialize Leaflet Map centered on Indore Metropolitan City
       const map = L.map(mapContainerRef.current!, {
-        center: [22.7196, 75.8577],
-        zoom: 12,
+        center: mapCenter as [number, number],
+        zoom: 13,
         zoomControl: false,
       });
 
       mapInstanceRef.current = map;
 
-      // Add CartoDB Dark Matter tile layer for Squid Game dark aesthetic
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19,
+      // Add Google Maps Street View tile layer
+      L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+        maxZoom: 20,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
       }).addTo(map);
+
+      // Add User Location Marker with Emoji
+      if (userLoc) {
+        const userIcon = L.divIcon({
+          className: 'custom-user-marker',
+          html: `
+            <div class="relative flex flex-col items-center justify-center cursor-pointer group">
+              <div class="w-12 h-12 rounded-full bg-blue-500 border-2 border-white flex items-center justify-center text-2xl shadow-2xl transform group-hover:scale-110 transition-all z-50">
+                🙋‍♂️
+              </div>
+              <span class="absolute top-0 right-0 w-4 h-4 rounded-full bg-blue-400 animate-ping"></span>
+              <div class="text-[12px] font-black text-blue-700 bg-white px-2 py-0.5 rounded absolute -bottom-6 whitespace-nowrap shadow-md border border-blue-200 z-50">You are here</div>
+            </div>
+          `,
+          iconSize: [48, 64],
+          iconAnchor: [24, 32],
+        });
+        
+        L.marker([userLoc.lat, userLoc.lng], { icon: userIcon, zIndexOffset: 1000 }).addTo(map);
+      }
 
       // Custom Zoom Control placed in bottom right
       L.control.zoom({ position: 'bottomright' }).addTo(map);
@@ -138,18 +180,21 @@ export const CampusMap: React.FC = () => {
         const glowClass = isCritical ? 'glow-pink' : isAttention ? 'glow-gold' : 'glow-teal';
         const iconSymbol = node.type === 'plant' ? '🏭' : node.type === 'depot' ? '🏬' : node.type === 'transit' ? '💧' : '♻️';
 
+        const distText = userLoc ? `<div class="text-[11px] font-black text-gray-800 bg-white/90 px-1.5 py-0.5 rounded shadow-sm absolute -bottom-5 whitespace-nowrap border border-gray-200 z-40">${calculateDistance(userLoc.lat, userLoc.lng, node.lat, node.lng)} km</div>` : '';
+
         const customIcon = L.divIcon({
           className: 'custom-leaflet-marker',
           html: `
-            <div class="relative flex items-center justify-center cursor-pointer group">
-              <div class="w-8 h-8 rounded-full bg-[#07080E] border-2 border-[${color}] flex items-center justify-center text-xs shadow-lg ${glowClass} transform group-hover:scale-125 transition-all">
+            <div class="relative flex flex-col items-center justify-center cursor-pointer group">
+              <div class="w-10 h-10 rounded-full bg-[#07080E] border-2 border-[${color}] flex items-center justify-center text-lg shadow-lg ${glowClass} transform group-hover:scale-110 transition-all z-40">
                 <span>${iconSymbol}</span>
               </div>
               ${isCritical ? `<span class="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#FF007A] animate-ping"></span>` : ''}
+              ${distText}
             </div>
           `,
-          iconSize: [32, 32],
-          iconAnchor: [16, 16],
+          iconSize: [40, 56],
+          iconAnchor: [20, 28],
         });
 
         const marker = L.marker([node.lat, node.lng], { icon: customIcon }).addTo(map);
@@ -169,7 +214,7 @@ export const CampusMap: React.FC = () => {
         mapInstanceRef.current = null;
       }
     };
-  }, []);
+  }, [userLoc]);
 
   return (
     <div className="bg-[#0D0F17] border border-[#1D2133] rounded-lg p-5 space-y-4 font-mono shadow-xl relative overflow-hidden">
@@ -223,8 +268,13 @@ export const CampusMap: React.FC = () => {
               <p className="text-[11px] text-slate-300 font-mono leading-relaxed">
                 {selectedNode.details}
               </p>
-              <div className="text-[9px] text-[#03E5B7] pt-1 font-bold">
-                GPS: {selectedNode.lat.toFixed(4)}° N, {selectedNode.lng.toFixed(4)}° E
+              <div className="flex items-center justify-between text-[10px] text-[#03E5B7] pt-1 font-bold">
+                <span>GPS: {selectedNode.lat.toFixed(4)}° N, {selectedNode.lng.toFixed(4)}° E</span>
+                {userLoc && (
+                  <span className="text-[#FFC700] bg-[#FFC700]/10 px-2 py-0.5 rounded-full border border-[#FFC700]/20">
+                    Distance: {calculateDistance(userLoc.lat, userLoc.lng, selectedNode.lat, selectedNode.lng)} km
+                  </span>
+                )}
               </div>
             </div>
           </div>

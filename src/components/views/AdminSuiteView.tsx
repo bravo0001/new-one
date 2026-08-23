@@ -61,7 +61,7 @@ export const AdminSuiteView: React.FC = () => {
     addToast,
   } = useEco();
 
-  const [activeSection, setActiveSection] = useState<string>('waste-reports');
+  const { adminActiveSection: activeSection, setAdminActiveSection: setActiveSection } = useEco();
   const [searchQuery, setSearchQuery] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
   const [confirmPurgeSection, setConfirmPurgeSection] = useState<string | null>(null);
@@ -114,9 +114,9 @@ export const AdminSuiteView: React.FC = () => {
   const [iPricePerKg, setIPricePerKg] = useState<number>(34);
 
   const sectionsList = [
-    { key: 'waste-reports', label: 'Waste Reports', icon: Recycle, count: wasteReports.length, color: 'text-[#00FF66]' },
-    { key: 'civic-reports', label: 'Civic Issues', icon: Building, count: civicReports.length, color: 'text-[#FF007A]' },
-    { key: 'market-items', label: 'EcoMarket', icon: ShoppingBag, count: marketItems.length, color: 'text-[#03E5B7]' },
+    { key: 'waste-reports', label: 'Waste Reports', icon: Recycle, count: wasteReports.length, color: 'text-green-600' },
+    { key: 'civic-reports', label: 'Civic Issues', icon: Building, count: civicReports.length, color: 'text-[#f97316]' },
+    { key: 'market-items', label: 'EcoMarket', icon: ShoppingBag, count: marketItems.length, color: 'text-[#1e3a8a]' },
     { key: 'surplus-food', label: 'Surplus Food', icon: Utensils, count: surplusFoodListings.length, color: 'text-[#FFC700]' },
     { key: 'community-projects', label: 'Guild Projects', icon: HardHat, count: communityProjects.length, color: 'text-[#A855F7]' },
     { key: 'social-posts', label: 'Social Feed', icon: MessageSquare, count: socialPosts.length, color: 'text-[#38BDF8]' },
@@ -228,37 +228,37 @@ export const AdminSuiteView: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto font-mono select-none animate-in fade-in duration-300 pb-16">
+    <div className="space-y-8 max-w-7xl mx-auto font-sans select-none animate-in fade-in duration-300 pb-16">
       {/* Top Header Control Suite */}
-      <div className="bg-[#07080E] border-2 border-[#FF007A] rounded-3xl p-6 shadow-[0_0_50px_rgba(255,0,122,0.25)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 glow-pink">
+      <div className="bg-gray-50 border-2 border-[#1e3a8a] rounded-3xl p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6 ">
         <div className="space-y-2">
           <div className="flex items-center gap-3">
             <button
               onClick={handleReturnToCitizen}
-              className="px-3 py-1.5 rounded-xl bg-[#0D0F17] hover:bg-[#1D2133] border border-slate-700 text-slate-300 hover:text-white text-xs font-bold transition flex items-center gap-1.5"
+              className="px-3 py-1.5 rounded-xl bg-white hover:bg-gray-100 border border-slate-700 text-gray-600 hover:text-gray-900 text-xs font-bold transition flex items-center gap-1.5"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>← RETURN TO CITIZEN ARENA</span>
             </button>
-            <span className="px-2.5 py-1 rounded-full bg-[#FF007A]/20 border border-[#FF007A]/50 text-[#FF007A] text-[10px] font-black">
+            <span className="px-2.5 py-1 rounded-full bg-[#f97316]/20 border border-[#1e3a8a]/50 text-[#f97316] text-[10px] font-black">
               APEX ADMIN ROOM
             </span>
           </div>
 
-          <h1 className="text-2xl md:text-3xl font-black text-white tracking-wide">
+          <h1 className="text-2xl md:text-3xl font-black text-gray-900 tracking-wide">
             ECO-SMART ADMIN CONTROL SUITE
           </h1>
-          <p className="text-xs text-slate-400">
-            Authenticated as <strong className="text-[#00FF66]">thakrethe@gmail.com</strong> • Debarred Status: <strong className="text-red-400">0 Pts (Host Auditor)</strong>
+          <p className="text-xs text-gray-500">
+            Authenticated as <strong className="text-green-600">thakrethe@gmail.com</strong> • Debarred Status: <strong className="text-red-400">0 Pts (Host Auditor)</strong>
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
           <button
             onClick={() => setShowAddModal(true)}
-            className="px-5 py-3 rounded-2xl bg-gradient-to-r from-[#FF007A] via-[#FFC700] to-[#03E5B7] text-[#07080E] font-black text-xs hover:brightness-110 active:scale-95 transition-all shadow-[0_0_25px_rgba(3,229,183,0.4)] flex items-center gap-2"
+            className="px-5 py-3 rounded-2xl bg-[#f97316] text-white font-black text-xs hover:brightness-110 active:scale-95 transition-all shadow-sm flex items-center gap-2"
           >
-            <Plus className="w-4 h-4 text-[#07080E]" />
+            <Plus className="w-4 h-4 text-white" />
             <span>+ ADD NEW DATA IN THIS SECTION</span>
           </button>
         </div>
@@ -266,42 +266,42 @@ export const AdminSuiteView: React.FC = () => {
 
       {/* Top Quick Metrics */}
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-        <div className="p-3.5 rounded-xl bg-[#0D0F17] border border-slate-800 text-center space-y-1">
-          <span className="text-[9px] text-slate-400">WASTE</span>
-          <div className="text-lg font-black text-[#00FF66]">{wasteReports.length}</div>
+        <div className="p-3.5 rounded-xl bg-white border border-gray-200 text-center space-y-1">
+          <span className="text-[9px] text-gray-500">WASTE</span>
+          <div className="text-lg font-black text-green-600">{wasteReports.length}</div>
         </div>
-        <div className="p-3.5 rounded-xl bg-[#0D0F17] border border-slate-800 text-center space-y-1">
-          <span className="text-[9px] text-slate-400">CIVIC</span>
-          <div className="text-lg font-black text-[#FF007A]">{civicReports.length}</div>
+        <div className="p-3.5 rounded-xl bg-white border border-gray-200 text-center space-y-1">
+          <span className="text-[9px] text-gray-500">CIVIC</span>
+          <div className="text-lg font-black text-[#f97316]">{civicReports.length}</div>
         </div>
-        <div className="p-3.5 rounded-xl bg-[#0D0F17] border border-slate-800 text-center space-y-1">
-          <span className="text-[9px] text-slate-400">MARKET</span>
-          <div className="text-lg font-black text-[#03E5B7]">{marketItems.length}</div>
+        <div className="p-3.5 rounded-xl bg-white border border-gray-200 text-center space-y-1">
+          <span className="text-[9px] text-gray-500">MARKET</span>
+          <div className="text-lg font-black text-[#1e3a8a]">{marketItems.length}</div>
         </div>
-        <div className="p-3.5 rounded-xl bg-[#0D0F17] border border-slate-800 text-center space-y-1">
-          <span className="text-[9px] text-slate-400">FOOD</span>
+        <div className="p-3.5 rounded-xl bg-white border border-gray-200 text-center space-y-1">
+          <span className="text-[9px] text-gray-500">FOOD</span>
           <div className="text-lg font-black text-[#FFC700]">{surplusFoodListings.length}</div>
         </div>
-        <div className="p-3.5 rounded-xl bg-[#0D0F17] border border-slate-800 text-center space-y-1">
-          <span className="text-[9px] text-slate-400">GUILD</span>
+        <div className="p-3.5 rounded-xl bg-white border border-gray-200 text-center space-y-1">
+          <span className="text-[9px] text-gray-500">GUILD</span>
           <div className="text-lg font-black text-[#A855F7]">{communityProjects.length}</div>
         </div>
-        <div className="p-3.5 rounded-xl bg-[#0D0F17] border border-slate-800 text-center space-y-1">
-          <span className="text-[9px] text-slate-400">POSTS</span>
+        <div className="p-3.5 rounded-xl bg-white border border-gray-200 text-center space-y-1">
+          <span className="text-[9px] text-gray-500">POSTS</span>
           <div className="text-lg font-black text-[#38BDF8]">{socialPosts.length}</div>
         </div>
-        <div className="p-3.5 rounded-xl bg-[#0D0F17] border border-slate-800 text-center space-y-1">
-          <span className="text-[9px] text-slate-400">INDUSTRY</span>
+        <div className="p-3.5 rounded-xl bg-white border border-gray-200 text-center space-y-1">
+          <span className="text-[9px] text-gray-500">INDUSTRY</span>
           <div className="text-lg font-black text-[#F97316]">{industryDemands.length}</div>
         </div>
-        <div className="p-3.5 rounded-xl bg-[#0D0F17] border border-slate-800 text-center space-y-1">
-          <span className="text-[9px] text-slate-400">CLEANUP</span>
+        <div className="p-3.5 rounded-xl bg-white border border-gray-200 text-center space-y-1">
+          <span className="text-[9px] text-gray-500">CLEANUP</span>
           <div className="text-lg font-black text-[#EC4899]">{cleanupOperations.length}</div>
         </div>
       </div>
 
       {/* Main Section Navigation Bar */}
-      <div className="bg-[#0D0F17] border border-[#1D2133] rounded-3xl p-5 space-y-5">
+      <div className="bg-white border border-gray-200 rounded-3xl p-5 space-y-5">
         <div className="flex flex-wrap gap-2.5">
           {sectionsList.map((sec) => {
             const Icon = sec.icon;
@@ -312,14 +312,14 @@ export const AdminSuiteView: React.FC = () => {
                 onClick={() => setActiveSection(sec.key)}
                 className={`px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 ${
                   isActive
-                    ? 'bg-[#FF007A] text-white shadow-xl glow-pink scale-105'
-                    : 'bg-[#07080E] border border-[#1D2133] text-slate-300 hover:border-[#FF007A]/50 hover:text-white'
+                    ? 'bg-[#f97316] text-gray-900 shadow-xl  scale-105'
+                    : 'bg-gray-50 border border-gray-200 text-gray-600 hover:border-[#1e3a8a]/50 hover:text-gray-900'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : sec.color}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-gray-900' : sec.color}`} />
                 <span>{sec.label}</span>
                 <span className={`px-2 py-0.5 rounded-full text-[10px] ${
-                  isActive ? 'bg-black/40 text-white' : 'bg-[#1D2133] text-slate-400'
+                  isActive ? 'bg-black/40 text-gray-900' : 'bg-[#1D2133] text-gray-500'
                 }`}>
                   {sec.count}
                 </span>
@@ -329,29 +329,29 @@ export const AdminSuiteView: React.FC = () => {
         </div>
 
         {/* Toolbar: Search + Add + Purge Section Button */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-[#1D2133]">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-gray-200">
           <div className="relative w-full sm:w-80">
-            <Search className="w-4 h-4 absolute left-3.5 top-3 text-slate-500" />
+            <Search className="w-4 h-4 absolute left-3.5 top-3 text-gray-500" />
             <input
               type="text"
               placeholder={`Search in ${activeSection.replace('-', ' ')}...`}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl pl-10 pr-4 py-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-[#FF007A]"
+              className="w-full bg-gray-50 border border-gray-200 rounded-xl pl-10 pr-4 py-2 text-xs text-gray-900 placeholder-slate-600 focus:outline-none focus:border-[#1e3a8a]"
             />
           </div>
 
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <button
               onClick={() => setShowAddModal(true)}
-              className="flex-1 sm:flex-none px-4 py-2 bg-[#03E5B7] hover:bg-[#03E5B7]/90 text-[#07080E] rounded-xl text-xs font-black transition flex items-center justify-center gap-1.5 shadow-md glow-teal"
+              className="flex-1 sm:flex-none px-4 py-2 bg-[#1e3a8a] hover:bg-[#1e3a8a]/90 text-white rounded-xl text-xs font-black transition flex items-center justify-center gap-1.5 shadow-md "
             >
               <Plus className="w-3.5 h-3.5" />
               <span>+ Add Entry</span>
             </button>
             <button
               onClick={() => setConfirmPurgeSection(activeSection)}
-              className="flex-1 sm:flex-none px-4 py-2 bg-red-950/60 hover:bg-red-900 border border-red-500/60 text-red-400 hover:text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-md"
+              className="flex-1 sm:flex-none px-4 py-2 bg-red-950/60 hover:bg-red-900 border border-red-500/60 text-red-400 hover:text-gray-900 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-md"
             >
               <Trash2 className="w-3.5 h-3.5 text-red-400" />
               <span>PURGE SECTION</span>
@@ -368,24 +368,24 @@ export const AdminSuiteView: React.FC = () => {
             {wasteReports
               .filter((r) => r.title.toLowerCase().includes(searchQuery.toLowerCase()) || r.location.toLowerCase().includes(searchQuery.toLowerCase()))
               .map((item) => (
-                <div key={item.id} className="bg-[#0D0F17] border border-[#1D2133] rounded-2xl p-5 space-y-3 hover:border-slate-700 transition flex flex-col justify-between shadow-lg">
+                <div key={item.id} className="bg-white border border-gray-200 rounded-2xl p-5 space-y-3 hover:border-gray-300 transition flex flex-col justify-between shadow-lg">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-[#00FF66]">{item.id}</span>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#FF007A]/20 text-[#FF007A] border border-[#FF007A]/40">
+                      <span className="font-bold text-green-600">{item.id}</span>
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#f97316]/20 text-[#f97316] border border-[#1e3a8a]/40">
                         {item.status}
                       </span>
                     </div>
-                    <h3 className="font-bold text-sm text-white line-clamp-1">{item.title}</h3>
-                    <p className="text-xs text-slate-400">📍 {item.location} • {item.estimatedQuantityKg} kg</p>
-                    <p className="text-[11px] text-slate-500">Reported by: {item.reportedBy} ({item.timestamp})</p>
+                    <h3 className="font-bold text-sm text-gray-900 line-clamp-1">{item.title}</h3>
+                    <p className="text-xs text-gray-500">📍 {item.location} • {item.estimatedQuantityKg} kg</p>
+                    <p className="text-[11px] text-gray-500">Reported by: {item.reportedBy} ({item.timestamp})</p>
                   </div>
 
-                  <div className="pt-3 border-t border-[#1D2133] flex items-center justify-between">
-                    <span className="text-[10px] text-slate-400">Points: +{item.pointsAwarded} XP</span>
+                  <div className="pt-3 border-t border-gray-200 flex items-center justify-between">
+                    <span className="text-[10px] text-gray-500">Points: +{item.pointsAwarded} XP</span>
                     <button
                       onClick={() => deleteWasteReport(item.id)}
-                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
+                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-gray-900 border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       <span>Delete</span>
@@ -394,7 +394,7 @@ export const AdminSuiteView: React.FC = () => {
                 </div>
               ))}
             {wasteReports.length === 0 && (
-              <div className="col-span-3 p-12 text-center bg-[#0D0F17] rounded-2xl text-slate-500 text-xs">
+              <div className="col-span-3 p-12 text-center bg-white rounded-2xl text-gray-500 text-xs">
                 No waste reports. Click "+ ADD NEW DATA" to post one.
               </div>
             )}
@@ -407,23 +407,23 @@ export const AdminSuiteView: React.FC = () => {
             {civicReports
               .filter((c) => c.title.toLowerCase().includes(searchQuery.toLowerCase()) || c.location.toLowerCase().includes(searchQuery.toLowerCase()))
               .map((item) => (
-                <div key={item.id} className="bg-[#0D0F17] border border-[#1D2133] rounded-2xl p-5 space-y-3 hover:border-slate-700 transition flex flex-col justify-between shadow-lg">
+                <div key={item.id} className="bg-white border border-gray-200 rounded-2xl p-5 space-y-3 hover:border-gray-300 transition flex flex-col justify-between shadow-lg">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-[#FF007A]">{item.id}</span>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/40">
+                      <span className="font-bold text-[#f97316]">{item.id}</span>
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-600 border border-amber-500/40">
                         {item.status}
                       </span>
                     </div>
-                    <h3 className="font-bold text-sm text-white line-clamp-1">{item.title}</h3>
-                    <p className="text-xs text-slate-400">📍 {item.location} • {item.category}</p>
-                    <p className="text-[11px] text-slate-500">Route: {item.authorityTag}</p>
+                    <h3 className="font-bold text-sm text-gray-900 line-clamp-1">{item.title}</h3>
+                    <p className="text-xs text-gray-500">📍 {item.location} • {item.category}</p>
+                    <p className="text-[11px] text-gray-500">Route: {item.authorityTag}</p>
                   </div>
 
-                  <div className="pt-3 border-t border-[#1D2133] flex items-center justify-end">
+                  <div className="pt-3 border-t border-gray-200 flex items-center justify-end">
                     <button
                       onClick={() => deleteCivicReport(item.id)}
-                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
+                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-gray-900 border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       <span>Delete</span>
@@ -432,7 +432,7 @@ export const AdminSuiteView: React.FC = () => {
                 </div>
               ))}
             {civicReports.length === 0 && (
-              <div className="col-span-3 p-12 text-center bg-[#0D0F17] rounded-2xl text-slate-500 text-xs">
+              <div className="col-span-3 p-12 text-center bg-white rounded-2xl text-gray-500 text-xs">
                 No civic issues logged.
               </div>
             )}
@@ -445,21 +445,21 @@ export const AdminSuiteView: React.FC = () => {
             {marketItems
               .filter((m) => m.title.toLowerCase().includes(searchQuery.toLowerCase()) || m.sellerName.toLowerCase().includes(searchQuery.toLowerCase()))
               .map((item) => (
-                <div key={item.id} className="bg-[#0D0F17] border border-[#1D2133] rounded-2xl p-5 space-y-3 hover:border-slate-700 transition flex flex-col justify-between shadow-lg">
+                <div key={item.id} className="bg-white border border-gray-200 rounded-2xl p-5 space-y-3 hover:border-gray-300 transition flex flex-col justify-between shadow-lg">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-[#03E5B7]">{item.id}</span>
+                      <span className="font-bold text-[#1e3a8a]">{item.id}</span>
                       <span className="font-bold text-[#FFC700]">₹{item.priceInr}</span>
                     </div>
-                    <h3 className="font-bold text-sm text-white line-clamp-1">{item.title}</h3>
-                    <p className="text-xs text-slate-400">{item.description}</p>
-                    <p className="text-[11px] text-slate-500">Seller: {item.sellerName} • {item.quantity}</p>
+                    <h3 className="font-bold text-sm text-gray-900 line-clamp-1">{item.title}</h3>
+                    <p className="text-xs text-gray-500">{item.description}</p>
+                    <p className="text-[11px] text-gray-500">Seller: {item.sellerName} • {item.quantity}</p>
                   </div>
 
-                  <div className="pt-3 border-t border-[#1D2133] flex items-center justify-end">
+                  <div className="pt-3 border-t border-gray-200 flex items-center justify-end">
                     <button
                       onClick={() => deleteMarketItem(item.id)}
-                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
+                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-gray-900 border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       <span>Delete</span>
@@ -476,7 +476,7 @@ export const AdminSuiteView: React.FC = () => {
             {surplusFoodListings
               .filter((f) => f.foodName.toLowerCase().includes(searchQuery.toLowerCase()) || f.restaurantName.toLowerCase().includes(searchQuery.toLowerCase()))
               .map((item) => (
-                <div key={item.id} className="bg-[#0D0F17] border border-[#1D2133] rounded-2xl p-5 space-y-3 hover:border-slate-700 transition flex flex-col justify-between shadow-lg">
+                <div key={item.id} className="bg-white border border-gray-200 rounded-2xl p-5 space-y-3 hover:border-gray-300 transition flex flex-col justify-between shadow-lg">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-bold text-[#FFC700]">{item.id}</span>
@@ -484,15 +484,15 @@ export const AdminSuiteView: React.FC = () => {
                         {item.status}
                       </span>
                     </div>
-                    <h3 className="font-bold text-sm text-white">{item.foodName}</h3>
-                    <p className="text-xs text-slate-400">📍 {item.location} • {item.availableServings} Servings</p>
-                    <p className="text-[11px] text-slate-500">Partner: {item.restaurantName} (₹{item.discountedPriceInr})</p>
+                    <h3 className="font-bold text-sm text-gray-900">{item.foodName}</h3>
+                    <p className="text-xs text-gray-500">📍 {item.location} • {item.availableServings} Servings</p>
+                    <p className="text-[11px] text-gray-500">Partner: {item.restaurantName} (₹{item.discountedPriceInr})</p>
                   </div>
 
-                  <div className="pt-3 border-t border-[#1D2133] flex items-center justify-end">
+                  <div className="pt-3 border-t border-gray-200 flex items-center justify-end">
                     <button
                       onClick={() => deleteSurplusFoodListing(item.id)}
-                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
+                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-gray-900 border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       <span>Delete</span>
@@ -509,21 +509,21 @@ export const AdminSuiteView: React.FC = () => {
             {communityProjects
               .filter((p) => p.title.toLowerCase().includes(searchQuery.toLowerCase()) || p.creatorName.toLowerCase().includes(searchQuery.toLowerCase()))
               .map((item) => (
-                <div key={item.id} className="bg-[#0D0F17] border border-[#1D2133] rounded-2xl p-5 space-y-3 hover:border-slate-700 transition flex flex-col justify-between shadow-lg">
+                <div key={item.id} className="bg-white border border-gray-200 rounded-2xl p-5 space-y-3 hover:border-gray-300 transition flex flex-col justify-between shadow-lg">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-bold text-[#A855F7]">{item.id}</span>
-                      <span className="text-[10px] text-slate-400">{item.studentsJoined} members</span>
+                      <span className="text-[10px] text-gray-500">{item.studentsJoined} members</span>
                     </div>
-                    <h3 className="font-bold text-sm text-white">{item.title}</h3>
-                    <p className="text-xs text-slate-400">{item.description}</p>
-                    <p className="text-[11px] text-slate-500">Lead: {item.creatorName} • Target: {item.materialsTarget} {item.materialsUnit}</p>
+                    <h3 className="font-bold text-sm text-gray-900">{item.title}</h3>
+                    <p className="text-xs text-gray-500">{item.description}</p>
+                    <p className="text-[11px] text-gray-500">Lead: {item.creatorName} • Target: {item.materialsTarget} {item.materialsUnit}</p>
                   </div>
 
-                  <div className="pt-3 border-t border-[#1D2133] flex items-center justify-end">
+                  <div className="pt-3 border-t border-gray-200 flex items-center justify-end">
                     <button
                       onClick={() => deleteCommunityProject(item.id)}
-                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
+                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-gray-900 border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       <span>Delete</span>
@@ -540,20 +540,20 @@ export const AdminSuiteView: React.FC = () => {
             {socialPosts
               .filter((p) => p.content.toLowerCase().includes(searchQuery.toLowerCase()) || p.authorName.toLowerCase().includes(searchQuery.toLowerCase()))
               .map((item) => (
-                <div key={item.id} className="bg-[#0D0F17] border border-[#1D2133] rounded-2xl p-5 space-y-3 hover:border-slate-700 transition flex flex-col justify-between shadow-lg">
+                <div key={item.id} className="bg-white border border-gray-200 rounded-2xl p-5 space-y-3 hover:border-gray-300 transition flex flex-col justify-between shadow-lg">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-bold text-[#38BDF8]">{item.authorName}</span>
-                      <span className="text-[10px] text-slate-500">{item.locationTag}</span>
+                      <span className="text-[10px] text-gray-500">{item.locationTag}</span>
                     </div>
-                    <p className="text-xs text-white leading-relaxed">{item.content}</p>
-                    <div className="text-[10px] text-slate-400">❤️ {item.likesCount} Likes • 💬 {item.comments?.length || 0} Comments</div>
+                    <p className="text-xs text-gray-900 leading-relaxed">{item.content}</p>
+                    <div className="text-[10px] text-gray-500">❤️ {item.likesCount} Likes • 💬 {item.comments?.length || 0} Comments</div>
                   </div>
 
-                  <div className="pt-3 border-t border-[#1D2133] flex items-center justify-end">
+                  <div className="pt-3 border-t border-gray-200 flex items-center justify-end">
                     <button
                       onClick={() => deleteSocialPost(item.id)}
-                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
+                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-gray-900 border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       <span>Delete Post</span>
@@ -570,20 +570,20 @@ export const AdminSuiteView: React.FC = () => {
             {industryDemands
               .filter((d) => d.companyName.toLowerCase().includes(searchQuery.toLowerCase()) || d.materialNeeded.toLowerCase().includes(searchQuery.toLowerCase()))
               .map((item) => (
-                <div key={item.id} className="bg-[#0D0F17] border border-[#1D2133] rounded-2xl p-5 space-y-3 hover:border-slate-700 transition flex flex-col justify-between shadow-lg">
+                <div key={item.id} className="bg-white border border-gray-200 rounded-2xl p-5 space-y-3 hover:border-gray-300 transition flex flex-col justify-between shadow-lg">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-bold text-[#F97316]">{item.id}</span>
-                      <span className="font-bold text-[#00FF66]">₹{item.offerPricePerKgInr}/kg</span>
+                      <span className="font-bold text-green-600">₹{item.offerPricePerKgInr}/kg</span>
                     </div>
-                    <h3 className="font-bold text-sm text-white">{item.companyName}</h3>
-                    <p className="text-xs text-slate-400">Material: {item.materialNeeded} • {item.requiredQuantity}</p>
+                    <h3 className="font-bold text-sm text-gray-900">{item.companyName}</h3>
+                    <p className="text-xs text-gray-500">Material: {item.materialNeeded} • {item.requiredQuantity}</p>
                   </div>
 
-                  <div className="pt-3 border-t border-[#1D2133] flex items-center justify-end">
+                  <div className="pt-3 border-t border-gray-200 flex items-center justify-end">
                     <button
                       onClick={() => deleteIndustryDemand(item.id)}
-                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
+                      className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-gray-900 border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       <span>Delete</span>
@@ -598,7 +598,7 @@ export const AdminSuiteView: React.FC = () => {
         {activeSection === 'cleanup-ops' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {cleanupOperations.map((item) => (
-              <div key={item.id} className="bg-[#0D0F17] border border-[#1D2133] rounded-2xl p-5 space-y-3 hover:border-slate-700 transition flex flex-col justify-between shadow-lg">
+              <div key={item.id} className="bg-white border border-gray-200 rounded-2xl p-5 space-y-3 hover:border-gray-300 transition flex flex-col justify-between shadow-lg">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-bold text-[#EC4899]">{item.id}</span>
@@ -606,14 +606,14 @@ export const AdminSuiteView: React.FC = () => {
                       {item.status}
                     </span>
                   </div>
-                  <h3 className="font-bold text-sm text-white">Location: {item.location}</h3>
-                  <p className="text-xs text-slate-400">Squad: {item.assignedTeam} • Priority: {item.priority}</p>
+                  <h3 className="font-bold text-sm text-gray-900">Location: {item.location}</h3>
+                  <p className="text-xs text-gray-500">Squad: {item.assignedTeam} • Priority: {item.priority}</p>
                 </div>
 
-                <div className="pt-3 border-t border-[#1D2133] flex items-center justify-end">
+                <div className="pt-3 border-t border-gray-200 flex items-center justify-end">
                   <button
                     onClick={() => deleteCleanupOperation(item.id)}
-                    className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
+                    className="px-3 py-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-gray-900 border border-red-500/50 rounded-lg text-xs font-bold transition flex items-center gap-1"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                     <span>Delete</span>
@@ -630,21 +630,21 @@ export const AdminSuiteView: React.FC = () => {
             {activityFeed.map((item) => (
               <div
                 key={item.id}
-                className="p-3.5 rounded-xl bg-[#0D0F17] border border-slate-800 flex justify-between items-center text-xs hover:border-[#FF007A]/40 transition-colors"
+                className="p-3.5 rounded-xl bg-white border border-gray-200 flex justify-between items-center text-xs hover:border-[#1e3a8a]/40 transition-colors"
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-[10px] text-slate-500 w-16 flex-shrink-0">
+                  <span className="text-[10px] text-gray-500 w-16 flex-shrink-0">
                     {item.timestamp}
                   </span>
-                  <span className="text-slate-200">
-                    <strong className="text-white font-bold">{item.userOrOrg}</strong> {item.actionText}
+                  <span className="text-gray-700">
+                    <strong className="text-gray-900 font-bold">{item.userOrOrg}</strong> {item.actionText}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => deleteActivityFeedItem(item.id)}
-                    className="p-1 text-slate-500 hover:text-red-400 transition"
+                    className="p-1 text-gray-500 hover:text-red-400 transition"
                     title="Delete log"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
@@ -661,23 +661,23 @@ export const AdminSuiteView: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in zoom-in-95">
           <form
             onSubmit={handleAddSubmit}
-            className="bg-[#0D0F17] border-2 border-[#03E5B7] rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-[0_0_50px_rgba(3,229,183,0.3)] max-h-[90vh] overflow-y-auto glow-teal relative"
+            className="bg-white border-2 border-[#1e3a8a] rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-sm max-h-[90vh] overflow-y-auto  relative"
           >
-            <div className="flex items-center justify-between border-b border-[#1D2133] pb-3">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <div>
-                <span className="text-[10px] font-bold text-[#03E5B7] uppercase tracking-wider">
+                <span className="text-[10px] font-bold text-[#1e3a8a] uppercase tracking-wider">
                   ADMIN BROADCAST & DATA ENTRY
                 </span>
-                <h3 className="text-lg font-black text-white mt-0.5">
+                <h3 className="text-lg font-black text-gray-900 mt-0.5">
                   Add New {sectionsList.find(s => s.key === activeSection)?.label}
                 </h3>
               </div>
               <button
                 type="button"
                 onClick={() => setShowAddModal(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white"
+                className="p-1.5 rounded-lg text-gray-500 hover:text-gray-900"
               >
-                <X className="w-5 h-5 text-[#FF007A]" />
+                <X className="w-5 h-5 text-[#f97316]" />
               </button>
             </div>
 
@@ -685,33 +685,33 @@ export const AdminSuiteView: React.FC = () => {
             {activeSection === 'waste-reports' && (
               <div className="space-y-3">
                 <div className="space-y-1">
-                  <label className="text-[11px] text-slate-300 font-bold">Waste Site Title</label>
+                  <label className="text-[11px] text-gray-600 font-bold">Waste Site Title</label>
                   <input
                     type="text"
                     required
                     value={wTitle}
                     onChange={(e) => setWTitle(e.target.value)}
                     placeholder="e.g. South Gate Scrap Pile"
-                    className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#03E5B7]"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#1e3a8a]"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div className="space-y-1">
-                    <label className="text-[11px] text-slate-300 font-bold">Location</label>
+                    <label className="text-[11px] text-gray-600 font-bold">Location</label>
                     <input
                       type="text"
                       value={wLocation}
                       onChange={(e) => setWLocation(e.target.value)}
-                      className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#03E5B7]"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#1e3a8a]"
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[11px] text-slate-300 font-bold">Est. Kg</label>
+                    <label className="text-[11px] text-gray-600 font-bold">Est. Kg</label>
                     <input
                       type="number"
                       value={wQuantityKg}
                       onChange={(e) => setWQuantityKg(Number(e.target.value))}
-                      className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#03E5B7]"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#1e3a8a]"
                     />
                   </div>
                 </div>
@@ -722,23 +722,23 @@ export const AdminSuiteView: React.FC = () => {
             {activeSection === 'civic-reports' && (
               <div className="space-y-3">
                 <div className="space-y-1">
-                  <label className="text-[11px] text-slate-300 font-bold">Issue Title</label>
+                  <label className="text-[11px] text-gray-600 font-bold">Issue Title</label>
                   <input
                     type="text"
                     required
                     value={cTitle}
                     onChange={(e) => setCTitle(e.target.value)}
                     placeholder="e.g. Uncollected Garbage Heap near Canteen"
-                    className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#FF007A]"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#1e3a8a]"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div className="space-y-1">
-                    <label className="text-[11px] text-slate-300 font-bold">Category</label>
+                    <label className="text-[11px] text-gray-600 font-bold">Category</label>
                     <select
                       value={cCategory}
                       onChange={(e) => setCCategory(e.target.value as any)}
-                      className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#FF007A]"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#1e3a8a]"
                     >
                       <option value="Illegal Dumping">Illegal Dumping</option>
                       <option value="Water Leakage">Water Leakage</option>
@@ -748,12 +748,12 @@ export const AdminSuiteView: React.FC = () => {
                     </select>
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[11px] text-slate-300 font-bold">Location</label>
+                    <label className="text-[11px] text-gray-600 font-bold">Location</label>
                     <input
                       type="text"
                       value={cLocation}
                       onChange={(e) => setCLocation(e.target.value)}
-                      className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#FF007A]"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#1e3a8a]"
                     />
                   </div>
                 </div>
@@ -764,33 +764,33 @@ export const AdminSuiteView: React.FC = () => {
             {activeSection === 'market-items' && (
               <div className="space-y-3">
                 <div className="space-y-1">
-                  <label className="text-[11px] text-slate-300 font-bold">Product Title</label>
+                  <label className="text-[11px] text-gray-600 font-bold">Product Title</label>
                   <input
                     type="text"
                     required
                     value={mTitle}
                     onChange={(e) => setMTitle(e.target.value)}
                     placeholder="e.g. Heavy Duty Upcycled Copper Coil Spool"
-                    className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#03E5B7]"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#1e3a8a]"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div className="space-y-1">
-                    <label className="text-[11px] text-slate-300 font-bold">Price (₹)</label>
+                    <label className="text-[11px] text-gray-600 font-bold">Price (₹)</label>
                     <input
                       type="number"
                       value={mPriceInr}
                       onChange={(e) => setMPriceInr(Number(e.target.value))}
-                      className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#03E5B7]"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#1e3a8a]"
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[11px] text-slate-300 font-bold">Quantity</label>
+                    <label className="text-[11px] text-gray-600 font-bold">Quantity</label>
                     <input
                       type="text"
                       value={mQuantity}
                       onChange={(e) => setMQuantity(e.target.value)}
-                      className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#03E5B7]"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#1e3a8a]"
                     />
                   </div>
                 </div>
@@ -801,33 +801,33 @@ export const AdminSuiteView: React.FC = () => {
             {activeSection === 'surplus-food' && (
               <div className="space-y-3">
                 <div className="space-y-1">
-                  <label className="text-[11px] text-slate-300 font-bold">Food Item Name</label>
+                  <label className="text-[11px] text-gray-600 font-bold">Food Item Name</label>
                   <input
                     type="text"
                     required
                     value={fFoodName}
                     onChange={(e) => setFFoodName(e.target.value)}
                     placeholder="e.g. 50x Fresh Vegetable Biryani Packets"
-                    className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#FFC700]"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#FFC700]"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div className="space-y-1">
-                    <label className="text-[11px] text-slate-300 font-bold">Servings Available</label>
+                    <label className="text-[11px] text-gray-600 font-bold">Servings Available</label>
                     <input
                       type="number"
                       value={fServings}
                       onChange={(e) => setFServings(Number(e.target.value))}
-                      className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#FFC700]"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#FFC700]"
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[11px] text-slate-300 font-bold">Discounted Price (₹)</label>
+                    <label className="text-[11px] text-gray-600 font-bold">Discounted Price (₹)</label>
                     <input
                       type="number"
                       value={fDiscountedPrice}
                       onChange={(e) => setFDiscountedPrice(Number(e.target.value))}
-                      className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#FFC700]"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#FFC700]"
                     />
                   </div>
                 </div>
@@ -838,24 +838,24 @@ export const AdminSuiteView: React.FC = () => {
             {activeSection === 'community-projects' && (
               <div className="space-y-3">
                 <div className="space-y-1">
-                  <label className="text-[11px] text-slate-300 font-bold">Project Title</label>
+                  <label className="text-[11px] text-gray-600 font-bold">Project Title</label>
                   <input
                     type="text"
                     required
                     value={pTitle}
                     onChange={(e) => setPTitle(e.target.value)}
                     placeholder="e.g. Solar Upcycled E-Waste Charging Tree"
-                    className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#A855F7]"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#A855F7]"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[11px] text-slate-300 font-bold">Description & Scope</label>
+                  <label className="text-[11px] text-gray-600 font-bold">Description & Scope</label>
                   <textarea
                     rows={2}
                     value={pDescription}
                     onChange={(e) => setPDescription(e.target.value)}
                     placeholder="Describe materials needed and community goal..."
-                    className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#A855F7]"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#A855F7]"
                   />
                 </div>
               </div>
@@ -865,14 +865,14 @@ export const AdminSuiteView: React.FC = () => {
             {activeSection === 'social-posts' && (
               <div className="space-y-3">
                 <div className="space-y-1">
-                  <label className="text-[11px] text-slate-300 font-bold">Broadcast Announcement Message</label>
+                  <label className="text-[11px] text-gray-600 font-bold">Broadcast Announcement Message</label>
                   <textarea
                     rows={3}
                     required
                     value={sContent}
                     onChange={(e) => setSContent(e.target.value)}
                     placeholder="Write an announcement visible to all contestants..."
-                    className="w-full bg-[#07080E] border border-[#1D2133] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#38BDF8]"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-[#38BDF8]"
                   />
                 </div>
               </div>
@@ -881,7 +881,7 @@ export const AdminSuiteView: React.FC = () => {
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full py-3 rounded-2xl bg-gradient-to-r from-[#FF007A] via-[#FFC700] to-[#03E5B7] text-[#07080E] font-black text-xs hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(3,229,183,0.3)]"
+                className="w-full py-3 rounded-2xl bg-[#f97316] text-white font-black text-xs hover:brightness-110 active:scale-95 transition-all shadow-sm"
               >
                 PUBLISH DIRECTLY TO ECO-SMART ARENA
               </button>
@@ -893,19 +893,19 @@ export const AdminSuiteView: React.FC = () => {
       {/* CONFIRMATION PURGE MODAL */}
       {confirmPurgeSection && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
-          <div className="bg-[#0D0F17] border border-red-500/60 rounded-2xl p-6 max-w-md w-full space-y-4 shadow-[0_0_50px_rgba(239,68,68,0.3)]">
+          <div className="bg-white border border-red-500/60 rounded-2xl p-6 max-w-md w-full space-y-4 shadow-sm">
             <div className="flex items-center gap-3 text-red-400">
               <AlertTriangle className="w-6 h-6 flex-shrink-0" />
-              <h3 className="font-black text-base text-white">CONFIRM SECTION-WIDE DATA PURGE</h3>
+              <h3 className="font-black text-base text-gray-900">CONFIRM SECTION-WIDE DATA PURGE</h3>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Are you sure you want to delete all user-submitted entries in <strong className="text-white font-bold">{confirmPurgeSection.toUpperCase()}</strong>? This action cannot be undone.
+            <p className="text-xs text-gray-600 leading-relaxed">
+              Are you sure you want to delete all user-submitted entries in <strong className="text-gray-900 font-bold">{confirmPurgeSection.toUpperCase()}</strong>? This action cannot be undone.
             </p>
 
             <div className="flex items-center justify-end gap-3 pt-2">
               <button
                 onClick={() => setConfirmPurgeSection(null)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-bold transition"
+                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-gray-600 rounded-lg text-xs font-bold transition"
               >
                 CANCEL
               </button>
@@ -914,7 +914,7 @@ export const AdminSuiteView: React.FC = () => {
                   purgeSectionData(confirmPurgeSection);
                   setConfirmPurgeSection(null);
                 }}
-                className="px-5 py-2 bg-red-600 hover:bg-red-500 text-white rounded-lg text-xs font-bold transition shadow-lg flex items-center gap-1.5"
+                className="px-5 py-2 bg-red-600 hover:bg-red-500 text-gray-900 rounded-lg text-xs font-bold transition shadow-lg flex items-center gap-1.5"
               >
                 <Trash2 className="w-3.5 h-3.5" />
                 <span>CONFIRM PURGE</span>
@@ -926,3 +926,6 @@ export const AdminSuiteView: React.FC = () => {
     </div>
   );
 };
+
+
+

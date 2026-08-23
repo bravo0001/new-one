@@ -76,6 +76,8 @@ interface EcoContextType {
   role: UserRole;
   setRole: (r: UserRole) => void;
   activeTab: MainTab;
+  adminActiveSection: string;
+  setAdminActiveSection: (sec: string) => void;
   setActiveTab: (tab: MainTab) => void;
   profile: UserProfile;
   wasteReports: WasteReport[];
@@ -343,6 +345,7 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [role, setRole] = useState<UserRole>('student');
   const [activeTabState, setActiveTabState] = useState<MainTab>('overview');
+  const [adminActiveSection, setAdminActiveSection] = useState<string>('waste-reports');
 
   useEffect(() => {
     if (pathname) {
@@ -2149,3 +2152,6 @@ export const useEco = () => {
   }
   return context;
 };
+
+
+
