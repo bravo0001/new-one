@@ -255,7 +255,7 @@ export const getDefaultDailyMissions = (dateStr: string): DailyMission[] => [
 ];
 
 export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://prototype-ecoverse-backend-jumu.onrender.com/api';
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
