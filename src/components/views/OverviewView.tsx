@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useEco } from '../../context/EcoContext';
 import { CampusMap } from '../map/CampusMap';
 import {
@@ -21,7 +21,102 @@ import {
   Activity,
   Flame,
   ChevronRight,
+  Timer,
+  CalendarDays,
+  CalendarClock,
 } from 'lucide-react';
+
+// ─── Counter-Clockwise Countdown Ring Component ───
+interface CountdownRingProps {
+  label: string;
+  icon: React.ReactNode;
+  progress: number;
+  centerText: string;
+  subText: string;
+  color: string;
+  glowClass?: string;
+  size?: number;
+}
+
+const CountdownRing: React.FC<CountdownRingProps> = ({
+  label, icon, progress, centerText, subText, color, glowClass = '', size = 120,
+}) => {
+  const strokeWidth = 5;
+  const radius = (size - strokeWidth * 2) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference * (1 - Math.max(0, Math.min(1, progress)));
+
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">{label}</span>
+      <div className={`relative ${glowClass}`} style={{ width: size, height: size }}>
+        <svg width={size} height={size} className="transform -rotate-90">
+          <circle
+            cx={size / 2} cy={size / 2} r={radius}
+            fill="none" stroke="#1D2133" strokeWidth={strokeWidth}
+          />
+          <circle
+            cx={size / 2} cy={size / 2} r={radius}
+            fill="none" stroke={color} strokeWidth={strokeWidth}
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            className="transition-all duration-1000 ease-linear"
+            style={{ filter: `drop-shadow(0 0 6px ${color}60)` }}
+          />
+        </svg>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <div className="text-lg font-black" style={{ color }}>{centerText}</div>
+          <div className="text-[8px] text-slate-400 font-bold">{subText}</div>
+        </div>
+      </div>
+      <div className="flex items-center gap-1 text-[10px] font-bold" style={{ color }}>
+        {icon}
+      </div>
+    </div>
+  );
+};
+
+// ─── Time helpers ───
+const getSecondsUntilMidnight = (): number => {
+  const now = new Date();
+  const midnight = new Date(now);
+  midnight.setHours(24, 0, 0, 0);
+  return Math.max(0, Math.floor((midnight.getTime() - now.getTime()) / 1000));
+};
+
+const getSecondsUntilEndOfWeek = (): number => {
+  const now = new Date();
+  const dayOfWeek = now.getDay();
+  const daysUntilSunday = 7 - dayOfWeek;
+  const endOfWeek = new Date(now);
+  endOfWeek.setDate(now.getDate() + daysUntilSunday);
+  endOfWeek.setHours(24, 0, 0, 0);
+  return Math.max(0, Math.floor((endOfWeek.getTime() - now.getTime()) / 1000));
+};
+
+const getSecondsUntilEndOfYear = (): number => {
+  const now = new Date();
+  const endOfYear = new Date(now.getFullYear(), 11, 31, 23, 59, 59);
+  return Math.max(0, Math.floor((endOfYear.getTime() - now.getTime()) / 1000));
+};
+
+const formatHMS = (totalSec: number): string => {
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor((totalSec % 3600) / 60);
+  const s = totalSec % 60;
+  return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+};
+
+const formatDHM = (totalSec: number): string => {
+  const d = Math.floor(totalSec / 86400);
+  const h = Math.floor((totalSec % 86400) / 3600);
+  const m = Math.floor((totalSec % 3600) / 60);
+  return `${d}D ${String(h).padStart(2, '0')}H ${String(m).padStart(2, '0')}M`;
+};
+
+const TOTAL_DAY_SEC = 86400;
+const TOTAL_WEEK_SEC = 604800;
 
 export const OverviewView: React.FC = () => {
   const { profile, wasteReports, setActiveTab, dailyMissions, completeDailyMission } = useEco();
@@ -29,11 +124,25 @@ export const OverviewView: React.FC = () => {
   const completedCount = dailyMissions.filter((t) => t.done).length;
   const progressPercent = dailyMissions.length > 0 ? Math.round((completedCount / dailyMissions.length) * 100) : 0;
 
+  // ─── Live Countdown State ───
+  const [dayRemain, setDayRemain] = useState(getSecondsUntilMidnight());
+  const [weekRemain, setWeekRemain] = useState(getSecondsUntilEndOfWeek());
+  const [yearRemain, setYearRemain] = useState(getSecondsUntilEndOfYear());
+  const totalYearSec = useRef(365.25 * 86400);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDayRemain(getSecondsUntilMidnight());
+      setWeekRemain(getSecondsUntilEndOfWeek());
+      setYearRemain(getSecondsUntilEndOfYear());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="space-y-6 font-mono select-none animate-in fade-in duration-300">
       {/* HUD Header Banner */}
       <div className="bg-[#0D0F17] border border-[#FF007A]/50 rounded-lg p-4 md:p-6 space-y-3 relative overflow-hidden">
-        {/* Background Poster Overlay */}
         <div
           className="absolute inset-0 opacity-20 pointer-events-none bg-cover bg-center"
           style={{ backgroundImage: "url('/images/squid-game/media_1787398142284.jpg')" }}
@@ -57,11 +166,10 @@ export const OverviewView: React.FC = () => {
             CITY GUARDIAN <span className="text-[#FF007A]">SQUID ARENA</span>
           </h1>
           <p className="text-xs text-[#03E5B7] tracking-wider mt-0.5 font-bold">
-            "SURVIVE THE WASTE. DIVERT THE RECYCLABLES. WIN THE CASH POOL."
+            &quot;SURVIVE THE WASTE. DIVERT THE RECYCLABLES. WIN THE CASH POOL.&quot;
           </p>
         </div>
 
-        {/* Sub-module Tag Bar */}
         <div className="relative z-10 pt-2 border-t border-[#1D2133] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-[10px]">
           <span className="text-[#FF007A] flex items-center gap-1.5 font-bold">
             <span className="text-sm">◯ △ □</span>
@@ -71,7 +179,71 @@ export const OverviewView: React.FC = () => {
         </div>
       </div>
 
-      {/* 🚀 FEATURED MISSION CARD (ZERO WASTE CAMPUS RADAR HUD) */}
+      {/* ⏱️ TRIPLE COUNTDOWN CLOCKS — Counter-Clockwise */}
+      <div className="bg-[#0D0F17] border border-[#1D2133] rounded-xl p-5 space-y-4">
+        <div className="flex items-center justify-between border-b border-[#1D2133] pb-3">
+          <div className="flex items-center gap-2">
+            <Timer className="w-4 h-4 text-[#FF007A]" />
+            <div>
+              <span className="text-[9px] text-slate-500 font-bold">ELIMINATION TIMERS</span>
+              <h3 className="text-sm font-black text-white tracking-wider">COUNTDOWN PROTOCOL</h3>
+            </div>
+          </div>
+          <div className="flex items-center gap-1 text-[9px] text-[#03E5B7] font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#03E5B7] animate-pulse" />
+            LIVE SYNC
+          </div>
+        </div>
+
+        <div className="grid grid-cols-3 gap-4 justify-items-center">
+          {/* 24-Hour Daily Clock */}
+          <CountdownRing
+            label="DAILY RESET"
+            icon={<><Clock className="w-3 h-3" /> 24H CYCLE</>}
+            progress={dayRemain / TOTAL_DAY_SEC}
+            centerText={formatHMS(dayRemain)}
+            subText="UNTIL RESET"
+            color="#FF007A"
+            glowClass="glow-pink"
+            size={130}
+          />
+
+          {/* 7-Day Weekly Clock */}
+          <CountdownRing
+            label="WEEKLY SPRINT"
+            icon={<><CalendarDays className="w-3 h-3" /> 7-DAY CYCLE</>}
+            progress={weekRemain / TOTAL_WEEK_SEC}
+            centerText={formatDHM(weekRemain)}
+            subText="UNTIL SUNDAY"
+            color="#03E5B7"
+            glowClass="glow-teal"
+            size={130}
+          />
+
+          {/* Yearly Task Complexity Clock */}
+          <CountdownRing
+            label="YEARLY IMPACT"
+            icon={<><CalendarClock className="w-3 h-3" /> TASK COMPLEXITY</>}
+            progress={yearRemain / totalYearSec.current}
+            centerText={`${Math.round((1 - yearRemain / totalYearSec.current) * 100)}%`}
+            subText="YEAR ELAPSED"
+            color="#FFC700"
+            size={130}
+          />
+        </div>
+
+        {/* Live ticker strip */}
+        <div className="flex flex-wrap items-center justify-between text-[9px] border-t border-[#1D2133] pt-2 gap-2">
+          <span className="text-slate-500 font-bold">TASK SYNC STATUS</span>
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="text-[#FF007A] font-bold">{dailyMissions.filter(t => !t.done).length} DAILY PENDING</span>
+            <span className="text-[#03E5B7] font-bold">{completedCount}/{dailyMissions.length} COMPLETED</span>
+            <span className="text-[#FFC700] font-bold">{progressPercent}% PROTOCOL</span>
+          </div>
+        </div>
+      </div>
+
+      {/* 🚀 FEATURED MISSION CARD */}
       <div className="bg-[#0D0F17] border-2 border-[#FF007A] rounded-lg p-5 md:p-6 relative overflow-hidden grid grid-cols-1 lg:grid-cols-3 gap-6 glow-pink">
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center gap-2 text-[10px] text-[#FF007A] font-bold">
@@ -88,7 +260,6 @@ export const OverviewView: React.FC = () => {
             </p>
           </div>
 
-          {/* Progress Bar */}
           <div className="space-y-1.5">
             <div className="flex justify-between text-[11px] text-slate-400">
               <span className="text-[#03E5B7] font-bold">COMMUNITY PROGRESS</span>
@@ -103,7 +274,6 @@ export const OverviewView: React.FC = () => {
             </div>
           </div>
 
-          {/* Buttons */}
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
               onClick={() => setActiveTab('challenges')}
@@ -122,9 +292,7 @@ export const OverviewView: React.FC = () => {
           </div>
         </div>
 
-        {/* Radar Map Circle Display Graphic */}
         <div className="bg-[#07080E] border border-[#1D2133] rounded-lg p-4 flex flex-col items-center justify-between relative min-h-[220px] radar-grid">
-          {/* Concentric Circle Visual */}
           <div className="relative w-36 h-36 rounded-full border border-[#FF007A]/40 flex items-center justify-center my-auto">
             <div className="w-24 h-24 rounded-full border border-[#03E5B7]/30 flex items-center justify-center">
               <div className="w-16 h-16 rounded-full bg-[#FF007A]/20 border border-[#FF007A] flex flex-col items-center justify-center text-center">
@@ -132,14 +300,13 @@ export const OverviewView: React.FC = () => {
                 <span className="text-[7px] text-[#03E5B7] font-bold leading-none mt-0.5">KG diverted</span>
               </div>
             </div>
-            {/* Blip dots */}
             <span className="absolute top-2 right-6 w-2 h-2 rounded-full bg-[#FF007A] animate-ping" />
             <span className="absolute bottom-4 left-4 w-1.5 h-1.5 rounded-full bg-[#03E5B7]" />
           </div>
 
           <div className="w-full flex items-center justify-between text-[10px] border-t border-[#1D2133] pt-2">
             <span className="text-slate-400 font-bold">TIMER REMAINING</span>
-            <span className="text-[#FFC700] font-black">03D : 12H : 42M</span>
+            <span className="text-[#FFC700] font-black">{formatDHM(weekRemain)}</span>
           </div>
           <div className="w-full text-center text-[9px] text-[#03E5B7] font-bold mt-1">
             1,824 CONTESTANTS DEPLOYED ◯
@@ -159,15 +326,19 @@ export const OverviewView: React.FC = () => {
                 <h3 className="text-base font-extrabold text-white">DAILY MISSIONS</h3>
               </div>
             </div>
-            <span className="text-lg font-bold text-[#00FF66]">{progressPercent}%</span>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] text-[#FF007A] font-bold bg-[#FF007A]/10 border border-[#FF007A]/30 rounded px-2 py-0.5 flex items-center gap-1">
+                <Clock className="w-3 h-3" />
+                {formatHMS(dayRemain)}
+              </span>
+              <span className="text-lg font-bold text-[#00FF66]">{progressPercent}%</span>
+            </div>
           </div>
 
-          {/* Progress bar */}
           <div className="w-full bg-[#050B08] h-2 rounded-full overflow-hidden border border-[#12281D]">
             <div className="bg-[#00FF66] h-full rounded-full transition-all duration-300" style={{ width: `${progressPercent}%` }} />
           </div>
 
-          {/* Tasks List */}
           <div className="space-y-2">
             {dailyMissions.map((task) => (
               <div
@@ -210,6 +381,14 @@ export const OverviewView: React.FC = () => {
               </div>
             ))}
           </div>
+
+          <div className="flex flex-wrap items-center justify-between text-[9px] border-t border-[#12281D] pt-2 gap-1">
+            <span className="text-[#527A67] font-bold">AUTO-ASSIGNED TODAY</span>
+            <span className="text-[#00FF66] font-bold flex items-center gap-1">
+              <Activity className="w-3 h-3" />
+              {dailyMissions.length} TASKS · RESETS IN {formatHMS(dayRemain)}
+            </span>
+          </div>
         </div>
 
         {/* ARENA RANKING WIDGET */}
@@ -230,7 +409,6 @@ export const OverviewView: React.FC = () => {
             </button>
           </div>
 
-          {/* Leaderboard Entries */}
           <div className="space-y-2">
             <div className="p-2.5 rounded bg-[#050B08] border border-[#12281D] flex items-center justify-between text-xs">
               <div className="flex items-center gap-3">
@@ -274,7 +452,6 @@ export const OverviewView: React.FC = () => {
               <span className="text-[#00FF66] font-bold">8,990</span>
             </div>
 
-            {/* Current User Row */}
             <div className="p-3 rounded bg-[#00FF66]/10 border border-[#00FF66] flex items-center justify-between text-xs glow-green-sm">
               <div className="flex items-center gap-3">
                 <span className="text-[#00FF66] font-bold">27</span>

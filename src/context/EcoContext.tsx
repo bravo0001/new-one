@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   UserRole,
@@ -171,7 +171,7 @@ interface EcoContextType {
   closeAuthModal: () => void;
   token: string | null;
   isAuthenticated: boolean;
-  login: (email: string, pass: string) => Promise<void>;
+  login: (email: string, pass: string, selectedRole?: UserRole) => Promise<void>;
   register: (name: string, email: string, pass: string, userRole?: string) => Promise<void>;
   logout: () => void;
   promoteToAdmin: (emailOrId: string) => Promise<void>;
@@ -196,7 +196,7 @@ interface EcoContextType {
 const EcoContext = createContext<EcoContextType | undefined>(undefined);
 
 export const computeLevelFromPoints = (points: number = 0, userRole?: string): string => {
-  if (userRole === 'admin') return 'Debarred Contestant (Apex Admin / Host)';
+  if (userRole === 'admin') return 'Organization Admin (Host)';
   if (points >= 2500) return 'Grandmaster Guardian (Tier 5)';
   if (points >= 1000) return 'Eco Champion (Tier 4)';
   if (points >= 500) return 'Eco Vanguard (Tier 3)';
@@ -250,6 +250,16 @@ export const getDefaultDailyMissions = (dateStr: string): DailyMission[] => [
     points: 100,
     done: false,
     targetTab: 'ecofood',
+    dateKey: dateStr,
+  },
+  {
+    id: `mission-sensor-monthly`,
+    type: 'monthly-sensor' as any,
+    text: 'Monthly Sync: Calibrate Campus IoT Sensors',
+    xp: 500,
+    points: 300,
+    done: false,
+    targetTab: 'campus-monitor',
     dateKey: dateStr,
   },
 ];
@@ -349,10 +359,13 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   useEffect(() => {
     if (pathname) {
-      const routeTab = pathname.replace(/^\//, '') as MainTab;
-      if (routeTab && routeTab !== activeTabState) {
-        setActiveTabState(routeTab);
-      } else if (!routeTab && activeTabState !== 'overview') {
+      const parts = pathname.split('/').filter(Boolean);
+      if (parts.length > 0) {
+        const tab = (parts[1] || 'overview') as MainTab;
+        if (tab !== activeTabState) {
+          setActiveTabState(tab);
+        }
+      } else if (activeTabState !== 'overview') {
         setActiveTabState('overview');
       }
     }
@@ -493,9 +506,10 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
           setWasteReports((prev) => {
-            const dbIds = new Set(data.map((d: any) => d._id || d.id));
+            const normalizedData = data.map((d: any) => ({ ...d, id: d.id || d._id }));
+            const dbIds = new Set(normalizedData.map((d: any) => d.id));
             const dummyItems = initialWasteReports.filter((d) => !dbIds.has(d.id));
-            return [...data, ...dummyItems];
+            return [...normalizedData, ...dummyItems];
           });
         }
       })
@@ -506,9 +520,10 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
           setSocialPosts((prev) => {
-            const dbIds = new Set(data.map((d: any) => d._id || d.id));
+            const normalizedData = data.map((d: any) => ({ ...d, id: d.id || d._id }));
+            const dbIds = new Set(normalizedData.map((d: any) => d.id));
             const dummyItems = initialSocialPosts.filter((d) => !dbIds.has(d.id));
-            return [...data, ...dummyItems];
+            return [...normalizedData, ...dummyItems];
           });
         }
       })
@@ -519,9 +534,10 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
           setMarketItems((prev) => {
-            const dbIds = new Set(data.map((d: any) => d._id || d.id));
+            const normalizedData = data.map((d: any) => ({ ...d, id: d.id || d._id }));
+            const dbIds = new Set(normalizedData.map((d: any) => d.id));
             const dummyItems = initialMarketItems.filter((d) => !dbIds.has(d.id));
-            return [...data, ...dummyItems];
+            return [...normalizedData, ...dummyItems];
           });
         }
       })
@@ -532,9 +548,10 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
           setSurplusFoodListings((prev) => {
-            const dbIds = new Set(data.map((d: any) => d._id || d.id));
+            const normalizedData = data.map((d: any) => ({ ...d, id: d.id || d._id }));
+            const dbIds = new Set(normalizedData.map((d: any) => d.id));
             const dummyItems = initialSurplusFoodListings.filter((d) => !dbIds.has(d.id));
-            return [...data, ...dummyItems];
+            return [...normalizedData, ...dummyItems];
           });
         }
       })
@@ -716,7 +733,7 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   }, [token, API_URL]);
 
-  const login = async (email: string, pass: string) => {
+  const login = async (email: string, pass: string, selectedRole?: UserRole) => {
     const cleanEmail = email.trim().toLowerCase();
     
     // Direct Admin Recognition for thakrethe@gmail.com
@@ -729,7 +746,7 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setRole('admin');
       setProfile((prev) => ({
         ...prev,
-        name: 'Thakre (Admin)',
+        name: 'Organization',
         playerNumber: '#001',
         ecoPoints: 0,
         sustainabilityScore: 0,
@@ -738,10 +755,10 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         communityContributions: 120,
         followersCount: 456,
         followingCount: 12,
-        level: 'Debarred Contestant (Apex Admin / Host)',
+        level: 'Organization Admin (Host)',
         role: 'admin',
       }));
-      addToast('Super Admin Access Granted: Welcome Thakre (Debarred from Contest Points)', 'info');
+      addToast('Organization Access Granted.', 'info');
       return;
     }
 
@@ -788,15 +805,17 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         localStorage.setItem('ecoverse_token', mockToken);
       }
       const isCandidateAdmin = cleanEmail.includes('admin') || cleanEmail.includes('thakre');
-      setProfile((prev) => ({
-        ...prev,
-        name: cleanEmail.split('@')[0].toUpperCase(),
-        playerNumber: '#' + Math.floor(100 + Math.random() * 899),
-        role: isCandidateAdmin ? 'admin' : prev.role,
-      }));
-      if (isCandidateAdmin) {
-        setRole('admin');
-      }
+      
+      setProfile((prev) => {
+        const finalRole = isCandidateAdmin ? 'admin' : (selectedRole || prev.role);
+        setRole(finalRole as UserRole);
+        return {
+          ...prev,
+          name: cleanEmail.split('@')[0].toUpperCase(),
+          playerNumber: '#' + Math.floor(100 + Math.random() * 899),
+          role: finalRole,
+        };
+      });
       addToast('Authenticated successfully!', 'success');
     }
   };
@@ -965,8 +984,10 @@ Options available:
     }
   };
 
+  const toastCounter = useRef(0);
   const addToast = (message: string, type: 'success' | 'info' | 'warning' = 'success') => {
-    const id = 'toast-' + Date.now();
+    toastCounter.current += 1;
+    const id = `toast-${Date.now()}-${toastCounter.current}-${Math.random().toString(36).slice(2, 6)}`;
     setToasts((prev) => [...prev, { id, message, type }]);
 
     // Automatically sync every action/points notification into System Alerts (Max 5 items)

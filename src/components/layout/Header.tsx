@@ -336,14 +336,16 @@ export const Header: React.FC = () => {
         {(profile.role === 'admin' || role === 'admin') && (
           <button
             onClick={() => {
-              setRole('admin');
-              setActiveTab('admin');
+              const newRole = role === 'admin' ? 'student' : 'admin';
+              setRole(newRole);
+              if (newRole === 'admin') setActiveTab('admin');
+              else setActiveTab('overview');
             }}
             className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#FF007A]/20 border border-[#FF007A]/70 text-white hover:bg-[#FF007A] text-xs font-bold transition-all shadow-[0_0_15px_rgba(255,0,122,0.3)] font-mono glow-pink group"
-            title="Switch to Admin Control Suite"
+            title={role === 'admin' ? "Switch to User View" : "Switch to Organization Control Suite"}
           >
             <Shield className="w-3.5 h-3.5 text-[#FF007A] group-hover:text-white transition-colors" />
-            <span className="tracking-wide">SWITCH TO ADMIN</span>
+            <span className="tracking-wide">{role === 'admin' ? 'SWITCH TO USER' : 'SWITCH TO ORG'}</span>
           </button>
         )}
 

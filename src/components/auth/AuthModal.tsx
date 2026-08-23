@@ -41,7 +41,7 @@ export const AuthModal: React.FC = () => {
         if (!email || !password) {
           throw new Error('Please fill in all required fields.');
         }
-        await login(email, password);
+        await login(email, password, role);
         setSuccessMsg('Access Granted! Welcome to EcoVerse Arena.');
         setTimeout(() => {
           closeAuthModal();
@@ -207,39 +207,37 @@ export const AuthModal: React.FC = () => {
             </div>
           </div>
 
-          {!isLoginView && (
-            <div className="space-y-1.5">
-              <label className="text-xs font-mono text-slate-300 font-bold uppercase tracking-wider">
-                Role Identity
-              </label>
-              <div className="grid grid-cols-2 gap-2 font-mono text-[11px]">
-                <button
-                  type="button"
-                  onClick={() => setRole('student')}
-                  className={`p-2 rounded-lg border text-center transition-all flex flex-col items-center gap-1 ${
-                    role === 'student'
-                      ? 'bg-[#03E5B7]/20 border-[#03E5B7] text-[#03E5B7] font-bold'
-                      : 'bg-[#0D0F17] border-[#1D2133] text-slate-400 hover:text-white'
-                  }`}
-                >
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Student Player</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setRole('corporate')}
-                  className={`p-2 rounded-lg border text-center transition-all flex flex-col items-center gap-1 ${
-                    role === 'corporate'
-                      ? 'bg-[#FFC700]/20 border-[#FFC700] text-[#FFC700] font-bold'
-                      : 'bg-[#0D0F17] border-[#1D2133] text-slate-400 hover:text-white'
-                  }`}
-                >
-                  <Briefcase className="w-3.5 h-3.5" />
-                  <span>CSR Corporate</span>
-                </button>
-              </div>
+          <div className="space-y-1.5">
+            <label className="text-xs font-mono text-slate-300 font-bold uppercase tracking-wider">
+              Role Identity
+            </label>
+            <div className="grid grid-cols-2 gap-2 font-mono text-[11px]">
+              <button
+                type="button"
+                onClick={() => setRole('student')}
+                className={`p-2 rounded-lg border text-center transition-all flex flex-col items-center gap-1 ${
+                  role === 'student'
+                    ? 'bg-[#03E5B7]/20 border-[#03E5B7] text-[#03E5B7] font-bold'
+                    : 'bg-[#0D0F17] border-[#1D2133] text-slate-400 hover:text-white'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Student Player</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setRole('corporate')}
+                className={`p-2 rounded-lg border text-center transition-all flex flex-col items-center gap-1 ${
+                  role === 'corporate'
+                    ? 'bg-[#FFC700]/20 border-[#FFC700] text-[#FFC700] font-bold'
+                    : 'bg-[#0D0F17] border-[#1D2133] text-slate-400 hover:text-white'
+                }`}
+              >
+                <Briefcase className="w-3.5 h-3.5" />
+                <span>CSR Corporate</span>
+              </button>
             </div>
-          )}
+          </div>
 
           <button
             type="submit"

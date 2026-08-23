@@ -23,7 +23,7 @@ export interface CityNode {
   details: string;
 }
 
-export const CampusMap: React.FC = () => {
+export const CampusMap: React.FC<{ minimal?: boolean }> = ({ minimal = false }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
   const [selectedNode, setSelectedNode] = useState<CityNode | null>(null);
@@ -109,6 +109,8 @@ export const CampusMap: React.FC = () => {
 
     // Dynamically import leaflet to prevent Next.js SSR errors
     import('leaflet').then((L) => {
+      if (!mapContainerRef.current) return; // Fix for unmount before import resolves
+
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
@@ -217,8 +219,9 @@ export const CampusMap: React.FC = () => {
   }, [userLoc]);
 
   return (
-    <div className="bg-[#0D0F17] border border-[#1D2133] rounded-lg p-5 space-y-4 font-mono shadow-xl relative overflow-hidden">
+    <div className={`bg-[#0D0F17] border border-[#1D2133] rounded-lg ${minimal ? 'p-0' : 'p-5'} space-y-4 font-mono shadow-xl relative overflow-hidden`}>
       {/* Map Header */}
+      {!minimal && (
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-[#1D2133] pb-3">
         <div>
           <h3 className="text-sm font-black text-white flex items-center gap-2 tracking-wider">
@@ -241,9 +244,10 @@ export const CampusMap: React.FC = () => {
           </span>
         </div>
       </div>
+      )}
 
       {/* Real Interactive Leaflet Container */}
-      <div className="relative w-full h-96 bg-[#07080E] rounded border border-[#1D2133] overflow-hidden z-10">
+      <div className={`relative w-full ${minimal ? 'h-44' : 'h-96'} bg-[#07080E] rounded border border-[#1D2133] overflow-hidden z-10`}>
         <div ref={mapContainerRef} className="w-full h-full" />
 
         {/* Selected Node Floating Telemetry Card */}
