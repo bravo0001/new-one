@@ -1,263 +1,378 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Lock, Mail, User as UserIcon, Shield, Briefcase, Sparkles, AlertCircle, CheckCircle } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useEco } from '../../context/EcoContext';
+import { useRouter } from 'next/navigation';
+
+type RoleKey = 'citizen' | 'csr' | 'government';
+
+interface RoleConfig {
+  name: string;
+  desc: string;
+  idL: string;
+  idP: string;
+  mode: 'numeric' | 'text';
+  check: (v: string) => true | string;
+  pwL: string;
+  go: string;
+  accent: string;
+  onAccent: string;
+  okT: (n: string) => string;
+  okX: string;
+  demoId: string;
+  demoPw: string;
+}
+
+const ROLES: Record<RoleKey, RoleConfig> = {
+  citizen: {
+    name: 'Citizen login',
+    desc: 'Sign in with your email to track your eco impact.',
+    idL: 'Gmail address',
+    idP: 'citizen@gmail.com',
+    mode: 'text',
+    check: (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'Please enter a valid Gmail / email address.',
+    pwL: 'Password',
+    go: 'Sign in as Citizen',
+    accent: '#1fb5a0',
+    onAccent: '#08201c',
+    okT: (n: string) => `Welcome, ${n.split('@')[0]}`,
+    okX: 'Your citizen dashboard is ready. Access granted.',
+    demoId: 'citizen@gmail.com',
+    demoPw: 'password123',
+  },
+  csr: {
+    name: 'CSR login',
+    desc: 'Sign in with your corporate email to manage ESG funding.',
+    idL: 'Gmail address',
+    idP: 'csr@gmail.com',
+    mode: 'text',
+    check: (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'Please enter a valid corporate / Gmail address.',
+    pwL: 'Password',
+    go: 'Sign in as CSR',
+    accent: '#ed1b76',
+    onAccent: '#ffffff',
+    okT: (n: string) => `Welcome, ${n.split('@')[0].toUpperCase()}`,
+    okX: 'CSR Executive Portal unlocked. Accessing ESG missions.',
+    demoId: 'csr@gmail.com',
+    demoPw: 'password123',
+  },
+  government: {
+    name: 'Government login',
+    desc: 'Administrative access for verified civic authorities.',
+    idL: 'Gmail address',
+    idP: 'government@gmail.com',
+    mode: 'text',
+    check: (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'Please enter a valid Government / Gmail address.',
+    pwL: 'Password',
+    go: 'Open Admin Portal',
+    accent: '#e6dcc3',
+    onAccent: '#141211',
+    okT: () => `Government Portal Unlocked`,
+    okX: 'Signed in as civic administrator. Live city monitors are online.',
+    demoId: 'government@gmail.com',
+    demoPw: 'password123',
+  },
+};
 
 export const AuthModal: React.FC = () => {
-  const { isAuthModalOpen, closeAuthModal, login, register } = useEco();
-  const [isLoginView, setIsLoginView] = useState(true);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [role, setRole] = useState<'student' | 'corporate' | 'admin'>('student');
-  const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
-  const [successMsg, setSuccessMsg] = useState('');
+  const { isAuthModalOpen, closeAuthModal, login } = useEco();
+  const router = useRouter();
+
+  const [role, setRole] = useState<RoleKey>('citizen');
+  const [idVal, setIdVal] = useState<string>('');
+  const [pwVal, setPwVal] = useState<string>('');
+  const [errMsg, setErrMsg] = useState<string>('');
+  const [invalidField, setInvalidField] = useState<'id' | 'pw' | null>(null);
+  const [isShaking, setIsShaking] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   if (!isAuthModalOpen) return null;
 
-  const resetForm = () => {
-    setName('');
-    setEmail('');
-    setPassword('');
-    setErrorMsg('');
-    setSuccessMsg('');
+  const config = ROLES[role];
+
+  const handleRoleSelect = (r: RoleKey) => {
+    setRole(r);
+    setIdVal('');
+    setPwVal('');
+    setErrMsg('');
+    setInvalidField(null);
   };
 
-  const toggleView = () => {
-    setIsLoginView(!isLoginView);
-    resetForm();
+  const triggerShake = () => {
+    setIsShaking(true);
+    setTimeout(() => setIsShaking(false), 380);
+  };
+
+  const handleQuickFill = () => {
+    setIdVal(config.demoId);
+    setPwVal(config.demoPw);
+    setErrMsg('');
+    setInvalidField(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMsg('');
-    setSuccessMsg('');
+    setErrMsg('');
+    setInvalidField(null);
+
+    const trimmedId = idVal.trim();
+    const res = config.check(trimmedId);
+    if (res !== true) {
+      setInvalidField('id');
+      setErrMsg(res);
+      triggerShake();
+      return;
+    }
+
+    if (pwVal.length < 4) {
+      setInvalidField('pw');
+      setErrMsg(`${config.pwL} must be at least 4 characters.`);
+      triggerShake();
+      return;
+    }
+
     setLoading(true);
 
     try {
-      if (isLoginView) {
-        if (!email || !password) {
-          throw new Error('Please fill in all required fields.');
-        }
-        await login(email, password, role);
-        setSuccessMsg('Access Granted! Welcome to EcoVerse Arena.');
-        setTimeout(() => {
-          closeAuthModal();
-          resetForm();
-        }, 1200);
-      } else {
-        if (!name || !email || !password) {
-          throw new Error('Please fill in all required fields.');
-        }
-        if (password.length < 6) {
-          throw new Error('Password must be at least 6 characters.');
-        }
-        await register(name, email, password, role);
-        setSuccessMsg('Registration Successful! Logging you in...');
-        setTimeout(() => {
-          closeAuthModal();
-          resetForm();
-        }, 1200);
+      let targetEmail = trimmedId;
+      if (!targetEmail.includes('@')) {
+        targetEmail = `${targetEmail}@gmail.com`;
       }
+
+      const lower = targetEmail.toLowerCase();
+      let requestedRole: 'student' | 'corporate' | 'admin' = 'student';
+      if (lower.includes('csr') || lower.includes('corporate') || lower.includes('esg') || role === 'csr') {
+        requestedRole = 'corporate';
+      } else if (lower.includes('government') || lower.includes('admin') || lower.includes('gov') || lower.includes('thakre') || role === 'government') {
+        requestedRole = 'admin';
+      } else {
+        requestedRole = 'student';
+      }
+
+      const res = await login(targetEmail, pwVal, requestedRole);
+      const destination = res?.portalPath || (requestedRole === 'admin' ? '/organization' : requestedRole === 'corporate' ? '/csr' : '/user');
+      setIsSuccess(true);
+
+      setTimeout(() => {
+        closeAuthModal();
+        router.push(destination);
+      }, 1200);
     } catch (err: any) {
-      setErrorMsg(err.message || 'Authentication failed. Please check your credentials.');
+      setErrMsg(err.message || 'Authentication failed.');
+      triggerShake();
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-md bg-[#07080E] border border-[#FF007A]/40 rounded-xl shadow-[0_0_50px_rgba(255,0,122,0.25)] overflow-hidden font-sans text-white">
-        {/* Top Decorative Cyber Banner */}
-        <div className="h-1.5 bg-gradient-to-r from-[#FF007A] via-[#FFC700] to-[#03E5B7]" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+      <div
+        className="relative w-full max-w-md rounded-md border-2 overflow-hidden shadow-2xl"
+        style={{
+          backgroundColor: '#1d1a19',
+          borderColor: '#3a3532',
+          borderTopWidth: '6px',
+          borderTopColor: config.accent,
+          color: '#f1ebdd',
+          fontFamily: '"IBM Plex Sans", system-ui, sans-serif',
+        }}
+      >
+        {/* Modal Close Button */}
+        <button
+          onClick={closeAuthModal}
+          className="absolute top-4 right-4 text-[#a79f92] hover:text-[#f1ebdd] p-1 z-20"
+          aria-label="Close"
+        >
+          <X className="w-5 h-5" />
+        </button>
 
-        {/* Modal Header */}
-        <div className="p-5 border-b border-[#1D2133] flex items-center justify-between bg-[#0D0F17]">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-[#FF007A] text-sm font-bold">◯ △ □</span>
-              <span className="text-xs font-mono font-bold tracking-widest text-[#03E5B7]">
-                AUTH PROTOCOL // V2.0
-              </span>
-            </div>
-            <h2 className="text-xl font-black tracking-wide text-white mt-1">
-              {isLoginView ? 'CONTESTANT LOGIN' : 'NEW PLAYER REGISTRATION'}
+        {/* Roles Tabs */}
+        {!isSuccess && (
+          <div className="p-4 pt-6 pb-2">
+            <h2
+              className="text-2xl font-normal mb-1"
+              style={{
+                fontFamily: '"Do Hyeon", "Arial Narrow", Impact, sans-serif',
+              }}
+            >
+              Platform Access
             </h2>
-          </div>
-          <button
-            onClick={() => {
-              closeAuthModal();
-              resetForm();
-            }}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-[#1D2133] transition-all"
-            aria-label="Close modal"
-          >
-            <X className="w-5 h-5 text-[#FF007A]" />
-          </button>
-        </div>
+            <p className="text-xs text-[#a79f92] mb-3">Choose who you are, then sign in.</p>
 
-        {/* Mode Toggle Tabs */}
-        <div className="grid grid-cols-2 p-1 bg-[#0D0F17] border-b border-[#1D2133] font-mono text-xs font-bold">
-          <button
-            type="button"
-            onClick={toggleView}
-            className={`py-2 text-center rounded transition-all ${
-              isLoginView
-                ? 'bg-[#FF007A] text-white shadow-md glow-pink'
-                : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            LOGIN ARENA
-          </button>
-          <button
-            type="button"
-            onClick={toggleView}
-            className={`py-2 text-center rounded transition-all ${
-              !isLoginView
-                ? 'bg-[#03E5B7] text-[#07080E] shadow-md glow-teal'
-                : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            SIGN UP
-          </button>
-        </div>
-
-        {/* Form Body */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          {errorMsg && (
-            <div className="p-3 rounded-lg bg-[#FF007A]/10 border border-[#FF007A]/40 flex items-start gap-2.5 text-xs text-[#FF007A] font-medium animate-in fade-in">
-              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-              <span>{errorMsg}</span>
-            </div>
-          )}
-
-          {successMsg && (
-            <div className="p-3 rounded-lg bg-[#03E5B7]/10 border border-[#03E5B7]/40 flex items-start gap-2.5 text-xs text-[#03E5B7] font-medium animate-in fade-in">
-              <CheckCircle className="w-4 h-4 shrink-0 mt-0.5" />
-              <span>{successMsg}</span>
-            </div>
-          )}
-
-          {!isLoginView && (
-            <div className="space-y-1.5">
-              <label className="text-xs font-mono text-slate-300 font-bold uppercase tracking-wider">
-                Full Name
-              </label>
-              <div className="relative">
-                <UserIcon className="absolute left-3 top-2.5 w-4 h-4 text-slate-500" />
-                <input
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Player 456"
-                  className="w-full pl-9 pr-3 py-2 bg-[#0D0F17] border border-[#1D2133] rounded-lg text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#03E5B7] transition-all"
-                />
-              </div>
-            </div>
-          )}
-
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="text-xs font-mono text-slate-300 font-bold uppercase tracking-wider">
-                Email Address
-              </label>
+            <div className="grid grid-cols-3 gap-2 mb-3">
               <button
                 type="button"
-                onClick={() => {
-                  setEmail('thakrethe@gmail.com');
-                  setPassword('thakrethe@gmail.com');
+                onClick={() => handleRoleSelect('citizen')}
+                className="flex flex-col items-center gap-1.5 py-2.5 px-1 rounded border-2 text-xs font-medium transition-all"
+                style={{
+                  backgroundColor: role === 'citizen' ? '#242020' : '#141211',
+                  borderColor: role === 'citizen' ? ROLES.citizen.accent : '#3a3532',
+                  color: role === 'citizen' ? '#f1ebdd' : '#a79f92',
                 }}
-                className="text-[10px] font-mono text-[#03E5B7] hover:underline flex items-center gap-1"
               >
-                <Shield className="w-3 h-3 text-[#03E5B7]" />
-                <span>Admin Quick Fill (thakrethe@gmail.com)</span>
+                <svg viewBox="0 0 100 100" className="w-6 h-6">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    stroke={role === 'citizen' ? ROLES.citizen.accent : 'currentColor'}
+                    fill={role === 'citizen' ? ROLES.citizen.accent : 'none'}
+                    fillOpacity={role === 'citizen' ? 0.18 : 0}
+                    strokeWidth="5"
+                  />
+                </svg>
+                <span>Citizen</span>
               </button>
-            </div>
-            <div className="relative">
-              <Mail className="absolute left-3 top-2.5 w-4 h-4 text-slate-500" />
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="thakrethe@gmail.com"
-                className="w-full pl-9 pr-3 py-2 bg-[#0D0F17] border border-[#1D2133] rounded-lg text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#03E5B7] transition-all"
-              />
-            </div>
-          </div>
 
-          <div className="space-y-1.5">
-            <label className="text-xs font-mono text-slate-300 font-bold uppercase tracking-wider">
-              Password
-            </label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-2.5 w-4 h-4 text-slate-500" />
-              <input
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full pl-9 pr-3 py-2 bg-[#0D0F17] border border-[#1D2133] rounded-lg text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#03E5B7] transition-all"
-              />
-            </div>
-          </div>
-
-          <div className="space-y-1.5">
-            <label className="text-xs font-mono text-slate-300 font-bold uppercase tracking-wider">
-              Role Identity
-            </label>
-            <div className="grid grid-cols-2 gap-2 font-mono text-[11px]">
               <button
                 type="button"
-                onClick={() => setRole('student')}
-                className={`p-2 rounded-lg border text-center transition-all flex flex-col items-center gap-1 ${
-                  role === 'student'
-                    ? 'bg-[#03E5B7]/20 border-[#03E5B7] text-[#03E5B7] font-bold'
-                    : 'bg-[#0D0F17] border-[#1D2133] text-slate-400 hover:text-white'
-                }`}
+                onClick={() => handleRoleSelect('csr')}
+                className="flex flex-col items-center gap-1.5 py-2.5 px-1 rounded border-2 text-xs font-medium transition-all"
+                style={{
+                  backgroundColor: role === 'csr' ? '#242020' : '#141211',
+                  borderColor: role === 'csr' ? ROLES.csr.accent : '#3a3532',
+                  color: role === 'csr' ? '#f1ebdd' : '#a79f92',
+                }}
               >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Student Player</span>
+                <svg viewBox="0 0 100 100" className="w-6 h-6">
+                  <path
+                    d="M50 10 92 86H8Z"
+                    stroke={role === 'csr' ? ROLES.csr.accent : 'currentColor'}
+                    fill={role === 'csr' ? ROLES.csr.accent : 'none'}
+                    fillOpacity={role === 'csr' ? 0.18 : 0}
+                    strokeWidth="5"
+                  />
+                </svg>
+                <span>CSR</span>
               </button>
+
               <button
                 type="button"
-                onClick={() => setRole('corporate')}
-                className={`p-2 rounded-lg border text-center transition-all flex flex-col items-center gap-1 ${
-                  role === 'corporate'
-                    ? 'bg-[#FFC700]/20 border-[#FFC700] text-[#FFC700] font-bold'
-                    : 'bg-[#0D0F17] border-[#1D2133] text-slate-400 hover:text-white'
-                }`}
+                onClick={() => handleRoleSelect('government')}
+                className="flex flex-col items-center gap-1.5 py-2.5 px-1 rounded border-2 text-xs font-medium transition-all"
+                style={{
+                  backgroundColor: role === 'government' ? '#242020' : '#141211',
+                  borderColor: role === 'government' ? ROLES.government.accent : '#3a3532',
+                  color: role === 'government' ? '#f1ebdd' : '#a79f92',
+                }}
               >
-                <Briefcase className="w-3.5 h-3.5" />
-                <span>CSR Corporate</span>
+                <svg viewBox="0 0 100 100" className="w-6 h-6">
+                  <rect
+                    x="12"
+                    y="12"
+                    width="76"
+                    height="76"
+                    stroke={role === 'government' ? ROLES.government.accent : 'currentColor'}
+                    fill={role === 'government' ? ROLES.government.accent : 'none'}
+                    fillOpacity={role === 'government' ? 0.18 : 0}
+                    strokeWidth="5"
+                  />
+                </svg>
+                <span>Government</span>
               </button>
             </div>
           </div>
+        )}
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-3 mt-2 rounded-lg bg-gradient-to-r from-[#FF007A] via-[#FFC700] to-[#03E5B7] font-mono font-bold text-sm text-[#07080E] hover:brightness-110 active:scale-[0.99] transition-all shadow-[0_0_20px_rgba(3,229,183,0.3)] disabled:opacity-50 flex items-center justify-center gap-2"
+        {/* Modal Form */}
+        {!isSuccess ? (
+          <form
+            onSubmit={handleSubmit}
+            className={`p-4 pt-1 ${isShaking ? 'animate-shake' : ''}`}
           >
-            {loading ? (
-              <span className="inline-block w-4 h-4 border-2 border-[#07080E] border-t-transparent rounded-full animate-spin" />
-            ) : isLoginView ? (
-              'AUTHENTICATE & ENTER'
-            ) : (
-              'REGISTER & ENTER ARENA'
-            )}
-          </button>
-        </form>
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-sm font-semibold">{config.name}</span>
+              <button
+                type="button"
+                onClick={handleQuickFill}
+                className="text-[10px] px-2 py-0.5 rounded border border-[#3a3532] text-[#a79f92] hover:text-[#f1ebdd]"
+              >
+                ⚡ Quick Fill
+              </button>
+            </div>
+            <p className="text-xs text-[#a79f92] mb-3">{config.desc}</p>
 
-        {/* Footer info */}
-        <div className="px-6 py-3 bg-[#0D0F17] border-t border-[#1D2133] text-center text-[10px] text-slate-500 font-mono">
-          SECURED BY MONGOOSE & JWT ENCRYPTION // ECOVERSE DB
-        </div>
+            <label className="block text-xs font-medium mb-1 text-[#f1ebdd]">
+              {config.idL}
+            </label>
+            <input
+              type="text"
+              inputMode={config.mode}
+              placeholder={config.idP}
+              value={idVal}
+              onChange={(e) => {
+                setIdVal(e.target.value);
+                if (invalidField === 'id') setInvalidField(null);
+              }}
+              className="w-full rounded border-2 px-3 py-2 text-sm mb-3 outline-none"
+              style={{
+                backgroundColor: '#141211',
+                borderColor: invalidField === 'id' ? '#ff6b6b' : '#3a3532',
+                color: '#f1ebdd',
+              }}
+            />
+
+            <label className="block text-xs font-medium mb-1 text-[#f1ebdd]">
+              {config.pwL}
+            </label>
+            <input
+              type="password"
+              placeholder="••••••••"
+              value={pwVal}
+              onChange={(e) => {
+                setPwVal(e.target.value);
+                if (invalidField === 'pw') setInvalidField(null);
+              }}
+              className="w-full rounded border-2 px-3 py-2 text-sm mb-1 outline-none"
+              style={{
+                backgroundColor: '#141211',
+                borderColor: invalidField === 'pw' ? '#ff6b6b' : '#3a3532',
+                color: '#f1ebdd',
+              }}
+            />
+
+            <div className="text-[#ff8e8e] text-xs min-h-[1.4em] mb-3">
+              {errMsg}
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full border-0 rounded font-normal text-lg tracking-wider py-2.5 cursor-pointer hover:brightness-110 active:scale-95"
+              style={{
+                fontFamily: '"Do Hyeon", "Arial Narrow", Impact, sans-serif',
+                backgroundColor: config.accent,
+                color: config.onAccent,
+              }}
+            >
+              {loading ? 'Verifying...' : config.go}
+            </button>
+          </form>
+        ) : (
+          <div className="p-8 text-center animate-in zoom-in-95">
+            <h3
+              className="text-xl font-normal mb-2"
+              style={{
+                fontFamily: '"Do Hyeon", "Arial Narrow", Impact, sans-serif',
+              }}
+            >
+              {config.okT(idVal.trim())}
+            </h3>
+            <p className="text-xs text-[#a79f92] mb-4">{config.okX}</p>
+            <span
+              className="inline-block px-3 py-1 text-xs rounded font-bold"
+              style={{
+                backgroundColor: config.accent,
+                color: config.onAccent,
+              }}
+            >
+              Entering Portal...
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

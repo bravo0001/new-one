@@ -4,22 +4,46 @@
 
 @layer base {
   :root {
-    --bg-dark: #07080E;
-    --card-dark: #0D0F17;
+    /* Super Mario & Clash of Clans White Theme Palette */
+    --bg-page: #f8fafc;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --mario-red: #E52521;
+    --village-green: #10B981;
+    --coin-gold: #F59E0B;
+    --elixir-purple: #8B5CF6;
+    --river-blue: #0EA5E9;
+    --wood-brown: #854D0E;
+    
+    /* Legacy aliases mapped to new Mario x Clan palette */
+    --squid-pink: #E52521;
+    --squid-teal: #10B981;
+    --cyber-green: #10B981;
+    --gold-rank: #F59E0B;
+  }
+
+  html.dark {
+    --bg-page: #07080E;
+    --card-bg: #0D0F17;
     --card-border: #1D2133;
-    --squid-pink: #FF007A;
-    --squid-pink-glow: rgba(255, 0, 122, 0.35);
-    --squid-teal: #03E5B7;
-    --squid-teal-glow: rgba(3, 229, 183, 0.35);
-    --cyber-green: #00FF66;
-    --gold-rank: #FFC700;
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --squid-pink: #E52521;
+    --squid-teal: #10B981;
+    --cyber-green: #10B981;
+    --gold-rank: #F59E0B;
   }
 
   body {
-    background-color: var(--bg-dark);
-    color: #e5e7eb;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
     font-family: 'Inter', system-ui, sans-serif;
     overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   h1, h2, h3, h4, h5, h6, .font-mono, .font-hud, .font-orbitron {
@@ -27,104 +51,274 @@
   }
 }
 
-/* Squid Game Signature Theme & Glitch HUD Utilities */
+/* Base Theme Utilities */
 .bg-squid-dark {
-  background-color: #07080E;
+  background-color: var(--bg-page);
 }
 
 .bg-squid-card {
-  background-color: #0D0F17;
-  border: 1px solid #1D2133;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
 }
 
 .text-squid-pink {
-  color: #FF007A;
+  color: var(--mario-red);
 }
 
 .text-squid-teal {
-  color: #03E5B7;
+  color: var(--village-green);
 }
 
 .text-squid-gold {
-  color: #FFC700;
+  color: var(--coin-gold);
 }
 
 .border-squid-pink {
-  border-color: #FF007A;
+  border-color: var(--mario-red);
 }
 
 .border-squid-teal {
-  border-color: #03E5B7;
+  border-color: var(--village-green);
 }
 
+/* Super Mario & Clash of Clans Glow Effects */
 .glow-pink {
-  box-shadow: 0 0 20px rgba(255, 0, 122, 0.4);
+  box-shadow: 0 4px 14px rgba(229, 37, 33, 0.25);
 }
 
 .glow-teal {
-  box-shadow: 0 0 20px rgba(3, 229, 183, 0.4);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
 }
 
 .glow-gold {
-  box-shadow: 0 0 20px rgba(255, 199, 0, 0.4);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
 }
 
 .glow-green {
-  box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.25);
 }
 
-/* Squid Game Grid Background */
-.squid-grid-bg {
-  background-color: #07080E;
+/* =========================================================================
+   SUPER MARIO & CLASH OF CLANS WHITE THEME OVERRIDES
+   ========================================================================= */
+html.light,
+html:not(.dark) {
+  --bg-page: #f8fafc;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+}
+
+html.light body,
+html:not(.dark) body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Overriding Dark Backgrounds into Clean Crisp White Village Cards */
+html.light .bg-\[\#07080E\],
+html:not(.dark) .bg-\[\#07080E\],
+html.light .bg-\[\#090B11\],
+html:not(.dark) .bg-\[\#090B11\],
+html.light .bg-\[\#050B08\],
+html:not(.dark) .bg-\[\#050B08\] {
+  background-color: #f1f5f9 !important;
+}
+
+html.light .bg-\[\#0D0F17\],
+html:not(.dark) .bg-\[\#0D0F17\],
+html.light .bg-\[\#111420\],
+html:not(.dark) .bg-\[\#111420\],
+html.light .bg-\[\#131722\],
+html:not(.dark) .bg-\[\#131722\],
+html.light .bg-\[\#121624\],
+html:not(.dark) .bg-\[\#121624\],
+html.light .bg-\[\#09120D\],
+html:not(.dark) .bg-\[\#09120D\],
+html.light .bg-squid-card,
+html:not(.dark) .bg-squid-card {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 3px 0 rgba(16, 185, 129, 0.05);
+}
+
+/* Crisp Light Borders */
+html.light .border-\[\#1D2133\],
+html:not(.dark) .border-\[\#1D2133\],
+html.light .border-\[\#2A3047\],
+html:not(.dark) .border-\[\#2A3047\],
+html.light .border-\[\#12281D\],
+html:not(.dark) .border-\[\#12281D\],
+html.light .border-slate-800,
+html:not(.dark) .border-slate-800,
+html.light .border-slate-700,
+html:not(.dark) .border-slate-700 {
+  border-color: #e2e8f0 !important;
+}
+
+/* High-Contrast Typography for White Surfaces */
+html.light .text-white,
+html:not(.dark) .text-white,
+html.light .text-slate-100,
+html:not(.dark) .text-slate-100 {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-200,
+html:not(.dark) .text-slate-200 {
+  color: #1e293b !important;
+}
+
+html.light .text-slate-300,
+html:not(.dark) .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-400,
+html:not(.dark) .text-slate-400 {
+  color: #64748b !important;
+}
+
+html.light .text-slate-500,
+html:not(.dark) .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+/* Super Mario Red, Clan Village Green & Coin Gold Color Codings */
+html.light .text-\[\#03E5B7\],
+html:not(.dark) .text-\[\#03E5B7\],
+html.light .text-squid-teal,
+html:not(.dark) .text-squid-teal {
+  color: #059669 !important;
+}
+
+html.light .text-\[\#FF007A\],
+html:not(.dark) .text-\[\#FF007A\],
+html.light .text-squid-pink,
+html:not(.dark) .text-squid-pink {
+  color: #E52521 !important;
+}
+
+html.light .text-\[\#FFC700\],
+html:not(.dark) .text-\[\#FFC700\],
+html.light .text-squid-gold,
+html:not(.dark) .text-squid-gold {
+  color: #D97706 !important;
+}
+
+html.light .text-\[\#00FF66\],
+html:not(.dark) .text-\[\#00FF66\] {
+  color: #16A34A !important;
+}
+
+/* Super Mario & Clash of Clans Button Accent Overrides */
+html.light .border-\[\#03E5B7\],
+html:not(.dark) .border-\[\#03E5B7\] {
+  border-color: #10B981 !important;
+}
+
+html.light .border-\[\#FF007A\],
+html:not(.dark) .border-\[\#FF007A\] {
+  border-color: #E52521 !important;
+}
+
+html.light .border-\[\#FFC700\],
+html:not(.dark) .border-\[\#FFC700\] {
+  border-color: #F59E0B !important;
+}
+
+/* Form Inputs, Selects, and Textareas */
+html.light input:not([type="checkbox"]):not([type="radio"]),
+html:not(.dark) input:not([type="checkbox"]):not([type="radio"]),
+html.light select,
+html:not(.dark) select,
+html.light textarea,
+html:not(.dark) textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light input::placeholder,
+html:not(.dark) input::placeholder,
+html.light textarea::placeholder,
+html:not(.dark) textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* White Theme Subtle Village Grid Pattern */
+html.light .squid-grid-bg,
+html:not(.dark) .squid-grid-bg {
+  background-color: transparent !important;
   background-image: 
-    radial-gradient(circle at 50% 20%, rgba(255, 0, 122, 0.08) 0%, transparent 60%),
-    linear-gradient(rgba(255, 0, 122, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(3, 229, 183, 0.04) 1px, transparent 1px);
-  background-size: 100% 100%, 30px 30px, 30px 30px;
+    radial-gradient(circle at 50% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
+    linear-gradient(rgba(100, 116, 139, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 116, 139, 0.05) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 30px 30px, 30px 30px !important;
 }
 
-/* AI HUD Scanline Effect */
-.scanline-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0),
-    rgba(255,255,255,0) 50%,
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.3)
-  );
-  background-size: 100% 4px;
-}
-
-/* Custom Tactical Scrollbar */
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-::-webkit-scrollbar-track {
-  background: #07080E;
+
+html.light ::-webkit-scrollbar-track,
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: #f1f5f9;
 }
-::-webkit-scrollbar-thumb {
-  background: #FF007A;
-  border-radius: 3px;
+html.light ::-webkit-scrollbar-thumb,
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #10B981;
+  border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #03E5B7;
+html.light ::-webkit-scrollbar-thumb:hover,
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: #059669;
 }
-/* Gov Portal Overrides */
-#gov-portal .bg-\[\#07080E\] { background-color: #f8f9fa !important; }
-#gov-portal .bg-\[\#0D0F17\] { background-color: #ffffff !important; }
-#gov-portal .border-\[\#1D2133\] { border-color: #e5e7eb !important; }
-#gov-portal .text-white { color: #111827 !important; }
-#gov-portal .text-slate-400 { color: #6b7280 !important; }
-#gov-portal .text-slate-300 { color: #4b5563 !important; }
-#gov-portal .text-\[\#FF007A\] { color: #f97316 !important; }
-#gov-portal .text-\[\#03E5B7\] { color: #1e3a8a !important; }
-#gov-portal .bg-\[\#FF007A\] { background-color: #f97316 !important; }
-#gov-portal .bg-\[\#03E5B7\] { background-color: #1e3a8a !important; color: #ffffff !important; }
-#gov-portal .glow-pink { box-shadow: none !important; }
-#gov-portal .glow-teal { box-shadow: none !important; }
-#gov-portal .border-\[\#FF007A\] { border-color: #f97316 !important; }
-#gov-portal .border-\[\#03E5B7\] { border-color: #1e3a8a !important; }
-#gov-portal .bg-gradient-to-r { background: #f97316 !important; }
-#gov-portal .font-mono { font-family: ui-sans-serif, system-ui, sans-serif !important; }
-#gov-portal img[src*='squid'], #gov-portal div[class*='bg-[url'] { display: none !important; }
+
+/* Modals and Backdrop Blurs */
+html.light .fixed.inset-0.bg-black\/80,
+html:not(.dark) .fixed.inset-0.bg-black\/80,
+html.light .fixed.inset-0.bg-black\/70,
+html:not(.dark) .fixed.inset-0.bg-black\/70,
+html.light .fixed.inset-0.bg-black\/60,
+html:not(.dark) .fixed.inset-0.bg-black\/60,
+html.light .fixed.inset-0.bg-black\/50,
+html:not(.dark) .fixed.inset-0.bg-black\/50 {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(8px);
+}
+
+
+/* Frosted Glass Translucent Panels for Navigation & Countdown Protocol */
+.backdrop-blur-xl,
+.backdrop-blur-md,
+.backdrop-blur-sm {
+  -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+  backdrop-filter: blur(16px) saturate(150%) !important;
+}
+
+html.light .bg-white\/70,
+html:not(.dark) .bg-white\/70 {
+  background-color: rgba(255, 255, 255, 0.70) !important;
+}
+
+html.light .bg-white\/60,
+html:not(.dark) .bg-white\/60 {
+  background-color: rgba(255, 255, 255, 0.60) !important;
+}
+
+html.light .bg-white\/75,
+html:not(.dark) .bg-white\/75 {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+}
+
+html.light .bg-white\/80,
+html:not(.dark) .bg-white\/80 {
+  background-color: rgba(255, 255, 255, 0.80) !important;
+}
+
+html.light .bg-white\/85,
+html:not(.dark) .bg-white\/85 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}

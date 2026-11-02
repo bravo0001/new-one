@@ -22,6 +22,7 @@ import {
   Trash2,
   BarChart3,
   Shield,
+  LogOut,
   Utensils,
   Landmark,
   ShieldAlert,
@@ -124,7 +125,7 @@ export const Sidebar: React.FC = () => {
       ],
     },
     {
-      title: 'SURVIVAL ARENA',
+      title: 'CLAN VILLAGE & KINGDOM',
       items: [
         { id: 'challenges', label: 'Eco Challenges', icon: Trophy, badge: '₹25k' },
         { id: 'leaderboard', label: 'Leaderboard', icon: Award },
@@ -278,60 +279,60 @@ export const Sidebar: React.FC = () => {
 
   const renderInnerContent = (isMobile = false) => (
     <>
-      {/* Brand Header */}
-      <div className="p-4 border-b border-[#1D2133] space-y-1 bg-[#0D0F17] font-mono">
+      {/* Brand Header - Clean Mario Village Glass Style */}
+      <div className="p-4 border-b border-red-100 dark:border-[#1D2133]/60 space-y-1.5 bg-gradient-to-b from-white/95 to-red-50/40 dark:from-[#0D0F17]/95 dark:to-[#0D0F17]/80 backdrop-blur-md font-mono shadow-xs">
         <div className="flex items-center justify-between">
-          <h1 className="font-black text-xl text-white tracking-wider flex items-center gap-2">
-            <span className="text-[#FF007A] text-lg font-bold">◯ △ □</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF007A] via-[#FFC700] to-[#03E5B7]">
+          <h1 className="font-black text-xl tracking-wider flex items-center gap-2">
+            <span className="text-xl inline-block animate-bounce select-none">🍄</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E52521] via-[#F59E0B] to-[#10B981] font-black drop-shadow-xs">
               CITY GUARDIAN
             </span>
           </h1>
-          <div className="flex items-center gap-2">
-            <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#FF007A]/20 border border-[#FF007A]/40 text-[#FF007A] font-bold">
-              SQUID EDITION
+          <div className="flex items-center gap-1.5">
+            <span className="text-[9px] px-2 py-0.5 rounded-full bg-red-500/15 border border-red-500/30 text-[#E52521] font-black shadow-xs">
+              MARIO x CLAN
             </span>
             {isMobile && (
               <button
                 onClick={closeMobileMenu}
-                className="text-slate-400 hover:text-white p-1 rounded hover:bg-[#1D2133]"
+                className="text-slate-500 hover:text-red-500 p-1 rounded hover:bg-red-50 dark:hover:bg-[#1D2133] transition-colors"
                 aria-label="Close Mobile Menu"
               >
-                <X className="w-5 h-5 text-[#FF007A]" />
+                <X className="w-5 h-5 text-[#E52521]" />
               </button>
             )}
           </div>
         </div>
-        <div className="flex items-center justify-between text-[10px] text-[#03E5B7]">
-          <span>CONTESTANT ARENA // R7</span>
-          <span className="text-[#FF007A] flex items-center gap-1 font-bold">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF007A] inline-block animate-ping" />
+        <div className="flex items-center justify-between text-[10px] text-emerald-600 dark:text-[#03E5B7] font-bold">
+          <span>CLAN VILLAGE // WORLD 1-1</span>
+          <span className="text-[#E52521] flex items-center gap-1 font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E52521] inline-block animate-ping" />
             GAME ACTIVE
           </span>
         </div>
       </div>
 
-      {/* Role Mode Selector */}
-      <div className="px-3 py-2 bg-[#0D0F17] border-b border-[#1D2133] flex items-center justify-between text-xs font-sans">
-        <span className="text-slate-400 text-[10px] font-bold">ROLE //</span>
-        <div className="inline-flex p-0.5 rounded bg-[#07080E] border border-[#1D2133]">
+      {/* Role Mode Selector - Bright Glass Style */}
+      <div className="px-3 py-2 bg-slate-50/90 dark:bg-[#0D0F17]/60 backdrop-blur-md border-b border-slate-200/70 dark:border-[#1D2133]/60 flex items-center justify-between text-xs font-sans">
+        <span className="text-slate-500 dark:text-slate-400 text-[10px] font-bold">ROLE //</span>
+        <div className="inline-flex p-0.5 rounded-lg bg-slate-200/70 dark:bg-[#07080E] border border-slate-300/60 dark:border-[#1D2133] shadow-xs">
           <button
             onClick={() => handleRoleChange('student')}
-            className={`px-2 py-0.5 rounded text-[10px] font-black transition-all ${
+            className={`px-2.5 py-1 rounded-md text-[10px] font-black transition-all flex items-center gap-1 ${
               role === 'student'
-                ? 'bg-[#03E5B7] text-[#07080E] shadow-sm glow-teal'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-gradient-to-r from-emerald-500 to-teal-400 text-white shadow-sm'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            #456 PLAYER
+            <span>CHIEF / MARIO ⭐</span>
           </button>
           {profile.role === 'corporate' && (
             <button
               onClick={() => handleRoleChange('corporate')}
-              className={`px-2 py-0.5 rounded text-[10px] font-black transition-all flex items-center gap-1 ${
+              className={`px-2.5 py-1 rounded-md text-[10px] font-black transition-all flex items-center gap-1 ${
                 role === 'corporate'
-                  ? 'bg-[#FFC700] text-[#07080E] shadow-sm glow-gold'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-gradient-to-r from-amber-500 to-yellow-400 text-[#07080E] shadow-sm'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               <Briefcase className="w-2.5 h-2.5" />
@@ -364,10 +365,10 @@ export const Sidebar: React.FC = () => {
                   <button
                     key={item.id}
                     onClick={() => handleItemClick(item.id)}
-                    className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-mono transition-all ${
+                    className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-mono transition-all ${
                       isActive
-                        ? 'bg-[#180B1B] border border-[#FF007A] text-white font-bold shadow-[0_0_15px_rgba(255,0,122,0.3)] border-l-4 border-l-[#FF007A]'
-                        : 'text-slate-300 hover:text-white hover:bg-[#0D0F17] border border-transparent'
+                        ? 'bg-gradient-to-r from-[#E52521] via-red-500 to-amber-500 text-white font-extrabold shadow-md shadow-red-500/20 border-l-4 border-l-yellow-300 dark:bg-[#180B1B] dark:border dark:border-[#FF007A] dark:text-white'
+                        : 'text-slate-700 dark:text-slate-300 hover:text-[#E52521] dark:hover:text-white hover:bg-red-50/70 dark:hover:bg-[#0D0F17] border border-transparent'
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -405,7 +406,7 @@ export const Sidebar: React.FC = () => {
       </div>
 
       {/* Sidebar Footer Player Info Card */}
-      <div className="p-2.5 border-t border-[#1D2133] bg-[#0D0F17]">
+      <div className="p-2.5 border-t border-slate-200/70 dark:border-[#1D2133] bg-white/90 dark:bg-[#0D0F17]">
         <div
           onClick={() => {
             if (!isAuthenticated) {
@@ -415,30 +416,46 @@ export const Sidebar: React.FC = () => {
               handleItemClick('community-profile');
             }
           }}
-          className="p-2 rounded bg-[#07080E] border border-[#FF007A]/40 hover:border-[#FF007A] cursor-pointer transition-all flex items-center justify-between"
+          className="p-2 rounded-xl bg-slate-50/90 dark:bg-[#07080E] border border-red-200/80 dark:border-[#FF007A]/40 hover:border-[#E52521] cursor-pointer transition-all flex items-center justify-between shadow-2xs"
         >
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-[#FF007A]/20 border border-[#FF007A] flex items-center justify-center text-[#FF007A] font-black text-xs">
+            <div className="w-8 h-8 rounded-full bg-red-500/15 border border-[#E52521] flex items-center justify-center text-[#E52521] font-black text-xs">
               {profile.playerNumber || '#456'}
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-xs font-bold text-white truncate max-w-[100px]">{profile.name}</span>
-                <span className={`text-[8px] px-1 py-0.2 rounded font-bold border ${
+                <span className="text-xs font-bold text-slate-800 dark:text-white truncate max-w-[100px]">{profile.name}</span>
+                <span className={`text-[8px] px-1.5 py-0.2 rounded-full font-bold border ${
                   isAuthenticated
-                    ? 'bg-[#03E5B7]/20 text-[#03E5B7] border-[#03E5B7]/40'
-                    : 'bg-[#FF007A]/20 text-[#FF007A] border-[#FF007A]/40'
+                    ? 'bg-emerald-100 text-emerald-700 border-emerald-300 dark:bg-[#03E5B7]/20 dark:text-[#03E5B7] dark:border-[#03E5B7]/40'
+                    : 'bg-red-100 text-red-700 border-red-300 dark:bg-[#FF007A]/20 dark:text-[#FF007A] dark:border-[#FF007A]/40'
                 }`}>
                   {isAuthenticated ? '◯ VERIFIED' : 'GUEST'}
                 </span>
               </div>
-              <p className="text-[9px] text-[#FF007A] font-bold">
-                {isAuthenticated ? 'CONTESTANT · ACTIVE' : 'TAP TO AUTHENTICATE'}
+              <p className="text-[9px] text-[#E52521] font-bold">
+                {isAuthenticated ? 'VILLAGE HERO · ACTIVE' : 'TAP TO AUTHENTICATE'}
               </p>
             </div>
           </div>
-          <ChevronRight className="w-4 h-4 text-[#FF007A]" />
+          <ChevronRight className="w-4 h-4 text-[#E52521]" />
         </div>
+
+        {isAuthenticated && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              logout();
+              closeMobileMenu();
+            }}
+            className="mt-2 w-full flex items-center justify-center gap-2 py-1.5 px-3 rounded bg-[#FF007A]/15 border border-[#FF007A]/40 text-[#FF007A] hover:bg-[#FF007A]/30 text-xs font-mono font-bold transition-all shadow-sm"
+            title="Sign out of EcoVerse"
+          >
+            <LogOut className="w-3.5 h-3.5" />
+            <span>SIGN OUT</span>
+          </button>
+        )}
       </div>
     </>
   );
@@ -446,7 +463,7 @@ export const Sidebar: React.FC = () => {
   return (
     <>
       {/* Persistent Desktop Navigation Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 bg-[#07080E] border-r border-[#1D2133] h-screen sticky top-0 z-40 select-none font-mono">
+      <aside className="hidden md:flex flex-col w-64 bg-white/95 dark:bg-[#07080E]/90 backdrop-blur-2xl border-r border-slate-200/80 dark:border-[#1D2133]/60 h-screen sticky top-0 z-40 select-none font-mono shadow-md">
         {renderInnerContent(false)}
       </aside>
 
@@ -459,7 +476,7 @@ export const Sidebar: React.FC = () => {
             onClick={closeMobileMenu}
           />
           {/* Slide-over Container */}
-          <aside className="relative flex flex-col w-72 max-w-[85vw] bg-[#07080E] border-r border-[#1D2133] h-full shadow-2xl z-10 select-none font-mono animate-in slide-in-from-left duration-200">
+          <aside className="relative flex flex-col w-72 max-w-[85vw] bg-white/85 dark:bg-[#07080E]/85 backdrop-blur-xl border-r border-slate-200/60 dark:border-[#1D2133]/60 h-full shadow-2xl z-10 select-none font-mono animate-in slide-in-from-left duration-200">
             {renderInnerContent(true)}
           </aside>
         </div>

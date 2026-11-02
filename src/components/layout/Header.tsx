@@ -17,11 +17,14 @@ import {
   LogIn,
   LogOut,
   UserCheck,
+  Sun,
+  Moon,
+  MapPin,
 } from 'lucide-react';
 import { MainTab } from '../../types';
 
 export const Header: React.FC = () => {
-  const { profile, role, setRole, activeTab, setActiveTab, alerts, toasts, removeToast, isMobileMenuOpen, toggleMobileMenu, isAuthenticated, openAuthModal, logout, clearAlert, clearAllAlerts } = useEco();
+  const { profile, role, setRole, activeTab, setActiveTab, alerts, toasts, removeToast, isMobileMenuOpen, toggleMobileMenu, isAuthenticated, openAuthModal, logout, clearAlert, clearAllAlerts, theme, toggleTheme, userLocation, isLocating, detectUserLocation } = useEco();
   const [showNotifications, setShowNotifications] = useState(false);
   const [timeString, setTimeString] = useState('');
 
@@ -123,7 +126,7 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-[#050B08]/95 backdrop-blur-md border-b border-[#12281D] px-3 sm:px-4 md:px-6 py-2.5 flex items-center justify-between font-mono select-none">
+    <header className="sticky top-0 z-30 bg-white/70 dark:bg-[#050B08]/75 backdrop-blur-xl border-b border-slate-200/60 dark:border-[#12281D]/60 shadow-sm px-3 sm:px-4 md:px-6 py-2.5 flex items-center justify-between font-mono select-none">
       {/* Toast Notification Container */}
       <div className="fixed top-4 left-4 right-4 sm:left-auto sm:right-4 z-50 flex flex-col gap-2 max-w-none sm:max-w-sm w-auto pointer-events-none">
         {toasts.map((toast) => (
@@ -159,15 +162,15 @@ export const Header: React.FC = () => {
         </button>
 
         {/* Live Event Ticker Badge */}
-        <div className="flex items-center gap-1.5 sm:gap-2 bg-[#0D0F17] border border-[#FF007A]/50 px-2 sm:px-3 py-1 rounded text-xs">
+        <div className="flex items-center gap-1.5 sm:gap-2 bg-white/60 dark:bg-[#0D0F17]/70 backdrop-blur-md border border-[#E52521]/40 px-2 sm:px-3 py-1 rounded-xl text-xs shadow-sm">
           <span className="w-2 h-2 rounded-full bg-[#FF007A] animate-ping flex-shrink-0" />
-          <span className="text-[#FF007A] font-black tracking-wider text-[11px] sm:text-xs">◯ SQUID ARENA</span>
-          <span className="text-slate-400 hidden sm:inline text-[10px]">ZERO WASTE RAID</span>
+          <span className="text-[#FF007A] font-black tracking-wider text-[11px] sm:text-xs">🍄 MARIO x CLAN 🏰</span>
+          <span className="text-slate-500 hidden sm:inline text-[10px] font-bold">VILLAGE DEFENSE</span>
         </div>
       </div>
 
       {/* Center: Player XP & Info Bar */}
-      <div className="hidden lg:flex items-center gap-4 bg-[#0D0F17] border border-[#FF007A]/40 px-4 py-1.5 rounded-lg shadow-md">
+      <div className="hidden lg:flex items-center gap-4 bg-white/60 dark:bg-[#0D0F17]/70 backdrop-blur-md border border-[#E52521]/30 px-4 py-1.5 rounded-xl shadow-sm">
         {/* Initial Badge Box */}
         <div className="w-8 h-8 rounded bg-[#FF007A]/20 border border-[#FF007A] flex items-center justify-center text-[#FF007A] font-black text-xs">
           {profile.playerNumber || '#456'}
@@ -175,7 +178,7 @@ export const Header: React.FC = () => {
 
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-slate-400 text-[10px]">CONTESTANT // {profile.playerNumber || '#456'}</span>
+            <span className="text-slate-500 text-[10px] font-bold">VILLAGE CHIEF // HERO ⭐</span>
             <span className="text-white font-bold text-xs tracking-wide uppercase">{profile.name}</span>
             <span className="text-[10px] px-1.5 py-0.2 bg-[#03E5B7]/20 border border-[#03E5B7]/40 text-[#03E5B7] rounded font-bold">
               LVL 12
@@ -196,7 +199,7 @@ export const Header: React.FC = () => {
         {/* Eco Points / Debarred Admin Status */}
         <div
           onClick={() => setActiveTab('redeem-rewards')}
-          className={`flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0D0F17] border transition-all ${
+          className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white/60 dark:bg-[#0D0F17]/70 backdrop-blur-md border transition-all shadow-sm ${
             role === 'admin'
               ? 'border-red-500/60 bg-red-950/20'
               : 'border-[#FFC700]/50 hover:border-[#FFC700] glow-gold cursor-pointer'
@@ -216,32 +219,66 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Streak Days */}
-        <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0D0F17] border border-[#FF007A]/40">
+        <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white/60 dark:bg-[#0D0F17]/70 backdrop-blur-md border border-slate-200/70 dark:border-[#FF007A]/40 shadow-sm">
           <Flame className="w-3.5 h-3.5 text-[#FF007A]" />
           <div className="flex flex-col text-left">
-            <span className="text-[9px] text-slate-400 leading-none">SURVIVAL STREAK</span>
+            <span className="text-[9px] text-slate-500 leading-none font-bold">POWER-UP STREAK</span>
             <span className="text-xs font-bold text-white leading-tight">12 DAYS</span>
           </div>
         </div>
 
         {/* Global Rank */}
-        <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0D0F17] border border-[#03E5B7]/40">
+        <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white/60 dark:bg-[#0D0F17]/70 backdrop-blur-md border border-slate-200/70 dark:border-[#03E5B7]/40 shadow-sm">
           <Crown className="w-3.5 h-3.5 text-[#03E5B7]" />
           <div className="flex flex-col text-left">
-            <span className="text-[9px] text-slate-400 leading-none">RANK</span>
+            <span className="text-[9px] text-slate-500 leading-none font-bold">CLAN RANK 🏆</span>
             <span className="text-xs font-bold text-[#03E5B7] leading-tight">#27 / 456</span>
           </div>
         </div>
 
         {/* Clock & Sync Status */}
-        <div className="hidden xl:flex flex-col text-right">
-          <span className="text-[9px] text-slate-400">ARENA TIMER</span>
+        <div className="hidden xl:flex flex-col text-right bg-white/60 dark:bg-[#0D0F17]/70 backdrop-blur-md border border-slate-200/70 dark:border-[#1D2133] px-2.5 py-1 rounded-xl shadow-sm">
+          <span className="text-[9px] text-slate-500 font-bold">VILLAGE CLOCK ⏳</span>
           <div className="flex items-center gap-1">
             <span className="text-xs text-white font-black tracking-widest">{timeString || '14:28:42'}</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#03E5B7] animate-ping" />
             <span className="text-[9px] text-[#03E5B7] font-bold">LIVE</span>
           </div>
         </div>
+
+        
+        {/* Real GPS Location Status & Selector */}
+        <button
+          onClick={() => detectUserLocation()}
+          disabled={isLocating}
+          className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white/60 dark:bg-[#0D0F17]/70 backdrop-blur-md border border-slate-200/70 dark:border-[#1D2133] hover:border-[#03E5B7] text-slate-200 text-xs font-mono font-bold transition-all shadow-sm group"
+          title={`GPS Location: ${userLocation.fullAddress}. Click to re-detect live GPS.`}
+        >
+          <MapPin className={`w-3.5 h-3.5 ${userLocation.isRealGps ? 'text-[#03E5B7]' : 'text-[#FFC700]'} ${isLocating ? 'animate-spin' : ''}`} />
+          <span className="max-w-[110px] truncate">{userLocation.cityName}</span>
+          {userLocation.isRealGps && (
+            <span className="text-[9px] px-1 py-0.2 rounded bg-[#03E5B7]/20 text-[#03E5B7] font-black">GPS</span>
+          )}
+        </button>
+
+        {/* Theme Switcher Toggle (Bright / Dark Mode) */}
+        <button
+          onClick={toggleTheme}
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl border text-xs font-mono font-bold transition-all shadow-sm bg-white/60 dark:bg-[#0D0F17]/70 backdrop-blur-md border-slate-200/70 dark:border-[#1D2133] hover:border-[#FFC700] text-slate-200"
+          title={theme === 'light' ? 'Switch to Dark Cyber Theme' : 'Switch to Bright Light Theme'}
+        >
+          {theme === 'light' ? (
+            <>
+              <Sun className="w-3.5 h-3.5 text-amber-500 animate-spin-slow" />
+              <span className="hidden sm:inline text-[11px] font-black text-amber-700">🍄 MARIO WHITE</span>
+            </>
+          ) : (
+            <>
+              <Moon className="w-3.5 h-3.5 text-indigo-400" />
+              <span className="hidden sm:inline text-[11px] font-bold text-indigo-300">🌙 CLAN NIGHT</span>
+            </>
+          )}
+        </button>
 
         {/* AI Handler Launch */}
         <button
@@ -342,10 +379,10 @@ export const Header: React.FC = () => {
               else setActiveTab('overview');
             }}
             className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#FF007A]/20 border border-[#FF007A]/70 text-white hover:bg-[#FF007A] text-xs font-bold transition-all shadow-[0_0_15px_rgba(255,0,122,0.3)] font-mono glow-pink group"
-            title={role === 'admin' ? "Switch to User View" : "Switch to Organization Control Suite"}
+            title={role === 'admin' ? "Switch to Citizen View" : "Switch to Government Control Suite"}
           >
             <Shield className="w-3.5 h-3.5 text-[#FF007A] group-hover:text-white transition-colors" />
-            <span className="tracking-wide">{role === 'admin' ? 'SWITCH TO USER' : 'SWITCH TO ORG'}</span>
+            <span className="tracking-wide">{role === 'admin' ? 'VIEW AS CITIZEN' : 'VIEW AS GOVT'}</span>
           </button>
         )}
 
@@ -365,7 +402,7 @@ export const Header: React.FC = () => {
             className="px-3 py-1 rounded bg-gradient-to-r from-[#FF007A] to-[#03E5B7] text-[#07080E] font-black text-xs hover:brightness-110 transition-all shadow-[0_0_15px_rgba(3,229,183,0.3)] flex items-center gap-1.5 font-mono"
           >
             <LogIn className="w-3.5 h-3.5" />
-            <span>JOIN ARENA</span>
+            <span>ENTER KINGDOM 🏰</span>
           </button>
         )}
       </div>

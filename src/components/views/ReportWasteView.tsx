@@ -59,7 +59,7 @@ const COCO_TO_WASTE: Record<string, { category: string; color: string; recyclabl
 const FALLBACK_WASTE = { category: 'Mixed Debris', color: '#A855F7', recyclable: false };
 
 export const ReportWasteView: React.FC = () => {
-  const { reportWaste, setActiveTab, profile, addToast } = useEco();
+  const { reportWaste, setActiveTab, profile, addToast, userLocation, detectUserLocation, isLocating } = useEco();
   const [showAnalysisModal, setShowAnalysisModal] = useState(false);
   const [isScanning, setIsScanning] = useState(false);
   const [scanned, setScanned] = useState(false);
@@ -88,7 +88,13 @@ export const ReportWasteView: React.FC = () => {
   const [hasCustomImage, setHasCustomImage] = useState(false);
   const [title, setTitle] = useState('Plastic & Mixed Campus Waste');
   const [remarks, setRemarks] = useState('');
-  const [location, setLocation] = useState('Block B, North Gate');
+  const [location, setLocation] = useState(userLocation?.fullAddress || 'Local Campus / Area');
+
+  useEffect(() => {
+    if (userLocation?.fullAddress) {
+      setLocation(userLocation.fullAddress);
+    }
+  }, [userLocation?.fullAddress]);
   const imageRef = useRef<HTMLImageElement>(null);
   const [predictions, setPredictions] = useState<any[]>([]);
   
@@ -282,7 +288,7 @@ export const ReportWasteView: React.FC = () => {
       location,
       detectedMaterials: mlData ? mlData.materials.map(m => m.name) : ['PET Plastic Bottles', 'Corrugated Cardboard', 'Metal Can'],
       estimatedQuantityKg: mlData ? mlData.estimatedKg : 12.0,
-      severity: mlData ? mlData.severity : 'High',
+      severity: mlData ? (mlData.severity === 'HIGH PRIORITY' ? 'High' : mlData.severity === 'MODERATE' ? 'Medium' : 'Low') : 'High',
       recyclablePercentage: 78,
       imageUrl: selectedImage,
     });
@@ -692,7 +698,7 @@ export const ReportWasteView: React.FC = () => {
           </div>
         </div>
 
-        {/* Column 3: INDORE CAMPUS LIVE GRID TELEMETRY MAP Card */}
+        {/* Column 3: LIVE GIS TELEMETRY MAP ({userLocation?.cityName ? userLocation.cityName.toUpperCase() : 'CAMPUS'}) Card */}
         <div className="bg-[#0D0F17] border border-[#1D2133] rounded-xl p-5 space-y-4 flex flex-col justify-between shadow-lg">
           <div className="flex items-center justify-between border-b border-[#1D2133] pb-3">
             <h3 className="text-xs font-black text-white flex items-center gap-1.5 tracking-wider">
@@ -845,7 +851,7 @@ export const ReportWasteView: React.FC = () => {
                 💡 FRONT MAN AI RECOMMENDATION:
               </span>
               <p className="text-xs text-slate-200 leading-relaxed font-mono">
-                "This waste site contains high-grade PET plastic bottles and clean corrugated cardboard. Nearest collection hub is <strong className="text-[#03E5B7]">Indore Hub #2 (240m away)</strong>. Submitting a verified report will credit <strong className="text-[#FFC700]">+50 XP & +300 Eco Points</strong>."
+                "This waste site contains high-grade PET plastic bottles and clean corrugated cardboard. Nearest collection hub is <strong className="text-[#03E5B7]">{userLocation?.cityName || 'Regional'} Hub #2 (240m away)</strong>. Submitting a verified report will credit <strong className="text-[#FFC700]">+50 XP & +300 Eco Points</strong>."
               </p>
             </div>
 

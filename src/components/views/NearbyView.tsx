@@ -17,7 +17,10 @@ import {
 } from 'lucide-react';
 
 export const NearbyView: React.FC = () => {
-  const { nearbyPartners, selectedPartnerOnMap, selectPartnerOnMap, setActiveTab, redeemPartnerVoucher } = useEco();
+  const { nearbyPartners, selectedPartnerOnMap, selectPartnerOnMap, setActiveTab, redeemPartnerVoucher, userLocation, isLocating, detectUserLocation, setUserLocationManually, theme } = useEco();
+
+  const userLat = userLocation?.lat || 12.9716;
+  const userLng = userLocation?.lng || 77.5946;
 
   // Filters State
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -85,13 +88,16 @@ export const NearbyView: React.FC = () => {
 
       // Center map on SAGE University, Indore (22.7196, 75.8577)
       const map = L.map(mapRef.current, {
-        center: [22.7196, 75.8577],
+        center: [userLat, userLng],
         zoom: 14,
         zoomControl: true,
       });
 
       // CartoDB Dark Matter Real Street Map Tiles
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      const tileUrl = theme === 'light'
+        ? 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+        : 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+      L.tileLayer(tileUrl, {
         maxZoom: 19,
         attribution: '&copy; OpenStreetMap &copy; CARTO',
       }).addTo(map);
@@ -110,9 +116,9 @@ export const NearbyView: React.FC = () => {
         iconAnchor: [55, 21],
       });
 
-      L.marker([22.7196, 75.8577], { icon: userIcon })
+      L.marker([userLat, userLng], { icon: userIcon })
         .addTo(map)
-        .bindPopup('<div style="color:#000; font-weight:bold;">🔵 YOU ARE HERE<br><span style="font-weight:normal; font-size:11px;">SAGE University Campus, Indore</span></div>');
+        .bindPopup(`<div style="color:#000; font-weight:bold;">🔵 YOU ARE HERE<br><span style="font-weight:normal; font-size:11px;">${userLocation?.fullAddress || userLocation?.cityName || 'Current Area'}</span></div>`);
 
       // PARTNER MAP MARKERS BOUND TO REAL GPS COORDINATES
       filteredPartners.forEach((partner) => {
@@ -134,7 +140,7 @@ export const NearbyView: React.FC = () => {
           iconAnchor: [70, 16],
         });
 
-        const marker = L.marker([partner.lat || 22.7196, partner.lng || 75.8577], { icon: partnerIcon }).addTo(map);
+        const marker = L.marker([partner.lat || userLat, partner.lng || userLng], { icon: partnerIcon }).addTo(map);
 
         marker.on('click', () => {
           selectPartnerOnMap(partner.id);
@@ -158,7 +164,7 @@ export const NearbyView: React.FC = () => {
         leafletInstanceRef.current = null;
       }
     };
-  }, [filteredPartners, selectedPartnerOnMap]);
+  }, [filteredPartners, selectedPartnerOnMap, userLocation.lat, userLocation.lng, theme]);
 
   return (
     <div className="space-y-8 max-w-6xl mx-auto animate-in fade-in duration-300">

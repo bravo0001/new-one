@@ -17,7 +17,7 @@ export const ChallengesView: React.FC = () => {
       <div className="bg-[#0D0F17] border border-[#FF007A]/50 rounded-lg p-5 space-y-2 relative overflow-hidden">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#FF007A]/20 border border-[#FF007A]/40 text-[#FF007A] text-xs font-mono font-bold">
           <Trophy className="w-3.5 h-3.5" />
-          <span>SQUID ARENA SURVIVAL COMPETITIONS</span>
+          <span>SUPER MARIO ECO-ARENA TOURNAMENTS 🍄 ⭐</span>
         </div>
         <h1 className="text-2xl font-black text-white tracking-widest">ECO CHALLENGES</h1>
         <p className="text-xs text-[#03E5B7] font-bold">
@@ -30,7 +30,7 @@ export const ChallengesView: React.FC = () => {
         {/* Poster overlay */}
         <div
           className="absolute inset-0 opacity-15 pointer-events-none bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/squid-game/media_1787398142284.jpg')" }}
+          style={{ backgroundImage: "url('/images/mario/mario-banner.jpg')" }}
         />
         <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="space-y-2">

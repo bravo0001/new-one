@@ -502,3 +502,14 @@ export interface UserActivityLogItem {
   icon: string;
 }
 
+
+
+export interface UserLocationState {
+  lat: number;
+  lng: number;
+  cityName: string;
+  areaName: string;
+  fullAddress: string;
+  isRealGps: boolean;
+  accuracy?: number;
+}

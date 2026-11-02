@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Game Access – Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#141211; --panel:#1d1a19; --line:#3a3532; --text:#f1ebdd; --muted:#a79f92;
+  --accent:#1fb5a0; --on-accent:#08201c;
+  --display:"Do Hyeon","Arial Narrow",Impact,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root[data-role="csr"],:root[data-role="guard"]{--accent:#ed1b76;--on-accent:#fff}
+:root[data-role="government"],:root[data-role="front"]{--accent:#e6dcc3;--on-accent:#141211}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--text);font:400 16px/1.5 var(--body);display:grid;place-items:center;min-height:100vh;padding:24px;overflow-x:hidden;position:relative}
+.ghost{position:fixed;inset:0;display:grid;place-items:center;pointer-events:none;z-index:0}
+.ghost svg{width:min(120vw,900px);height:auto;opacity:.07;transition:opacity .4s}
+.ghost *{fill:none;stroke:var(--accent);stroke-width:5;transition:stroke .3s}
+main{position:relative;z-index:1;width:100%;max-width:440px}
+h1{font:400 clamp(2.4rem,9vw,3.4rem)/1 var(--display);margin:0 0 6px;letter-spacing:.02em}
+.sub{color:var(--muted);margin:0 0 24px}
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.role{background:var(--panel);border:2px solid var(--line);border-radius:6px;padding:14px 8px 10px;color:var(--muted);font:500 .9rem var(--body);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;transition:border-color .2s,color .2s,background .2s}
+.role svg{width:38px;height:38px}
+.role svg *{fill:none;stroke:currentColor;stroke-width:5;stroke-linejoin:round}
+.role[aria-selected="true"]{border-color:var(--accent);color:var(--text);background:#242020}
+.role[aria-selected="true"] svg *{stroke:var(--accent);fill:var(--accent);fill-opacity:.18}
+.role:focus-visible,input:focus-visible,button.go:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+form{background:var(--panel);border:2px solid var(--line);border-radius:6px;padding:24px;border-top:6px solid var(--accent)}
+.who{font:400 1.5rem/1.1 var(--display);margin:0 0 4px}
+.desc{margin:0 0 18px;color:var(--muted);font-size:.92rem}
+label{display:block;font-weight:500;font-size:.9rem;margin:0 0 6px}
+input{width:100%;background:var(--bg);border:2px solid var(--line);border-radius:4px;color:var(--text);padding:12px 14px;font:inherit;margin-bottom:16px}
+input::placeholder{color:#6f6860}
+input[aria-invalid="true"]{border-color:#ff6b6b}
+.err{color:#ff8e8e;font-size:.88rem;min-height:1.3em;margin:-6px 0 12px}
+button.go{width:100%;border:0;border-radius:4px;background:var(--accent);color:var(--on-accent);font:400 1.3rem var(--display);letter-spacing:.04em;padding:13px;cursor:pointer;transition:transform .1s,filter .2s}
+button.go:hover{filter:brightness(1.1)}button.go:active{transform:scale(.98)}
+.row{display:flex;justify-content:space-between;margin-top:14px;font-size:.85rem}
+.row a{color:var(--muted)}
+.ok{text-align:center;background:var(--panel);border:2px solid var(--accent);border-radius:6px;padding:36px 24px}
+.ok svg{width:64px;height:64px;margin-bottom:10px}.ok svg *{fill:none;stroke:var(--accent);stroke-width:5;stroke-linejoin:round}
+.ok h2{font:400 2rem/1.1 var(--display);margin:0 0 6px}.ok p{color:var(--muted);margin:0 0 18px}
+.ok-actions{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.ok button.proceed{width:100%;border:0;border-radius:4px;background:var(--accent);color:var(--on-accent);font:400 1.2rem var(--display);letter-spacing:.03em;padding:12px;cursor:pointer;transition:transform .1s,filter .2s}
+.ok button.proceed:hover{filter:brightness(1.1)}
+.ok button.out{background:none;border:2px solid var(--line);color:var(--text);border-radius:4px;padding:9px 16px;font:inherit;cursor:pointer;transition:border-color .2s}
+.ok button.out:hover{border-color:var(--muted)}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="ghost" aria-hidden="true"><svg id="ghost" viewBox="0 0 100 100"></svg></div>
+<main>
+  <h1>Game Access</h1>
+  <p class="sub">Choose who you are, then sign in.</p>
+
+  <div class="roles" role="tablist" aria-label="Account type" id="roles">
+    <button type="button" class="role" role="tab" data-role="citizen" aria-selected="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40"/></svg>Citizen</button>
+    <button type="button" class="role" role="tab" data-role="csr" aria-selected="false"><svg viewBox="0 0 100 100"><path d="M50 10 92 86H8Z"/></svg>CSR</button>
+    <button type="button" class="role" role="tab" data-role="government" aria-selected="false"><svg viewBox="0 0 100 100"><rect x="12" y="12" width="76" height="76"/></svg>Government</button>
+  </div>
+
+  <form id="form" novalidate>
+    <h2 class="who" id="who"></h2>
+    <p class="desc" id="desc"></p>
+    <label for="id" id="idLabel"></label>
+    <input id="id" type="email" autocomplete="username" inputmode="email">
+    <label for="pw" id="pwLabel"></label>
+    <input id="pw" type="password" autocomplete="current-password" placeholder="••••••••">
+    <div class="err" id="err" role="alert"></div>
+    <button class="go" id="go" type="submit"></button>
+    <div class="row"><a href="#" id="help"></a><a href="#" id="alt"></a></div>
+  </form>
+
+  <section class="ok" id="ok" hidden>
+    <svg viewBox="0 0 100 100" id="okShape"></svg>
+    <h2 id="okTitle"></h2><p id="okText"></p>
+    <div class="ok-actions">
+      <button type="button" class="proceed" id="proceedBtn">Proceed to Panel →</button>
+      <button type="button" class="out" id="out">Sign out</button>
+    </div>
+  </section>
+</main>
+
+<script>
+const SHAPES={
+  citizen:'<circle cx="50" cy="50" r="40"/>',
+  csr:'<path d="M50 10 92 86H8Z"/>',
+  government:'<rect x="12" y="12" width="76" height="76"/>',
+  player:'<circle cx="50" cy="50" r="40"/>',
+  guard:'<path d="M50 10 92 86H8Z"/>',
+  front:'<rect x="12" y="12" width="76" height="76"/>'
+};
+const ROLES={
+  citizen:{name:"Citizen login",desc:"Sign in with your email to track your eco impact.",idL:"Gmail address",idP:"citizen@gmail.com",mode:"email",
+    check:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)||"Please enter a valid Gmail / email address.",pwL:"Password",go:"Sign in as Citizen",help:"Forgot password?",alt:"New citizen registration?",
+    okT:n=>`Welcome, ${n.split('@')[0]}`,okX:"Your citizen dashboard is ready. Redirecting to Citizen Panel...",path:"/user",panelName:"Citizen Panel"},
+  csr:{name:"CSR login",desc:"Sign in with your corporate email to manage ESG funding & missions.",idL:"Gmail address",idP:"csr@gmail.com",mode:"email",
+    check:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)||"Please enter a valid corporate / Gmail address.",pwL:"Password",go:"Sign in as CSR",help:"Forgot password?",alt:"Partner onboarding",
+    okT:n=>`Welcome, ${n.split('@')[0].toUpperCase()}`,okX:"CSR Executive Portal unlocked. Redirecting to CSR Panel...",path:"/csr",panelName:"CSR Panel"},
+  government:{name:"Government login",desc:"Administrative portal. Authorised municipal & campus officers only.",idL:"Gmail address",idP:"government@gmail.com",mode:"email",
+    check:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)||"Please enter a valid Government / Gmail address.",pwL:"Password",go:"Access Admin Portal",help:"Forgot password?",alt:"Admin directory",
+    okT:n=>`Government Portal Unlocked`,okX:"Signed in as civic administrator. Redirecting to Government Panel...",path:"/organization",panelName:"Government Panel"},
+  player:{name:"Citizen login",desc:"Sign in with your email to track your eco impact.",idL:"Gmail address",idP:"citizen@gmail.com",mode:"email",
+    check:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)||"Please enter a valid Gmail / email address.",pwL:"Password",go:"Sign in as Citizen",help:"Forgot password?",alt:"New citizen registration?",
+    okT:n=>`Welcome, ${n.split('@')[0]}`,okX:"Redirecting to Citizen Panel...",path:"/user",panelName:"Citizen Panel"},
+  guard:{name:"CSR login",desc:"Sign in with your corporate email to manage ESG funding.",idL:"Gmail address",idP:"csr@gmail.com",mode:"email",
+    check:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)||"Please enter a valid corporate / Gmail address.",pwL:"Password",go:"Sign in as CSR",help:"Forgot password?",alt:"Partner onboarding",
+    okT:n=>`Welcome, ${n.split('@')[0].toUpperCase()}`,okX:"Redirecting to CSR Panel...",path:"/csr",panelName:"CSR Panel"},
+  front:{name:"Government login",desc:"Administrative portal.",idL:"Gmail address",idP:"government@gmail.com",mode:"email",
+    check:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)||"Please enter a valid Government / Gmail address.",pwL:"Password",go:"Access Admin Portal",help:"Forgot password?",alt:"Admin directory",
+    okT:n=>`Government Portal Unlocked`,okX:"Redirecting to Government Panel...",path:"/organization",panelName:"Government Panel"}
+};
+const $=id=>document.getElementById(id);
+let role="citizen";
+let redirectTimer=null;
+
+function setRole(r){
+  role=r;const c=ROLES[r];
+  document.documentElement.dataset.role=r;
+  document.querySelectorAll(".role").forEach(b=>b.setAttribute("aria-selected",b.dataset.role===r));
+  $("ghost").innerHTML=SHAPES[r];
+  $("who").textContent=c.name;$("desc").textContent=c.desc;
+  $("idLabel").textContent=c.idL;$("id").placeholder=c.idP;$("id").inputMode=c.mode;
+  $("pwLabel").textContent=c.pwL;$("go").textContent=c.go;
+  $("help").textContent=c.help;$("alt").textContent=c.alt;
+  $("id").value="";$("pw").value="";clearErr();
+}
+function clearErr(){$("err").textContent="";$("id").removeAttribute("aria-invalid");$("pw").removeAttribute("aria-invalid")}
+function fail(el,msg){
+  clearErr();el.setAttribute("aria-invalid","true");$("err").textContent=msg;el.focus();
+  const f=$("form");f.classList.remove("shake");void f.offsetWidth;f.classList.add("shake");
+}
+document.querySelectorAll(".role").forEach(b=>b.addEventListener("click",()=>setRole(b.dataset.role)));
+
+$("form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const v=$("id").value.trim();
+  const pw=$("pw").value;
+  const c=ROLES[role];
+  const res=c.check(v);
+  if(res!==true)return fail($("id"),res);
+  if(pw.length<4)return fail($("pw"),c.pwL+" must be at least 4 characters.");
+
+  // Role detection: if user types CSR/Government/Citizen ID or selects tab
+  const vLower=v.toLowerCase();
+  let targetRole=role;
+  let targetPath="/user";
+  let panelName="Citizen Panel";
+
+  if(vLower.includes("csr")||vLower.includes("corporate")||vLower.includes("esg")||role==="csr"||role==="guard"){
+    targetRole="csr";
+    targetPath="/csr";
+    panelName="CSR Panel";
+  }else if(vLower.includes("government")||vLower.includes("admin")||vLower.includes("gov")||vLower.includes("thakre")||role==="government"||role==="front"){
+    targetRole="government";
+    targetPath="/organization";
+    panelName="Government Panel";
+  }else{
+    targetRole="citizen";
+    targetPath="/user";
+    panelName="Citizen Panel";
+  }
+
+  const baseUrl=window.location.origin.startsWith("http")?window.location.origin:"http://localhost:3000";
+  let actualUserRole=targetRole==="government"?"admin":(targetRole==="csr"?"corporate":"student");
+  let token="ecoverse_user_token_"+Date.now();
+
+  try{
+    const apiRes=await fetch(`${baseUrl}/api/auth/login`,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({email:v,password:pw})
+    });
+    const data=await apiRes.json();
+    if(apiRes.ok&&data.token){
+      token=data.token;
+      if(data.user&&data.user.role){
+        actualUserRole=data.user.role;
+        if(actualUserRole==="admin"){
+          targetRole="government";
+          targetPath="/organization";
+          panelName="Government Panel";
+        }else if(actualUserRole==="corporate"){
+          targetRole="csr";
+          targetPath="/csr";
+          panelName="CSR Panel";
+        }else{
+          targetRole="citizen";
+          targetPath="/user";
+          panelName="Citizen Panel";
+        }
+      }
+    }
+  }catch(err){}
+
+  try{
+    localStorage.setItem("ecoverse_token",token);
+    localStorage.setItem("ecoverse_role",actualUserRole);
+    localStorage.setItem("ecoverse_profile",JSON.stringify({
+      name:v.split("@")[0].toUpperCase(),
+      role:actualUserRole,
+      playerNumber:"#"+Math.floor(100+Math.random()*899)
+    }));
+  }catch(e){}
+
+  document.documentElement.dataset.role=targetRole;
+  $("form").hidden=true;
+  $("roles").hidden=true;
+  $("ok").hidden=false;
+  $("okShape").innerHTML=SHAPES[targetRole];
+  $("okTitle").textContent=ROLES[targetRole].okT(v);
+  $("okText").textContent=`Authenticated successfully. Redirecting you to ${panelName}...`;
+
+  const proceedBtn=$("proceedBtn");
+  proceedBtn.textContent=`Proceed to ${panelName} →`;
+  proceedBtn.onclick=()=>{
+    if(redirectTimer)clearTimeout(redirectTimer);
+    window.location.href=baseUrl+targetPath;
+  };
+
+  redirectTimer=setTimeout(()=>{
+    window.location.href=baseUrl+targetPath;
+  },1200);
+});
+
+$("out").addEventListener("click",()=>{
+  if(redirectTimer)clearTimeout(redirectTimer);
+  try{
+    localStorage.removeItem("ecoverse_token");
+    localStorage.removeItem("ecoverse_role");
+    localStorage.removeItem("ecoverse_profile");
+  }catch(e){}
+  $("ok").hidden=true;
+  $("form").hidden=false;
+  $("roles").hidden=false;
+  setRole(role);
+});
+
+document.querySelectorAll(".row a").forEach(a=>a.addEventListener("click",e=>e.preventDefault()));
+setRole("citizen");
+</script>
+</body>
+</html>

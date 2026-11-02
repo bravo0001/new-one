@@ -25,7 +25,7 @@ export const ShinchanCollector: React.FC = () => {
 
   // Speech bubble states
   const [showShinchanSpeech, setShowShinchanSpeech] = useState(false);
-  const [shinchanSpeechText, setShinchanSpeechText] = useState('Indore Campus Cleanliness Patrol! ♻️');
+  const [shinchanSpeechText, setShinchanSpeechText] = useState('Super Mario & Clan Village Patrol! 🍄🏰');
   const [shinchanClickCount, setShinchanClickCount] = useState(0);
 
   const [showShiroSpeech, setShowShiroSpeech] = useState(false);
@@ -149,7 +149,7 @@ export const ShinchanCollector: React.FC = () => {
     setShowNanakoSpeech(true);
     const quotes = [
       "Oh Shinchan! You're doing good work! ❤️",
-      'Thank you for keeping our Indore campus so clean and green! 🌸✨',
+      'Thank you for keeping our Clan Village so thriving, clean, and green! 🌸🏰',
       'Shinchan is our smartest little Eco-Champion! 💖',
       'Every bit of recycled waste helps our environment! ♻️🌿',
     ];

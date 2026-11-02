@@ -63,11 +63,11 @@ import { AuthGateView } from '../components/auth/AuthGateView';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  const { isAuthenticated, token, role } = useEco();
+  const { isAuthenticated, token, role, activeTab } = useEco();
   const router = useRouter();
 
   useEffect(() => {
-    if (isAuthenticated || token) {
+    if (isAuthenticated && token) {
       if (role === 'admin') {
         router.push('/organization');
       } else if (role === 'corporate') {
@@ -78,7 +78,7 @@ export default function Home() {
     }
   }, [isAuthenticated, token, role, router]);
 
-  if (!isAuthenticated && !token) {
+  if (!isAuthenticated || !token) {
     return <AuthGateView />;
   }
 

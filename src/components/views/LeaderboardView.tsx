@@ -33,9 +33,9 @@ export const LeaderboardView: React.FC = () => {
       <div className="bg-[#0D0F17] border border-[#FF007A]/50 rounded-lg p-5 space-y-2 relative overflow-hidden">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#FF007A]/20 border border-[#FF007A]/40 text-[#FF007A] text-xs font-mono font-bold">
           <Award className="w-3.5 h-3.5" />
-          <span>SQUID ARENA RANKING LADDER // ROUND 7</span>
+          <span>SUPER MARIO CLAN RANKING LADDER // WORLD 1-1</span>
         </div>
-        <h1 className="text-2xl font-black text-white tracking-widest">SQUID GAME LEADERBOARD</h1>
+        <h1 className="text-2xl font-black text-white tracking-widest">MARIO x CLAN ECO LEADERBOARD 🍄 ⭐</h1>
         <p className="text-xs text-[#03E5B7] font-bold">
           Global standings of contestants driving circular economy diversion & surviving elimination rounds.
         </p>

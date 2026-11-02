@@ -1,96 +1,68 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 export const SquidCyberBackground: React.FC = () => {
-  const [columns, setColumns] = useState<number[]>([]);
-
-  useEffect(() => {
-    // Generate 24 columns for falling digital matrix stream
-    setColumns(Array.from({ length: 24 }, (_, i) => i));
-  }, []);
+  // Floating playful Super Mario & Clash of Clans village particles
+  const floatingItems = [
+    { icon: '🪙', x: '6%', delay: 0, duration: 14, size: '22px' },
+    { icon: '🍄', x: '16%', delay: 4, duration: 18, size: '24px' },
+    { icon: '⭐', x: '26%', delay: 1, duration: 16, size: '20px' },
+    { icon: '💧', x: '36%', delay: 6, duration: 12, size: '18px' },
+    { icon: '🌿', x: '46%', delay: 3, duration: 20, size: '22px' },
+    { icon: '🪙', x: '56%', delay: 7, duration: 15, size: '22px' },
+    { icon: '🏰', x: '66%', delay: 2, duration: 22, size: '22px' },
+    { icon: '⭐', x: '76%', delay: 5, duration: 17, size: '20px' },
+    { icon: '🧪', x: '86%', delay: 8, duration: 13, size: '22px' },
+    { icon: '🍀', x: '94%', delay: 3.5, duration: 19, size: '24px' },
+  ];
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
-      {/* 1. Ambient Hooded Hacker Background Image with balanced brightness */}
+      {/* 1. Clash of Clans & Super Mario Village Scenic Landscape */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-22 mix-blend-screen filter brightness-110 contrast-125 saturate-140 transition-all duration-700"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-700 filter saturate-110"
         style={{
-          backgroundImage: 'url(/cyber-hacker-bg.jpg)',
+          backgroundImage: 'url(/coc-mario-bg.jpg)',
         }}
       />
 
-      {/* 2. Deep Cyber Vignette / Soft Radial Darkening */}
-      <div className="absolute inset-0 bg-radial from-transparent via-[#07080E]/50 to-[#07080E]/85" />
+      {/* 2. Soft White Radiant Morning Wash - Guarantees 100% Crisp Contrast & High Readability */}
+      <div className="absolute inset-0 bg-white/78 backdrop-blur-[2px] transition-all duration-500" />
 
-      {/* 3. Falling Matrix Digital Binary Streams (0s and 1s) */}
-      <div className="absolute inset-0 overflow-hidden opacity-25">
-        {columns.map((col) => {
-          const leftPercent = (col / columns.length) * 100 + Math.random() * 2;
-          const duration = 8 + Math.random() * 12;
-          const delay = Math.random() * 8;
-          const chars = ['0', '1', '1', '0', '0', '1', '1', '0', '⭕', '△', '▢'];
+      {/* 3. Subtle Sunny Village Gradients - Gentle Sky Blue Top & Lush Green Bottom Aura */}
+      <div className="absolute inset-0 bg-gradient-to-b from-sky-400/10 via-transparent to-emerald-500/10" />
 
-          return (
-            <motion.div
-              key={col}
-              initial={{ y: -300, opacity: 0 }}
-              animate={{ y: '110vh', opacity: [0, 0.8, 0.8, 0] }}
-              transition={{
-                duration,
-                repeat: Infinity,
-                delay,
-                ease: 'linear',
-              }}
-              style={{
-                position: 'absolute',
-                left: `${leftPercent}%`,
-                top: 0,
-                fontSize: '11px',
-                fontFamily: 'monospace',
-                color: col % 3 === 0 ? '#FF007A' : col % 3 === 1 ? '#03E5B7' : '#FFC700',
-                textShadow: '0 0 8px currentColor',
-                lineHeight: '1.4',
-              }}
-            >
-              {chars.map((ch, idx) => (
-                <div key={idx} style={{ opacity: 0.3 + (idx / chars.length) * 0.7 }}>
-                  {ch}
-                </div>
-              ))}
-            </motion.div>
-          );
-        })}
+      {/* 4. Floating Animated Super Mario Coins, Clash Elixir & Stars */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {floatingItems.map((item, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ y: '105vh', opacity: 0, rotate: 0 }}
+            animate={{
+              y: '-10vh',
+              opacity: [0, 0.75, 0.75, 0],
+              rotate: [0, 15, -15, 360],
+            }}
+            transition={{
+              duration: item.duration,
+              repeat: Infinity,
+              delay: item.delay,
+              ease: 'linear',
+            }}
+            style={{
+              position: 'absolute',
+              left: item.x,
+              bottom: 0,
+              fontSize: item.size,
+              filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.12))',
+            }}
+          >
+            {item.icon}
+          </motion.div>
+        ))}
       </div>
-
-      {/* 4. Ambient Floating Squid Game Neon Glyphs */}
-      <motion.div
-        animate={{ y: [0, -20, 0], opacity: [0.15, 0.35, 0.15] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-20 left-[10%] text-6xl text-[#FF007A] font-bold font-mono opacity-20 filter drop-shadow-[0_0_20px_#FF007A]"
-      >
-        ⭕
-      </motion.div>
-
-      <motion.div
-        animate={{ y: [0, 25, 0], opacity: [0.15, 0.35, 0.15] }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-        className="absolute bottom-40 right-[8%] text-6xl text-[#03E5B7] font-bold font-mono opacity-20 filter drop-shadow-[0_0_20px_#03E5B7]"
-      >
-        △
-      </motion.div>
-
-      <motion.div
-        animate={{ y: [0, -15, 0], opacity: [0.1, 0.3, 0.1] }}
-        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
-        className="absolute top-1/2 right-[25%] text-6xl text-[#FFC700] font-bold font-mono opacity-15 filter drop-shadow-[0_0_20px_#FFC700]"
-      >
-        ▢
-      </motion.div>
-
-      {/* 5. Cyber Scanline Grid Overlay */}
-      <div className="absolute inset-0 scanline-overlay opacity-30" />
     </div>
   );
 };

@@ -1,0 +1,3033 @@
+{
+  "users": [
+    {
+      "id": "usr-1793567216233",
+      "name": "XVCBN",
+      "email": "xvcbn@gmail.com",
+      "playerNumber": "#343",
+      "role": "student",
+      "ecoPoints": 100,
+      "sustainabilityScore": 75,
+      "wasteRecoveredKg": 10,
+      "co2SavedKg": 7,
+      "communityContributions": 2,
+      "followersCount": 10,
+      "followingCount": 5,
+      "level": "Citizen Eco Vanguard",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=xvcbn%40gmail.com",
+      "passwordHash": "d3cc769c24615c1896590c4b7374bf61d8953fd8c8373986c50cb10983d6667b",
+      "passwordSalt": "400018b165b795d0709bc1899ba9259d",
+      "createdAt": "2026-11-01T21:06:56.233Z"
+    },
+    {
+      "id": "usr-1793567170519",
+      "name": "CVCBBV",
+      "email": "cvcbbv@gmail.com",
+      "playerNumber": "#766",
+      "role": "student",
+      "ecoPoints": 100,
+      "sustainabilityScore": 75,
+      "wasteRecoveredKg": 10,
+      "co2SavedKg": 7,
+      "communityContributions": 2,
+      "followersCount": 10,
+      "followingCount": 5,
+      "level": "Citizen Eco Vanguard",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=cvcbbv%40gmail.com",
+      "passwordHash": "cae33a0f00571a7e08ebf4688d8fed77c071de64ad1ed2815e4c22e3aa8f3886",
+      "passwordSalt": "907b394f45a5b7ec9012816f9a85717d",
+      "createdAt": "2026-11-01T21:06:10.519Z"
+    },
+    {
+      "id": "usr-1793565867713",
+      "name": "G-0207",
+      "email": "g-0207@gmail.com",
+      "playerNumber": "#480",
+      "role": "student",
+      "ecoPoints": 100,
+      "sustainabilityScore": 75,
+      "wasteRecoveredKg": 10,
+      "co2SavedKg": 7,
+      "communityContributions": 2,
+      "followersCount": 10,
+      "followingCount": 5,
+      "level": "Citizen Eco Vanguard",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=g-0207%40gmail.com",
+      "passwordHash": "a8185cc0b0de53e3c72a2f8a6099155a10fb33ffc1e10d74710458316b564f6d",
+      "passwordSalt": "0e1de9aee74c26992750855b59c2d5dd",
+      "createdAt": "2026-11-01T20:44:27.713Z"
+    },
+    {
+      "id": "usr-1793563454571",
+      "name": "GOVERNMENT",
+      "email": "government@gmail.com",
+      "playerNumber": "#001",
+      "role": "admin",
+      "ecoPoints": 10000,
+      "sustainabilityScore": 95,
+      "wasteRecoveredKg": 5000,
+      "co2SavedKg": 3800,
+      "communityContributions": 80,
+      "followersCount": 456,
+      "followingCount": 5,
+      "level": "Government Admin",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=government%40gmail.com",
+      "passwordHash": "1ed76b371821406327ead6e299678c79ad81be419c9843add70b99729fb21f9b",
+      "passwordSalt": "7428a3bae7b1813f3fd725af47c68f4b",
+      "createdAt": "2026-11-01T20:04:14.571Z"
+    },
+    {
+      "id": "usr-1793563454502",
+      "name": "CSR",
+      "email": "csr@gmail.com",
+      "playerNumber": "#501",
+      "role": "corporate",
+      "ecoPoints": 50000,
+      "sustainabilityScore": 99,
+      "wasteRecoveredKg": 25000,
+      "co2SavedKg": 18000,
+      "communityContributions": 240,
+      "followersCount": 890,
+      "followingCount": 5,
+      "level": "Corporate ESG Partner",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=csr%40gmail.com",
+      "passwordHash": "be294174a478e20f225f1968cc7dc2b88d3728ec6cdf1a04ace64531bdb97b63",
+      "passwordSalt": "b0206f9178b0649274d5c881e78935dd",
+      "createdAt": "2026-11-01T20:04:14.502Z"
+    },
+    {
+      "id": "usr-1793563454425",
+      "name": "CITIZEN",
+      "email": "citizen@gmail.com",
+      "playerNumber": "#155",
+      "role": "student",
+      "ecoPoints": 100,
+      "sustainabilityScore": 75,
+      "wasteRecoveredKg": 10,
+      "co2SavedKg": 7,
+      "communityContributions": 2,
+      "followersCount": 10,
+      "followingCount": 5,
+      "level": "Citizen Eco Vanguard",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=citizen%40gmail.com",
+      "passwordHash": "3f878ac357254e1564f68cf2ac42d4b5b21c3f3c597536b0b3e9267fcc61c7de",
+      "passwordSalt": "eef712f541c294c9255238a2b18fee33",
+      "createdAt": "2026-11-01T20:04:14.425Z"
+    },
+    {
+      "id": "usr-1793562456047",
+      "name": "PLAYER456",
+      "email": "player456@ecoverse.games",
+      "playerNumber": "#597",
+      "role": "student",
+      "ecoPoints": 100,
+      "sustainabilityScore": 75,
+      "wasteRecoveredKg": 10,
+      "co2SavedKg": 7,
+      "communityContributions": 2,
+      "followersCount": 10,
+      "followingCount": 5,
+      "level": "Rookie Contestant (Tier 1)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=player456%40ecoverse.games",
+      "passwordHash": "370dc41aeabdee3acbffe1096edb895bdc424b1a7cc2a67b7bdcb5f6326dcd46",
+      "passwordSalt": "7f2cb1a26d30b0ca1ef37fecca0afbf8",
+      "createdAt": "2026-11-01T19:47:36.047Z"
+    },
+    {
+      "id": "usr-1793562455983",
+      "name": "THAKRETHE",
+      "email": "thakrethe@gmail.com",
+      "playerNumber": "#001",
+      "role": "admin",
+      "ecoPoints": 10000,
+      "sustainabilityScore": 95,
+      "wasteRecoveredKg": 5000,
+      "co2SavedKg": 3800,
+      "communityContributions": 80,
+      "followersCount": 10,
+      "followingCount": 5,
+      "level": "Organization Admin (Host)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=thakrethe%40gmail.com",
+      "passwordHash": "a29713f1a8591921e2ac13978a8a9d53118de12b052231abb21c9b37611fbf5e",
+      "passwordSalt": "95422e842d378266c9dbba5dedf1df10",
+      "createdAt": "2026-11-01T19:47:35.983Z"
+    },
+    {
+      "id": "usr-1793556108447",
+      "name": "GUARDG0207",
+      "email": "guardg0207@ecoverse.games",
+      "playerNumber": "#380",
+      "role": "corporate",
+      "ecoPoints": 100,
+      "sustainabilityScore": 75,
+      "wasteRecoveredKg": 10,
+      "co2SavedKg": 7,
+      "communityContributions": 2,
+      "followersCount": 10,
+      "followingCount": 5,
+      "level": "Rookie Contestant (Tier 1)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=guardg0207%40ecoverse.games",
+      "passwordHash": "e6e24f512776722b06207e92cfdb58a68bd361ef2e9f17ab8c0a41f1ed71dc1a",
+      "passwordSalt": "ae07a17a003a2bcd439ae7ee7b4b47e4",
+      "createdAt": "2026-11-01T18:01:48.447Z"
+    },
+    {
+      "id": "usr-1793555928192",
+      "name": "Aayush Test Contestant",
+      "email": "testuser_1793555928096@ecoverse.test",
+      "playerNumber": "#592",
+      "role": "admin",
+      "ecoPoints": 775,
+      "sustainabilityScore": 93,
+      "wasteRecoveredKg": 48.5,
+      "co2SavedKg": 64,
+      "communityContributions": 8,
+      "followersCount": 0,
+      "followingCount": 0,
+      "level": "Organization Admin (Host)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793555928096%40ecoverse.test",
+      "passwordHash": "5d582dc578c21471561f283858d7f21dbde9d0b1a3015833faee59e3f8a123db",
+      "passwordSalt": "37e0299393fd861c5329c56c4a36df38",
+      "createdAt": "2026-11-01T17:58:48.192Z"
+    },
+    {
+      "id": "usr-1793532775938",
+      "name": "Aayush Test Contestant",
+      "email": "testuser_1793532775885@ecoverse.test",
+      "playerNumber": "#509",
+      "role": "admin",
+      "ecoPoints": 775,
+      "sustainabilityScore": 93,
+      "wasteRecoveredKg": 48.5,
+      "co2SavedKg": 64,
+      "communityContributions": 8,
+      "followersCount": 0,
+      "followingCount": 0,
+      "level": "Organization Admin (Host)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793532775885%40ecoverse.test",
+      "passwordHash": "a8b653fd124dfc9443fffec95483dac32cc8f65a173545ee42a12f78c615068a",
+      "passwordSalt": "822889332caa3e65dad8699223a4de3b",
+      "createdAt": "2026-11-01T11:32:55.938Z"
+    },
+    {
+      "id": "usr-1793532024468",
+      "name": "Aayush Test Contestant",
+      "email": "testuser_1793532024421@ecoverse.test",
+      "playerNumber": "#680",
+      "role": "admin",
+      "ecoPoints": 775,
+      "sustainabilityScore": 93,
+      "wasteRecoveredKg": 48.5,
+      "co2SavedKg": 64,
+      "communityContributions": 8,
+      "followersCount": 0,
+      "followingCount": 0,
+      "level": "Organization Admin (Host)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793532024421%40ecoverse.test",
+      "passwordHash": "50b8d9f8e9772d18f81e7a674ef1282a6e88d49d84c50899cb0b2fc98263e202",
+      "passwordSalt": "8024c02a2d274539215c48438d0f75d2",
+      "createdAt": "2026-11-01T11:20:24.468Z"
+    },
+    {
+      "id": "usr-1793531709406",
+      "name": "Aayush Test Contestant",
+      "email": "testuser_1793531709357@ecoverse.test",
+      "playerNumber": "#212",
+      "role": "admin",
+      "ecoPoints": 775,
+      "sustainabilityScore": 93,
+      "wasteRecoveredKg": 48.5,
+      "co2SavedKg": 64,
+      "communityContributions": 8,
+      "followersCount": 0,
+      "followingCount": 0,
+      "level": "Organization Admin (Host)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793531709357%40ecoverse.test",
+      "passwordHash": "4042d9b70b11b0dd65574dab0b9c7a413a38c87a964247696b28ef90bb6b42f9",
+      "passwordSalt": "5a4ac78544c2098f82987b5e1d74fa3e",
+      "createdAt": "2026-11-01T11:15:09.406Z"
+    },
+    {
+      "id": "usr-1793530992191",
+      "name": "Aayush Test Contestant",
+      "email": "testuser_1793530992142@ecoverse.test",
+      "playerNumber": "#359",
+      "role": "admin",
+      "ecoPoints": 775,
+      "sustainabilityScore": 93,
+      "wasteRecoveredKg": 48.5,
+      "co2SavedKg": 64,
+      "communityContributions": 8,
+      "followersCount": 0,
+      "followingCount": 0,
+      "level": "Organization Admin (Host)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793530992142%40ecoverse.test",
+      "passwordHash": "26cc55fa964279af9afa5e4f14787906e8563de81529d6ce5248c2b76d72527e",
+      "passwordSalt": "1def0c005b5aa908c4c9738efe3ca779",
+      "createdAt": "2026-11-01T11:03:12.191Z"
+    },
+    {
+      "id": "usr-1793529340907",
+      "name": "SDFSF",
+      "email": "sdfsf@gmail.com",
+      "playerNumber": "#358",
+      "role": "student",
+      "ecoPoints": 100,
+      "sustainabilityScore": 75,
+      "wasteRecoveredKg": 10,
+      "co2SavedKg": 7,
+      "communityContributions": 2,
+      "followersCount": 10,
+      "followingCount": 5,
+      "level": "Rookie Contestant (Tier 1)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=sdfsf%40gmail.com",
+      "passwordHash": "2c6363abed5ff3513b17c877d703a66889e8b913a572f0212c052c36ec956580",
+      "passwordSalt": "153ccb44987ec18966808e7fbbf2798e",
+      "createdAt": "2026-11-01T10:35:40.907Z"
+    },
+    {
+      "id": "usr-1793527881552",
+      "name": "TEST",
+      "email": "test@gmail.com",
+      "playerNumber": "#595",
+      "role": "student",
+      "ecoPoints": 100,
+      "sustainabilityScore": 75,
+      "wasteRecoveredKg": 10,
+      "co2SavedKg": 7,
+      "communityContributions": 2,
+      "followersCount": 10,
+      "followingCount": 5,
+      "level": "Rookie Contestant (Tier 1)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=test%40gmail.com",
+      "passwordHash": "060f2e009f8001051648c6cc8bfc2e82743752e34b2fdeba74caec9826c80d63",
+      "passwordSalt": "0b381ac9a0479607f873eff1cb133d0c",
+      "createdAt": "2026-11-01T10:11:21.552Z"
+    },
+    {
+      "id": "usr-1793527814774",
+      "name": "Aayush Test Contestant",
+      "email": "testuser_1793527814730@ecoverse.test",
+      "playerNumber": "#306",
+      "role": "admin",
+      "ecoPoints": 775,
+      "sustainabilityScore": 93,
+      "wasteRecoveredKg": 48.5,
+      "co2SavedKg": 64,
+      "communityContributions": 8,
+      "followersCount": 0,
+      "followingCount": 0,
+      "level": "Organization Admin (Host)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793527814730%40ecoverse.test",
+      "passwordHash": "6d20a815c4fae872edbe9cd8d91b9dd87b2ae126434fe1a3d6f43f962d52ce7b",
+      "passwordSalt": "7eacc66476d6e8b5d93f46021580543f",
+      "createdAt": "2026-11-01T10:10:14.774Z"
+    },
+    {
+      "id": "usr-1793527387957",
+      "name": "Aayush Test Contestant",
+      "email": "testuser_1793527387876@ecoverse.test",
+      "playerNumber": "#438",
+      "role": "admin",
+      "ecoPoints": 775,
+      "sustainabilityScore": 93,
+      "wasteRecoveredKg": 48.5,
+      "co2SavedKg": 64,
+      "communityContributions": 8,
+      "followersCount": 0,
+      "followingCount": 0,
+      "level": "Organization Admin (Host)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793527387876%40ecoverse.test",
+      "passwordHash": "fe3bb8112d7c096d0db607bc524b7c67ae53043f56ab2add306ac87328a2955e",
+      "passwordSalt": "67229094289b8ede8dc5dfbe4e6406a7",
+      "createdAt": "2026-11-01T10:03:07.957Z"
+    },
+    {
+      "id": "usr-1793527294369",
+      "name": "Aayush Test Contestant",
+      "email": "testuser_1793527294290@ecoverse.test",
+      "playerNumber": "#554",
+      "role": "admin",
+      "ecoPoints": 775,
+      "sustainabilityScore": 93,
+      "wasteRecoveredKg": 48.5,
+      "co2SavedKg": 64,
+      "communityContributions": 8,
+      "followersCount": 0,
+      "followingCount": 0,
+      "level": "Organization Admin (Host)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793527294290%40ecoverse.test",
+      "passwordHash": "61673d4d3ec5556c57e6b8b5671a74f979ccd2e31f1ef731df45b2a459e5f577",
+      "passwordSalt": "92ee4bec08bec2f9d9380264add4f1dc",
+      "createdAt": "2026-11-01T10:01:34.369Z"
+    },
+    {
+      "id": "usr-1793527205295",
+      "name": "Aayush Test Contestant",
+      "email": "testuser_1793527205199@ecoverse.test",
+      "playerNumber": "#744",
+      "role": "admin",
+      "ecoPoints": 775,
+      "sustainabilityScore": 93,
+      "wasteRecoveredKg": 48.5,
+      "co2SavedKg": 64,
+      "communityContributions": 8,
+      "followersCount": 0,
+      "followingCount": 0,
+      "level": "Organization Admin (Host)",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793527205199%40ecoverse.test",
+      "passwordHash": "58dedd1882446da8aa5e53e531e622254e572f221323d1c5e4af795a385b27fa",
+      "passwordSalt": "90802f3e2c868375c1f4d218027a2664",
+      "createdAt": "2026-11-01T10:00:05.295Z"
+    },
+    {
+      "id": "usr-admin-1",
+      "name": "Organization Admin",
+      "email": "admin@ecoverse.gov",
+      "playerNumber": "#001",
+      "role": "admin",
+      "ecoPoints": 12500,
+      "sustainabilityScore": 98,
+      "wasteRecoveredKg": 8500,
+      "co2SavedKg": 6400,
+      "communityContributions": 120,
+      "followersCount": 456,
+      "followingCount": 12,
+      "level": "Organization Admin (Host)",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250",
+      "passwordHash": "cabc34bd7d0120fc5cc464c03a0a4c3ca74794ceca0467dc5cf3c8d2964ee132",
+      "passwordSalt": "1469dc3a916c82f21f54d244add86574",
+      "createdAt": "2026-11-01T09:58:56.942Z"
+    },
+    {
+      "id": "usr-student-1",
+      "name": "Player",
+      "email": "student@campus.edu",
+      "playerNumber": "#456",
+      "role": "student",
+      "ecoPoints": 480,
+      "sustainabilityScore": 82,
+      "wasteRecoveredKg": 142.5,
+      "co2SavedKg": 95.8,
+      "communityContributions": 14,
+      "followersCount": 28,
+      "followingCount": 15,
+      "level": "Rookie Contestant (Tier 1)",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250",
+      "passwordHash": "0c3fd1b374cdfab78953accd1953f245491fdb51a75fb7519fa549798391a961",
+      "passwordSalt": "f7d5f4eddb6069968467b1ea52edff30",
+      "createdAt": "2026-11-01T09:58:57.015Z"
+    },
+    {
+      "id": "usr-business-1",
+      "name": "Green Cafe Partner",
+      "email": "partner@greencafe.com",
+      "playerNumber": "#102",
+      "role": "business",
+      "ecoPoints": 1200,
+      "sustainabilityScore": 90,
+      "wasteRecoveredKg": 450,
+      "co2SavedKg": 310,
+      "communityContributions": 35,
+      "followersCount": 92,
+      "followingCount": 8,
+      "level": "Eco Champion (Tier 4)",
+      "avatar": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=200",
+      "passwordHash": "a1bdb008e8e73ca33f52e8702209d306ddade34c1866136ddf7252f1989ed8c9",
+      "passwordSalt": "8a9795c8c8192c8a3e44eb8d4f4210ad",
+      "createdAt": "2026-11-01T09:58:57.098Z"
+    },
+    {
+      "id": "usr-ngo-1",
+      "name": "Robin Hood Food NGO",
+      "email": "contact@foodrescue.ngo",
+      "playerNumber": "#204",
+      "role": "ngo",
+      "ecoPoints": 3400,
+      "sustainabilityScore": 94,
+      "wasteRecoveredKg": 1200,
+      "co2SavedKg": 890,
+      "communityContributions": 88,
+      "followersCount": 310,
+      "followingCount": 22,
+      "level": "Grandmaster Guardian (Tier 5)",
+      "avatar": "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=200",
+      "passwordHash": "2bd859457b19da536820567f3900aab2f19181e774086d184c8557bb969a9950",
+      "passwordSalt": "81616be23f05b0f32501213abd4d64af",
+      "createdAt": "2026-11-01T09:58:57.168Z"
+    },
+    {
+      "id": "usr-corp-1",
+      "name": "TechCorp India ESG",
+      "email": "esg@techcorp.com",
+      "playerNumber": "#789",
+      "role": "corporate",
+      "ecoPoints": 50000,
+      "sustainabilityScore": 99,
+      "wasteRecoveredKg": 25000,
+      "co2SavedKg": 18000,
+      "communityContributions": 240,
+      "followersCount": 890,
+      "followingCount": 45,
+      "level": "Grandmaster Guardian (Tier 5)",
+      "avatar": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=200",
+      "passwordHash": "5b98aaf3bbd9c1837e1fb3f883ef0700299212fdaa71040bbc333889a58c9ab5",
+      "passwordSalt": "5af54aa3213f619039e8d486ad5a2cfa",
+      "createdAt": "2026-11-01T09:58:57.239Z"
+    }
+  ],
+  "wasteReports": [
+    {
+      "id": "RPT-1042",
+      "title": "Plastic Bottleneck Overflow",
+      "location": "Block B, North Gate",
+      "detectedMaterials": [
+        "Plastic",
+        "Cardboard",
+        "Mixed Packaging"
+      ],
+      "estimatedQuantityKg": 12,
+      "severity": "High",
+      "recyclablePercentage": 78,
+      "status": "AI Verified",
+      "reportedBy": "Dheeraj (#456)",
+      "timestamp": "2 mins ago",
+      "pointsAwarded": 10,
+      "imageUrl": "https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&q=80&w=600",
+      "nearestCollectionPoint": "Indore Campus Eco Hub #2",
+      "distanceMeters": 240
+    },
+    {
+      "id": "RPT-1028",
+      "title": "E-Waste Computer Peripherals Dump",
+      "location": "Electronics Lab 2, 2nd Floor",
+      "detectedMaterials": [
+        "Copper Wire",
+        "PCB Circuits",
+        "Broken Keyboards"
+      ],
+      "estimatedQuantityKg": 2.4,
+      "severity": "Medium",
+      "recyclablePercentage": 92,
+      "status": "Cleaned",
+      "reportedBy": "Dheeraj (#456)",
+      "timestamp": "2 hours ago",
+      "pointsAwarded": 100,
+      "imageUrl": "https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&q=80&w=600",
+      "nearestCollectionPoint": "E-Waste Bin #04",
+      "distanceMeters": 80
+    }
+  ],
+  "civicReports": [
+    {
+      "id": "CIV-1042",
+      "title": "Illegal Plastic Dumping & Waste Accumulation",
+      "category": "Illegal Dumping",
+      "location": "North Gate Perimeter Road",
+      "severity": "High",
+      "confirmationsCount": 18,
+      "status": "Reported",
+      "authorityTag": "Indore Municipal Corporation / ULB",
+      "reportedTime": "15 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&q=80&w=600"
+    }
+  ],
+  "marketItems": [
+    {
+      "id": "MKT-01",
+      "title": "Heavy Duty Copper Wire (Scrap)",
+      "category": "E-Waste",
+      "quantity": "20 kg",
+      "priceInr": 2400,
+      "location": "Indore Campus Workshop",
+      "sellerName": "Dheeraj (#456)",
+      "sellerAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250",
+      "condition": "Good",
+      "imageUrl": "https://images.unsplash.com/photo-1605557202138-097824c3fdb2?auto=format&fit=crop&q=80&w=600",
+      "pickupAvailable": true,
+      "postedTime": "3 hours ago"
+    }
+  ],
+  "industryDemands": [
+    {
+      "id": "IND-01",
+      "companyName": "ABC Recycling Pvt Ltd",
+      "logo": "⚡",
+      "materialNeeded": "Copper wire & High-Grade E-Scrap",
+      "requiredQuantity": "500 kg",
+      "remainingQuantityKg": 320,
+      "offerPricePerKgInr": 320,
+      "location": "Indore Industrial Zone",
+      "pickupAvailable": true,
+      "matchScore": 92,
+      "urgency": "High"
+    },
+    {
+      "id": "IND-02",
+      "companyName": "GreenCycle Polymers",
+      "logo": "♻️",
+      "materialNeeded": "Clean PET Plastic Flakes / Bottles",
+      "requiredQuantity": "1,000 kg",
+      "remainingQuantityKg": 1000,
+      "offerPricePerKgInr": 42,
+      "location": "Pithampur Clean Hub",
+      "pickupAvailable": true,
+      "matchScore": 84,
+      "urgency": "Medium"
+    },
+    {
+      "id": "IND-03",
+      "companyName": "ReTech Urban Mining",
+      "logo": "🔌",
+      "materialNeeded": "Electronic Circuit Boards & Components",
+      "requiredQuantity": "200 kg",
+      "remainingQuantityKg": 200,
+      "offerPricePerKgInr": 450,
+      "location": "Indore Tech Park",
+      "pickupAvailable": true,
+      "matchScore": 78,
+      "urgency": "High"
+    }
+  ],
+  "buildIdeas": [
+    {
+      "id": "IDEA-01",
+      "wasteSource": "Old Keyboards & Circuit Boards",
+      "title": "Cyberpunk Keycap Wall Clock & Wall Art",
+      "description": "Transform mechanical keycaps and old PCB boards into a wall clock.",
+      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600",
+      "materialsRequired": [
+        "1 Old Keyboard",
+        "Clock Quartz Mechanism",
+        "Acrylic Board"
+      ],
+      "estimatedCostInr": 150,
+      "difficulty": "Easy",
+      "environmentalImpact": "Diverts 1.2kg e-waste.",
+      "peopleRequired": 1,
+      "steps": [
+        "Pop keycaps off",
+        "Glue 12 numbers",
+        "Install clock motor"
+      ]
+    }
+  ],
+  "communityProjects": [
+    {
+      "id": "PRJ-238",
+      "title": "Solar-Powered Upcycled E-Waste Charging Kiosk",
+      "creatorName": "Aayush Test Contestant",
+      "creatorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793555928096%40ecoverse.test",
+      "description": "Using scrap PC power supplies and reclaimed batteries for public charging.",
+      "progressPercentage": 20,
+      "materialsTarget": 50,
+      "materialsCurrent": 10,
+      "materialsUnit": "units",
+      "studentsJoined": 2,
+      "reusedImpactLabel": "Zero Waste Circular Build",
+      "materialsList": [
+        "PET Bottles",
+        "Cardboard",
+        "Aluminium Scrap"
+      ],
+      "recentActivity": [
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Donated Old PC Power Supplies (10 units)",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Joined the circular build crew",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Initiated the community upcycling project",
+          "time": "Just now"
+        }
+      ],
+      "createdAt": "2026-11-01T17:58:49.445Z"
+    },
+    {
+      "id": "PRJ-507",
+      "title": "Solar-Powered Upcycled E-Waste Charging Kiosk",
+      "creatorName": "Aayush Test Contestant",
+      "creatorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793532775885%40ecoverse.test",
+      "description": "Using scrap PC power supplies and reclaimed batteries for public charging.",
+      "progressPercentage": 20,
+      "materialsTarget": 50,
+      "materialsCurrent": 10,
+      "materialsUnit": "units",
+      "studentsJoined": 2,
+      "reusedImpactLabel": "Zero Waste Circular Build",
+      "materialsList": [
+        "PET Bottles",
+        "Cardboard",
+        "Aluminium Scrap"
+      ],
+      "recentActivity": [
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Donated Old PC Power Supplies (10 units)",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Joined the circular build crew",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Initiated the community upcycling project",
+          "time": "Just now"
+        }
+      ],
+      "createdAt": "2026-11-01T11:32:56.884Z"
+    },
+    {
+      "id": "PRJ-827",
+      "title": "Solar-Powered Upcycled E-Waste Charging Kiosk",
+      "creatorName": "Aayush Test Contestant",
+      "creatorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793532024421%40ecoverse.test",
+      "description": "Using scrap PC power supplies and reclaimed batteries for public charging.",
+      "progressPercentage": 20,
+      "materialsTarget": 50,
+      "materialsCurrent": 10,
+      "materialsUnit": "units",
+      "studentsJoined": 2,
+      "reusedImpactLabel": "Zero Waste Circular Build",
+      "materialsList": [
+        "PET Bottles",
+        "Cardboard",
+        "Aluminium Scrap"
+      ],
+      "recentActivity": [
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Donated Old PC Power Supplies (10 units)",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Joined the circular build crew",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Initiated the community upcycling project",
+          "time": "Just now"
+        }
+      ],
+      "createdAt": "2026-11-01T11:20:24.953Z"
+    },
+    {
+      "id": "PRJ-364",
+      "title": "Solar-Powered Upcycled E-Waste Charging Kiosk",
+      "creatorName": "Aayush Test Contestant",
+      "creatorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793531709357%40ecoverse.test",
+      "description": "Using scrap PC power supplies and reclaimed batteries for public charging.",
+      "progressPercentage": 20,
+      "materialsTarget": 50,
+      "materialsCurrent": 10,
+      "materialsUnit": "units",
+      "studentsJoined": 2,
+      "reusedImpactLabel": "Zero Waste Circular Build",
+      "materialsList": [
+        "PET Bottles",
+        "Cardboard",
+        "Aluminium Scrap"
+      ],
+      "recentActivity": [
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Donated Old PC Power Supplies (10 units)",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Joined the circular build crew",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Initiated the community upcycling project",
+          "time": "Just now"
+        }
+      ],
+      "createdAt": "2026-11-01T11:15:10.359Z"
+    },
+    {
+      "id": "PRJ-836",
+      "title": "Solar-Powered Upcycled E-Waste Charging Kiosk",
+      "creatorName": "Aayush Test Contestant",
+      "creatorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793530992142%40ecoverse.test",
+      "description": "Using scrap PC power supplies and reclaimed batteries for public charging.",
+      "progressPercentage": 20,
+      "materialsTarget": 50,
+      "materialsCurrent": 10,
+      "materialsUnit": "units",
+      "studentsJoined": 2,
+      "reusedImpactLabel": "Zero Waste Circular Build",
+      "materialsList": [
+        "PET Bottles",
+        "Cardboard",
+        "Aluminium Scrap"
+      ],
+      "recentActivity": [
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Donated Old PC Power Supplies (10 units)",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Joined the circular build crew",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Initiated the community upcycling project",
+          "time": "Just now"
+        }
+      ],
+      "createdAt": "2026-11-01T11:03:13.259Z"
+    },
+    {
+      "id": "PRJ-238",
+      "title": "Solar-Powered Upcycled E-Waste Charging Kiosk",
+      "creatorName": "Aayush Test Contestant",
+      "creatorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793527814730%40ecoverse.test",
+      "description": "Using scrap PC power supplies and reclaimed batteries for public charging.",
+      "progressPercentage": 20,
+      "materialsTarget": 50,
+      "materialsCurrent": 10,
+      "materialsUnit": "units",
+      "studentsJoined": 2,
+      "reusedImpactLabel": "Zero Waste Circular Build",
+      "materialsList": [
+        "PET Bottles",
+        "Cardboard",
+        "Aluminium Scrap"
+      ],
+      "recentActivity": [
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Donated Old PC Power Supplies (10 units)",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Joined the circular build crew",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Initiated the community upcycling project",
+          "time": "Just now"
+        }
+      ],
+      "createdAt": "2026-11-01T10:10:15.192Z"
+    },
+    {
+      "id": "PRJ-849",
+      "title": "Solar-Powered Upcycled E-Waste Charging Kiosk",
+      "creatorName": "Aayush Test Contestant",
+      "creatorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793527387876%40ecoverse.test",
+      "description": "Using scrap PC power supplies and reclaimed batteries for public charging.",
+      "progressPercentage": 20,
+      "materialsTarget": 50,
+      "materialsCurrent": 10,
+      "materialsUnit": "units",
+      "studentsJoined": 2,
+      "reusedImpactLabel": "Zero Waste Circular Build",
+      "materialsList": [
+        "PET Bottles",
+        "Cardboard",
+        "Aluminium Scrap"
+      ],
+      "recentActivity": [
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Donated Old PC Power Supplies (10 units)",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Joined the circular build crew",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Initiated the community upcycling project",
+          "time": "Just now"
+        }
+      ],
+      "createdAt": "2026-11-01T10:03:08.649Z"
+    },
+    {
+      "id": "PRJ-562",
+      "title": "Solar-Powered Upcycled E-Waste Charging Kiosk",
+      "creatorName": "Aayush Test Contestant",
+      "creatorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793527294290%40ecoverse.test",
+      "description": "Using scrap PC power supplies and reclaimed batteries for public charging.",
+      "progressPercentage": 20,
+      "materialsTarget": 50,
+      "materialsCurrent": 10,
+      "materialsUnit": "units",
+      "studentsJoined": 2,
+      "reusedImpactLabel": "Zero Waste Circular Build",
+      "materialsList": [
+        "PET Bottles",
+        "Cardboard",
+        "Aluminium Scrap"
+      ],
+      "recentActivity": [
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Donated Old PC Power Supplies (10 units)",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Joined the circular build crew",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Initiated the community upcycling project",
+          "time": "Just now"
+        }
+      ],
+      "createdAt": "2026-11-01T10:01:34.937Z"
+    },
+    {
+      "id": "PRJ-535",
+      "title": "Solar-Powered Upcycled E-Waste Charging Kiosk",
+      "creatorName": "Aayush Test Contestant",
+      "creatorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793527205199%40ecoverse.test",
+      "description": "Using scrap PC power supplies and reclaimed batteries for public charging.",
+      "progressPercentage": 20,
+      "materialsTarget": 50,
+      "materialsCurrent": 10,
+      "materialsUnit": "units",
+      "studentsJoined": 2,
+      "reusedImpactLabel": "Zero Waste Circular Build",
+      "materialsList": [
+        "PET Bottles",
+        "Cardboard",
+        "Aluminium Scrap"
+      ],
+      "recentActivity": [
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Donated Old PC Power Supplies (10 units)",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Joined the circular build crew",
+          "time": "Just now"
+        },
+        {
+          "user": "Aayush Test Contestant",
+          "action": "Initiated the community upcycling project",
+          "time": "Just now"
+        }
+      ],
+      "createdAt": "2026-11-01T10:00:05.991Z"
+    },
+    {
+      "id": "PROJ-01",
+      "title": "🌱 Vertical Garden From Plastic Bottles",
+      "creatorName": "Team Green Squad",
+      "creatorAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250",
+      "description": "Building a 100-bottle vertical self-watering garden wall outside Canteen Block B.",
+      "progressPercentage": 82,
+      "materialsTarget": 80,
+      "materialsCurrent": 72,
+      "materialsUnit": "bottles",
+      "studentsJoined": 12,
+      "reusedImpactLabel": "72 Plastic Bottles Reused",
+      "materialsList": [
+        "80 PET 2L Bottles",
+        "10m Nylon Rope",
+        "20kg Soil Mix"
+      ],
+      "recentActivity": [
+        {
+          "user": "Dheeraj (#456)",
+          "action": "contributed 10 bottles",
+          "time": "10 mins ago"
+        }
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "CHAL-01",
+      "title": "🏆 Clean Campus Challenge",
+      "subtitle": "Inter-Hostel & Department Recycling Sprint",
+      "prizePoolInr": 25000,
+      "durationDays": 7,
+      "goalLabel": "Collect & Divert 500 kg Recyclable Waste",
+      "targetKg": 500,
+      "currentKg": 428,
+      "participantsCount": 186,
+      "co2AvoidedTonnes": 1.8,
+      "topTeams": [
+        {
+          "rank": 1,
+          "teamName": "Green Warriors (Hostel 1)",
+          "weightKg": 184
+        }
+      ],
+      "isJoined": true
+    }
+  ],
+  "rewards": [
+    {
+      "id": "REW-LENSKART",
+      "title": "₹500 OFF Recyclable Frame Voucher",
+      "pointsCost": 600,
+      "category": "Shops",
+      "icon": "👓",
+      "description": "Applicable on Lenskart Air & Eco-acetate specs collection.",
+      "businessName": "Lenskart Store",
+      "distanceMeters": 1200,
+      "discountInr": 500,
+      "redeemed": false
+    },
+    {
+      "id": "REW-HM",
+      "title": "15% OFF Garment Recycling Discount",
+      "pointsCost": 450,
+      "category": "Shops",
+      "icon": "👔",
+      "description": "Bring old clothes to H&M store & unlock 15% discount voucher.",
+      "businessName": "H&M Conscious Fashion",
+      "distanceMeters": 1500,
+      "discountInr": 300,
+      "redeemed": false
+    },
+    {
+      "id": "REW-STARBUCKS",
+      "title": "Free Grande Brewed Coffee / Beverage",
+      "pointsCost": 350,
+      "category": "Cafés",
+      "icon": "☕",
+      "description": "Bring your personal reusable tumbler to Starbucks & redeem!",
+      "businessName": "Starbucks Coffee",
+      "distanceMeters": 400,
+      "discountInr": 280,
+      "redeemed": false
+    },
+    {
+      "id": "REW-DOMINOS",
+      "title": "₹150 OFF Medium Veg Pizza",
+      "pointsCost": 300,
+      "category": "Restaurants",
+      "icon": "🍕",
+      "description": "Valid on zero-single-use-plastic dine in & takeaway orders.",
+      "businessName": "Domino's Pizza",
+      "distanceMeters": 800,
+      "discountInr": 150,
+      "redeemed": false
+    },
+    {
+      "id": "REW-DECATHLON",
+      "title": "₹250 OFF Eco-Designed Cycle Gear",
+      "pointsCost": 500,
+      "category": "Mobility",
+      "icon": "🚲",
+      "description": "Valid on cycle accessories & recycled polyester sportswear.",
+      "businessName": "Decathlon Sports",
+      "distanceMeters": 2000,
+      "discountInr": 250,
+      "redeemed": false
+    },
+    {
+      "id": "REW-CHAAYOS",
+      "title": "Free Kulhad Chai & Desi Snack Pass",
+      "pointsCost": 150,
+      "category": "Cafés",
+      "icon": "🍵",
+      "description": "100% biodegradable clay kulhad tea at Chaayos quad kiosk.",
+      "businessName": "Chaayos",
+      "distanceMeters": 350,
+      "discountInr": 120,
+      "redeemed": false
+    },
+    {
+      "id": "REW-BOOKMYSHOW",
+      "title": "₹100 Movie Pass Voucher",
+      "pointsCost": 250,
+      "category": "Entertainment",
+      "icon": "🎬",
+      "description": "Valid for IMAX & 2D movie tickets across all local multiplexes.",
+      "businessName": "BookMyShow",
+      "distanceMeters": 1800,
+      "discountInr": 100,
+      "redeemed": false
+    },
+    {
+      "id": "REW-NIKE",
+      "title": "₹500 OFF Move to Zero Footwear",
+      "pointsCost": 750,
+      "category": "Sustainable Products",
+      "icon": "👟",
+      "description": "Valid on Nike sustainable shoes made from recycled materials.",
+      "businessName": "Nike Store",
+      "distanceMeters": 1600,
+      "discountInr": 500,
+      "redeemed": false
+    },
+    {
+      "id": "REW-GREENCAFE",
+      "title": "₹50 OFF Specialty Organic Coffee",
+      "pointsCost": 100,
+      "category": "Cafés",
+      "icon": "🥗",
+      "description": "Valid across central canteen organic food & smoothie bowls.",
+      "businessName": "Green Café",
+      "distanceMeters": 420,
+      "discountInr": 50,
+      "redeemed": false
+    },
+    {
+      "id": "REW-ECOMART",
+      "title": "₹200 OFF Organic Grocery Pass",
+      "pointsCost": 500,
+      "category": "Shops",
+      "icon": "🛍️",
+      "description": "Valid on organic produce & eco-friendly hygiene products.",
+      "businessName": "EcoMart Organics",
+      "distanceMeters": 1100,
+      "discountInr": 200,
+      "redeemed": false
+    }
+  ],
+  "leaderboard": [
+    {
+      "rank": 1,
+      "playerNumber": "#001",
+      "name": "Aarav Sharma",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250",
+      "points": 10840,
+      "score": 912,
+      "wasteRecoveredKg": 38.5,
+      "co2SavedKg": 42.1,
+      "badge": "🥇 VIP Front Runner",
+      "category": "Student"
+    },
+    {
+      "rank": 2,
+      "playerNumber": "#089",
+      "name": "Priya R.",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=250",
+      "points": 9240,
+      "score": 885,
+      "wasteRecoveredKg": 31.2,
+      "co2SavedKg": 35.4,
+      "badge": "💎 Diamond Tier",
+      "category": "Student"
+    },
+    {
+      "rank": 3,
+      "playerNumber": "#104",
+      "name": "Meera K.",
+      "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=250",
+      "points": 8990,
+      "score": 864,
+      "wasteRecoveredKg": 28.7,
+      "co2SavedKg": 31,
+      "badge": "🥇 Gold Tier",
+      "category": "Student"
+    },
+    {
+      "rank": 4,
+      "playerNumber": "#215",
+      "name": "Rohan Verma",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=250",
+      "points": 8520,
+      "score": 850,
+      "wasteRecoveredKg": 24.1,
+      "co2SavedKg": 27.8,
+      "badge": "⚡ Waste Hero",
+      "category": "Student"
+    },
+    {
+      "rank": 5,
+      "playerNumber": "#312",
+      "name": "Ananya Gupta",
+      "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=250",
+      "points": 8480,
+      "score": 846,
+      "wasteRecoveredKg": 22.9,
+      "co2SavedKg": 25.3,
+      "badge": "🌱 Eco Warrior",
+      "category": "Student"
+    },
+    {
+      "rank": 7,
+      "playerNumber": "#456",
+      "name": "Dheeraj (You)",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250",
+      "points": 8420,
+      "score": 842,
+      "wasteRecoveredKg": 12.8,
+      "co2SavedKg": 18.4,
+      "badge": "⚡ Verified Contributor",
+      "category": "Student"
+    }
+  ],
+  "telemetry": {
+    "energy": {
+      "changeMonth": -14,
+      "anomalyDetected": true,
+      "dailyData": [
+        {
+          "day": "Mon",
+          "blockA": 420,
+          "blockB": 580,
+          "hostel3": 310,
+          "canteen": 240
+        }
+      ],
+      "buildingUsage": [
+        {
+          "name": "Block B (Tech Lab)",
+          "currentKw": 820,
+          "status": "Critical"
+        }
+      ]
+    },
+    "water": {
+      "changeMonth": -11,
+      "leakageDetected": true,
+      "dailyData": [
+        {
+          "day": "Mon",
+          "hostel1": 1200,
+          "hostel2": 1100,
+          "hostel3": 1850,
+          "canteen": 800
+        }
+      ],
+      "locations": [
+        {
+          "name": "Hostel 3",
+          "status": "🔴 Leakage",
+          "details": "31% overnight surge"
+        }
+      ]
+    },
+    "waste": {
+      "totalKg": 428,
+      "recycledKg": 171,
+      "reusedKg": 184,
+      "landfillKg": 73,
+      "composition": [
+        {
+          "name": "Plastic",
+          "percentage": 38,
+          "color": "#FF007A"
+        }
+      ],
+      "dailyData": [
+        {
+          "day": "Mon",
+          "total": 62,
+          "recycled": 24,
+          "reused": 28
+        }
+      ]
+    }
+  },
+  "alerts": [
+    {
+      "id": "ALT-01",
+      "title": "🚨 Block B Energy Anomaly",
+      "type": "Energy",
+      "severity": "Critical",
+      "message": "Energy usage is 22% above baseline.",
+      "recommendation": "Throttle AC during low occupancy.",
+      "estimatedSavings": "₹14,200 / month"
+    }
+  ],
+  "surplusFoodListings": [
+    {
+      "id": "FOOD-2048",
+      "restaurantName": "Green Café",
+      "restaurantLogo": "🥗",
+      "foodName": "Paneer Butter Masala & Rice Bowl",
+      "category": "Meals",
+      "quantityLabel": "12 kg surplus (24 servings)",
+      "originalPriceInr": 180,
+      "discountedPriceInr": 79,
+      "discountPercentage": 56,
+      "pickupWindow": "7:00 PM – 9:00 PM",
+      "availableServings": 24,
+      "location": "Central Canteen Complex",
+      "status": "Available",
+      "bestBeforeInfo": "Prepared fresh today. Stored in hot holding units.",
+      "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600"
+    }
+  ],
+  "ngoRequests": [
+    {
+      "id": "NGO-01",
+      "ngoName": "Food For All Foundation India",
+      "ngoLogo": "🤝",
+      "needsDescription": "Requires 50-100 prepared vegetarian meals.",
+      "quantityNeeded": "50–100 meals",
+      "pickupStatus": "Volunteer Pickup Team Ready",
+      "distanceKm": 2.1,
+      "matchScore": 92
+    }
+  ],
+  "governmentPrograms": [
+    {
+      "id": "GOV-01",
+      "organization": "CPCB (Central Pollution Control Board)",
+      "programName": "E-Waste (Management) Rules Guidelines",
+      "coverage": "E-waste collection quotas & urban mining.",
+      "ecoverseAlignment": "Powers City Guardian E-Waste classification.",
+      "status": "Official Resource",
+      "portalUrl": "https://cpcb.nic.in/e-waste-rules-2022/"
+    }
+  ],
+  "cleanupOperations": [
+    {
+      "id": "CLN-104",
+      "location": "Sector 8 Food Street Waste Accumulation",
+      "priority": "High",
+      "estimatedWasteKg": 220,
+      "assignedTeam": "Field Squad Gamma",
+      "status": "Assigned",
+      "createdAt": "2026-11-01T17:58:50.128Z"
+    },
+    {
+      "id": "CLN-257",
+      "location": "Sector 8 Food Street Waste Accumulation",
+      "priority": "High",
+      "estimatedWasteKg": 220,
+      "assignedTeam": "Field Squad Gamma",
+      "status": "Assigned",
+      "createdAt": "2026-11-01T11:32:57.730Z"
+    },
+    {
+      "id": "CLN-194",
+      "location": "Sector 8 Food Street Waste Accumulation",
+      "priority": "High",
+      "estimatedWasteKg": 220,
+      "assignedTeam": "Field Squad Gamma",
+      "status": "Assigned",
+      "createdAt": "2026-11-01T11:20:25.245Z"
+    },
+    {
+      "id": "CLN-908",
+      "location": "Sector 8 Food Street Waste Accumulation",
+      "priority": "High",
+      "estimatedWasteKg": 220,
+      "assignedTeam": "Field Squad Gamma",
+      "status": "Assigned",
+      "createdAt": "2026-11-01T11:15:10.773Z"
+    },
+    {
+      "id": "CLN-170",
+      "location": "Sector 8 Food Street Waste Accumulation",
+      "priority": "High",
+      "estimatedWasteKg": 220,
+      "assignedTeam": "Field Squad Gamma",
+      "status": "Assigned",
+      "createdAt": "2026-11-01T11:03:13.578Z"
+    },
+    {
+      "id": "CLN-820",
+      "location": "Sector 8 Food Street Waste Accumulation",
+      "priority": "High",
+      "estimatedWasteKg": 220,
+      "assignedTeam": "Field Squad Gamma",
+      "status": "Assigned",
+      "createdAt": "2026-11-01T10:10:15.411Z"
+    },
+    {
+      "id": "CLN-606",
+      "location": "Sector 8 Food Street Waste Accumulation",
+      "priority": "High",
+      "estimatedWasteKg": 220,
+      "assignedTeam": "Field Squad Gamma",
+      "status": "Assigned",
+      "createdAt": "2026-11-01T10:03:08.949Z"
+    },
+    {
+      "id": "CLN-520",
+      "location": "Sector 8 Food Street Waste Accumulation",
+      "priority": "High",
+      "estimatedWasteKg": 220,
+      "assignedTeam": "Field Squad Gamma",
+      "status": "Assigned",
+      "createdAt": "2026-11-01T10:01:35.226Z"
+    },
+    {
+      "id": "CLN-248",
+      "location": "Sector 8 Food Street Waste Accumulation",
+      "priority": "High",
+      "estimatedWasteKg": 220,
+      "assignedTeam": "Field Squad Gamma",
+      "status": "Assigned",
+      "createdAt": "2026-11-01T10:00:06.390Z"
+    },
+    {
+      "id": "CLN-301",
+      "location": "North Gate Waste Site",
+      "priority": "High",
+      "estimatedWasteKg": 32,
+      "assignedTeam": "Eco Squad (CS Dept)",
+      "status": "In Progress"
+    }
+  ],
+  "businessPartners": [
+    {
+      "id": "BIZ-01",
+      "businessName": "Green Café",
+      "category": "Café & Restaurant",
+      "location": "Central Canteen Complex",
+      "foodRescuedKg": 186,
+      "mealsDonated": 82,
+      "ecoScore": 92,
+      "badges": [
+        "🌱 Food Rescue Champion",
+        "♻️ Waste Reduction Partner",
+        "🤝 Community Partner"
+      ],
+      "status": "Verified Partner",
+      "logo": "🥗"
+    },
+    {
+      "id": "BIZ-LENSKART",
+      "businessName": "Lenskart Store",
+      "category": "Optical & Accessories",
+      "location": "City Mall Plaza (1.2 km)",
+      "foodRescuedKg": 0,
+      "mealsDonated": 0,
+      "ecoScore": 94,
+      "badges": [
+        "👓 Eco Acetate Partner",
+        "🎁 Rewards Partner"
+      ],
+      "status": "Verified Partner",
+      "logo": "👓"
+    },
+    {
+      "id": "BIZ-HM",
+      "businessName": "H&M Conscious",
+      "category": "Apparel & Fashion",
+      "location": "Central Mall (1.5 km)",
+      "foodRescuedKg": 0,
+      "mealsDonated": 0,
+      "ecoScore": 96,
+      "badges": [
+        "👔 Garment Recycling Partner",
+        "🎁 Rewards Partner"
+      ],
+      "status": "Verified Partner",
+      "logo": "👔"
+    }
+  ],
+  "activityFeed": [
+    {
+      "id": "act-1793555929826",
+      "timestamp": "Just now",
+      "userOrOrg": "Organization Admin",
+      "actionText": "Funded ₹50,000 to CSR Project \"RIVER RESTORATION — INDORE STRETCH 1\"",
+      "statusBadge": "Project Funded",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793555929788",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Joined CSR Mission \"ZERO WASTE CAMPUS RAID\" sponsored by TechNova Industries",
+      "statusBadge": "Mission Enrolled",
+      "type": "project"
+    },
+    {
+      "id": "act-1793555929582",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Redeemed voucher \"₹50 OFF Sustainable Brew at Green Cafe\" for Green Cafe Partner (-50 pts)",
+      "statusBadge": "Voucher Active",
+      "type": "project"
+    },
+    {
+      "id": "act-1793555929523",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Donated 10 units to \"Solar-Powered Upcycled E-Waste Charging Kiosk\"",
+      "statusBadge": "Material Reused",
+      "type": "project"
+    },
+    {
+      "id": "act-1793555929254",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Published Contribution to Community Social Feed",
+      "statusBadge": "Social Action",
+      "type": "project"
+    },
+    {
+      "id": "act-1793555929202",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Rescued 1 serving of \"Fresh Veg & Paneer Subs (Pack of 5)\" from Subway Central Campus",
+      "statusBadge": "Meal Rescued",
+      "type": "food"
+    },
+    {
+      "id": "act-1793555929173",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed surplus meals \"Fresh Veg & Paneer Subs (Pack of 5)\" on EcoFood (5 Servings)",
+      "statusBadge": "Food Saved",
+      "type": "food"
+    },
+    {
+      "id": "act-1793555929142",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Supplied 20 kg of Copper wire & High-Grade E-Scrap to ABC Recycling Pvt Ltd (Earned ₹6400)",
+      "statusBadge": "Match Complete",
+      "type": "industry"
+    },
+    {
+      "id": "act-1793555929083",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed \"Baled Clean PET Bottles (25 kg)\" on EcoMarket (25 kg)",
+      "statusBadge": "Market Active",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793555928893",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Logged civic grievance: Broken Main Water Valve Leaking at Sector 9 Hostels Quad",
+      "statusBadge": "Civic SLA Active",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793555928837",
+      "timestamp": "Just now",
+      "userOrOrg": "Municipal Field Team",
+      "actionText": "Cleaned & verified report: Sector 5 Overflowing Plastic Bin (Sector 5 Near Cafeteria East)",
+      "statusBadge": "Cleanup Complete",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793555928793",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Reported waste at Sector 5 Near Cafeteria East (18.5 kg)",
+      "statusBadge": "Verified Submission",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793532777322",
+      "timestamp": "Just now",
+      "userOrOrg": "Organization Admin",
+      "actionText": "Funded ₹50,000 to CSR Project \"RIVER RESTORATION — INDORE STRETCH 1\"",
+      "statusBadge": "Project Funded",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793532777233",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Joined CSR Mission \"ZERO WASTE CAMPUS RAID\" sponsored by TechNova Industries",
+      "statusBadge": "Mission Enrolled",
+      "type": "project"
+    },
+    {
+      "id": "act-1793532777093",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Redeemed voucher \"₹50 OFF Sustainable Brew at Green Cafe\" for Green Cafe Partner (-50 pts)",
+      "statusBadge": "Voucher Active",
+      "type": "project"
+    },
+    {
+      "id": "act-1793532776989",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Donated 10 units to \"Solar-Powered Upcycled E-Waste Charging Kiosk\"",
+      "statusBadge": "Material Reused",
+      "type": "project"
+    },
+    {
+      "id": "act-1793532776785",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Published Contribution to Community Social Feed",
+      "statusBadge": "Social Action",
+      "type": "project"
+    },
+    {
+      "id": "act-1793532776702",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Rescued 1 serving of \"Fresh Veg & Paneer Subs (Pack of 5)\" from Subway Central Campus",
+      "statusBadge": "Meal Rescued",
+      "type": "food"
+    },
+    {
+      "id": "act-1793532776619",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed surplus meals \"Fresh Veg & Paneer Subs (Pack of 5)\" on EcoFood (5 Servings)",
+      "statusBadge": "Food Saved",
+      "type": "food"
+    },
+    {
+      "id": "act-1793532776517",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Supplied 20 kg of Copper wire & High-Grade E-Scrap to ABC Recycling Pvt Ltd (Earned ₹6400)",
+      "statusBadge": "Match Complete",
+      "type": "industry"
+    },
+    {
+      "id": "act-1793532776302",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed \"Baled Clean PET Bottles (25 kg)\" on EcoMarket (25 kg)",
+      "statusBadge": "Market Active",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793532776234",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Logged civic grievance: Broken Main Water Valve Leaking at Sector 9 Hostels Quad",
+      "statusBadge": "Civic SLA Active",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793532776180",
+      "timestamp": "Just now",
+      "userOrOrg": "Municipal Field Team",
+      "actionText": "Cleaned & verified report: Sector 5 Overflowing Plastic Bin (Sector 5 Near Cafeteria East)",
+      "statusBadge": "Cleanup Complete",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793532776161",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Reported waste at Sector 5 Near Cafeteria East (18.5 kg)",
+      "statusBadge": "Verified Submission",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793532025130",
+      "timestamp": "Just now",
+      "userOrOrg": "Organization Admin",
+      "actionText": "Funded ₹50,000 to CSR Project \"RIVER RESTORATION — INDORE STRETCH 1\"",
+      "statusBadge": "Project Funded",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793532025097",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Joined CSR Mission \"ZERO WASTE CAMPUS RAID\" sponsored by TechNova Industries",
+      "statusBadge": "Mission Enrolled",
+      "type": "project"
+    },
+    {
+      "id": "act-1793532025036",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Redeemed voucher \"₹50 OFF Sustainable Brew at Green Cafe\" for Green Cafe Partner (-50 pts)",
+      "statusBadge": "Voucher Active",
+      "type": "project"
+    },
+    {
+      "id": "act-1793532024990",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Donated 10 units to \"Solar-Powered Upcycled E-Waste Charging Kiosk\"",
+      "statusBadge": "Material Reused",
+      "type": "project"
+    },
+    {
+      "id": "act-1793532024887",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Published Contribution to Community Social Feed",
+      "statusBadge": "Social Action",
+      "type": "project"
+    },
+    {
+      "id": "act-1793532024867",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Rescued 1 serving of \"Fresh Veg & Paneer Subs (Pack of 5)\" from Subway Central Campus",
+      "statusBadge": "Meal Rescued",
+      "type": "food"
+    },
+    {
+      "id": "act-1793532024849",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed surplus meals \"Fresh Veg & Paneer Subs (Pack of 5)\" on EcoFood (5 Servings)",
+      "statusBadge": "Food Saved",
+      "type": "food"
+    },
+    {
+      "id": "act-1793532024813",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Supplied 20 kg of Copper wire & High-Grade E-Scrap to ABC Recycling Pvt Ltd (Earned ₹6400)",
+      "statusBadge": "Match Complete",
+      "type": "industry"
+    },
+    {
+      "id": "act-1793532024788",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed \"Baled Clean PET Bottles (25 kg)\" on EcoMarket (25 kg)",
+      "statusBadge": "Market Active",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793532024741",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Logged civic grievance: Broken Main Water Valve Leaking at Sector 9 Hostels Quad",
+      "statusBadge": "Civic SLA Active",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793532024684",
+      "timestamp": "Just now",
+      "userOrOrg": "Municipal Field Team",
+      "actionText": "Cleaned & verified report: Sector 5 Overflowing Plastic Bin (Sector 5 Near Cafeteria East)",
+      "statusBadge": "Cleanup Complete",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793532024665",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Reported waste at Sector 5 Near Cafeteria East (18.5 kg)",
+      "statusBadge": "Verified Submission",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793531710626",
+      "timestamp": "Just now",
+      "userOrOrg": "Organization Admin",
+      "actionText": "Funded ₹50,000 to CSR Project \"RIVER RESTORATION — INDORE STRETCH 1\"",
+      "statusBadge": "Project Funded",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793531710584",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Joined CSR Mission \"ZERO WASTE CAMPUS RAID\" sponsored by TechNova Industries",
+      "statusBadge": "Mission Enrolled",
+      "type": "project"
+    },
+    {
+      "id": "act-1793531710496",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Redeemed voucher \"₹50 OFF Sustainable Brew at Green Cafe\" for Green Cafe Partner (-50 pts)",
+      "statusBadge": "Voucher Active",
+      "type": "project"
+    },
+    {
+      "id": "act-1793531710434",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Donated 10 units to \"Solar-Powered Upcycled E-Waste Charging Kiosk\"",
+      "statusBadge": "Material Reused",
+      "type": "project"
+    },
+    {
+      "id": "act-1793531710274",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Published Contribution to Community Social Feed",
+      "statusBadge": "Social Action",
+      "type": "project"
+    },
+    {
+      "id": "act-1793531710237",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Rescued 1 serving of \"Fresh Veg & Paneer Subs (Pack of 5)\" from Subway Central Campus",
+      "statusBadge": "Meal Rescued",
+      "type": "food"
+    },
+    {
+      "id": "act-1793531710211",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed surplus meals \"Fresh Veg & Paneer Subs (Pack of 5)\" on EcoFood (5 Servings)",
+      "statusBadge": "Food Saved",
+      "type": "food"
+    },
+    {
+      "id": "act-1793531710164",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Supplied 20 kg of Copper wire & High-Grade E-Scrap to ABC Recycling Pvt Ltd (Earned ₹6400)",
+      "statusBadge": "Match Complete",
+      "type": "industry"
+    },
+    {
+      "id": "act-1793531710085",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed \"Baled Clean PET Bottles (25 kg)\" on EcoMarket (25 kg)",
+      "statusBadge": "Market Active",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793531709980",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Logged civic grievance: Broken Main Water Valve Leaking at Sector 9 Hostels Quad",
+      "statusBadge": "Civic SLA Active",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793531709890",
+      "timestamp": "Just now",
+      "userOrOrg": "Municipal Field Team",
+      "actionText": "Cleaned & verified report: Sector 5 Overflowing Plastic Bin (Sector 5 Near Cafeteria East)",
+      "statusBadge": "Cleanup Complete",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793531709802",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Reported waste at Sector 5 Near Cafeteria East (18.5 kg)",
+      "statusBadge": "Verified Submission",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793530993477",
+      "timestamp": "Just now",
+      "userOrOrg": "Organization Admin",
+      "actionText": "Funded ₹50,000 to CSR Project \"RIVER RESTORATION — INDORE STRETCH 1\"",
+      "statusBadge": "Project Funded",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793530993448",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Joined CSR Mission \"ZERO WASTE CAMPUS RAID\" sponsored by TechNova Industries",
+      "statusBadge": "Mission Enrolled",
+      "type": "project"
+    },
+    {
+      "id": "act-1793530993373",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Redeemed voucher \"₹50 OFF Sustainable Brew at Green Cafe\" for Green Cafe Partner (-50 pts)",
+      "statusBadge": "Voucher Active",
+      "type": "project"
+    },
+    {
+      "id": "act-1793530993314",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Donated 10 units to \"Solar-Powered Upcycled E-Waste Charging Kiosk\"",
+      "statusBadge": "Material Reused",
+      "type": "project"
+    },
+    {
+      "id": "act-1793530993165",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Published Contribution to Community Social Feed",
+      "statusBadge": "Social Action",
+      "type": "project"
+    },
+    {
+      "id": "act-1793530993094",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Rescued 1 serving of \"Fresh Veg & Paneer Subs (Pack of 5)\" from Subway Central Campus",
+      "statusBadge": "Meal Rescued",
+      "type": "food"
+    },
+    {
+      "id": "act-1793530993024",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed surplus meals \"Fresh Veg & Paneer Subs (Pack of 5)\" on EcoFood (5 Servings)",
+      "statusBadge": "Food Saved",
+      "type": "food"
+    },
+    {
+      "id": "act-1793530992948",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Supplied 20 kg of Copper wire & High-Grade E-Scrap to ABC Recycling Pvt Ltd (Earned ₹6400)",
+      "statusBadge": "Match Complete",
+      "type": "industry"
+    },
+    {
+      "id": "act-1793530992666",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed \"Baled Clean PET Bottles (25 kg)\" on EcoMarket (25 kg)",
+      "statusBadge": "Market Active",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793530992461",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Logged civic grievance: Broken Main Water Valve Leaking at Sector 9 Hostels Quad",
+      "statusBadge": "Civic SLA Active",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793530992397",
+      "timestamp": "Just now",
+      "userOrOrg": "Municipal Field Team",
+      "actionText": "Cleaned & verified report: Sector 5 Overflowing Plastic Bin (Sector 5 Near Cafeteria East)",
+      "statusBadge": "Cleanup Complete",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793530992373",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Reported waste at Sector 5 Near Cafeteria East (18.5 kg)",
+      "statusBadge": "Verified Submission",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793527815307",
+      "timestamp": "Just now",
+      "userOrOrg": "Organization Admin",
+      "actionText": "Funded ₹50,000 to CSR Project \"RIVER RESTORATION — INDORE STRETCH 1\"",
+      "statusBadge": "Project Funded",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793527815290",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Joined CSR Mission \"ZERO WASTE CAMPUS RAID\" sponsored by TechNova Industries",
+      "statusBadge": "Mission Enrolled",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527815246",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Redeemed voucher \"₹50 OFF Sustainable Brew at Green Cafe\" for Green Cafe Partner (-50 pts)",
+      "statusBadge": "Voucher Active",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527815218",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Donated 10 units to \"Solar-Powered Upcycled E-Waste Charging Kiosk\"",
+      "statusBadge": "Material Reused",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527815134",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Published Contribution to Community Social Feed",
+      "statusBadge": "Social Action",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527815103",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Rescued 1 serving of \"Fresh Veg & Paneer Subs (Pack of 5)\" from Subway Central Campus",
+      "statusBadge": "Meal Rescued",
+      "type": "food"
+    },
+    {
+      "id": "act-1793527815087",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed surplus meals \"Fresh Veg & Paneer Subs (Pack of 5)\" on EcoFood (5 Servings)",
+      "statusBadge": "Food Saved",
+      "type": "food"
+    },
+    {
+      "id": "act-1793527815059",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Supplied 20 kg of Copper wire & High-Grade E-Scrap to ABC Recycling Pvt Ltd (Earned ₹6400)",
+      "statusBadge": "Match Complete",
+      "type": "industry"
+    },
+    {
+      "id": "act-1793527815040",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed \"Baled Clean PET Bottles (25 kg)\" on EcoMarket (25 kg)",
+      "statusBadge": "Market Active",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793527814997",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Logged civic grievance: Broken Main Water Valve Leaking at Sector 9 Hostels Quad",
+      "statusBadge": "Civic SLA Active",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793527814963",
+      "timestamp": "Just now",
+      "userOrOrg": "Municipal Field Team",
+      "actionText": "Cleaned & verified report: Sector 5 Overflowing Plastic Bin (Sector 5 Near Cafeteria East)",
+      "statusBadge": "Cleanup Complete",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793527814948",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Reported waste at Sector 5 Near Cafeteria East (18.5 kg)",
+      "statusBadge": "Verified Submission",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793527388846",
+      "timestamp": "Just now",
+      "userOrOrg": "Organization Admin",
+      "actionText": "Funded ₹50,000 to CSR Project \"RIVER RESTORATION — INDORE STRETCH 1\"",
+      "statusBadge": "Project Funded",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793527388818",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Joined CSR Mission \"ZERO WASTE CAMPUS RAID\" sponsored by TechNova Industries",
+      "statusBadge": "Mission Enrolled",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527388757",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Redeemed voucher \"₹50 OFF Sustainable Brew at Green Cafe\" for Green Cafe Partner (-50 pts)",
+      "statusBadge": "Voucher Active",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527388695",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Donated 10 units to \"Solar-Powered Upcycled E-Waste Charging Kiosk\"",
+      "statusBadge": "Material Reused",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527388594",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Published Contribution to Community Social Feed",
+      "statusBadge": "Social Action",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527388479",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Rescued 1 serving of \"Fresh Veg & Paneer Subs (Pack of 5)\" from Subway Central Campus",
+      "statusBadge": "Meal Rescued",
+      "type": "food"
+    },
+    {
+      "id": "act-1793527388462",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed surplus meals \"Fresh Veg & Paneer Subs (Pack of 5)\" on EcoFood (5 Servings)",
+      "statusBadge": "Food Saved",
+      "type": "food"
+    },
+    {
+      "id": "act-1793527388433",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Supplied 20 kg of Copper wire & High-Grade E-Scrap to ABC Recycling Pvt Ltd (Earned ₹6400)",
+      "statusBadge": "Match Complete",
+      "type": "industry"
+    },
+    {
+      "id": "act-1793527388399",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed \"Baled Clean PET Bottles (25 kg)\" on EcoMarket (25 kg)",
+      "statusBadge": "Market Active",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793527388343",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Logged civic grievance: Broken Main Water Valve Leaking at Sector 9 Hostels Quad",
+      "statusBadge": "Civic SLA Active",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793527388293",
+      "timestamp": "Just now",
+      "userOrOrg": "Municipal Field Team",
+      "actionText": "Cleaned & verified report: Sector 5 Overflowing Plastic Bin (Sector 5 Near Cafeteria East)",
+      "statusBadge": "Cleanup Complete",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793527388262",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Reported waste at Sector 5 Near Cafeteria East (18.5 kg)",
+      "statusBadge": "Verified Submission",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793527295139",
+      "timestamp": "Just now",
+      "userOrOrg": "Organization Admin",
+      "actionText": "Funded ₹50,000 to CSR Project \"RIVER RESTORATION — INDORE STRETCH 1\"",
+      "statusBadge": "Grant Allocated",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793527295111",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Joined CSR Mission \"ZERO WASTE CAMPUS RAID\" sponsored by TechNova Industries",
+      "statusBadge": "Mission Enrolled",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527295049",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Redeemed voucher \"₹50 OFF Sustainable Brew at Green Cafe\" for Green Cafe Partner (-50 pts)",
+      "statusBadge": "Voucher Active",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527294991",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Donated 10 units to \"Solar-Powered Upcycled E-Waste Charging Kiosk\"",
+      "statusBadge": "Material Reused",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527294881",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Published Contribution to Community Social Feed",
+      "statusBadge": "Social Action",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527294835",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Rescued 1 serving of \"Fresh Veg & Paneer Subs (Pack of 5)\" from Subway Central Campus",
+      "statusBadge": "Meal Rescued",
+      "type": "food"
+    },
+    {
+      "id": "act-1793527294806",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed surplus meals \"Fresh Veg & Paneer Subs (Pack of 5)\" on EcoFood (5 Servings)",
+      "statusBadge": "Food Saved",
+      "type": "food"
+    },
+    {
+      "id": "act-1793527294789",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Supplied 20 kg of Copper wire & High-Grade E-Scrap to ABC Recycling Pvt Ltd (Earned ₹6400)",
+      "statusBadge": "Match Complete",
+      "type": "industry"
+    },
+    {
+      "id": "act-1793527294771",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed \"Baled Clean PET Bottles (25 kg)\" on EcoMarket (25 kg)",
+      "statusBadge": "Market Active",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793527294711",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Logged civic grievance: Broken Main Water Valve Leaking at Sector 9 Hostels Quad",
+      "statusBadge": "Civic SLA Active",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793527294647",
+      "timestamp": "Just now",
+      "userOrOrg": "Municipal Field Team",
+      "actionText": "Cleaned & verified report: Sector 5 Overflowing Plastic Bin (Sector 5 Near Cafeteria East)",
+      "statusBadge": "Cleanup Complete",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793527294619",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Reported waste at Sector 5 Near Cafeteria East (18.5 kg)",
+      "statusBadge": "Verified Submission",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793527206229",
+      "timestamp": "Just now",
+      "userOrOrg": "Organization Admin",
+      "actionText": "Funded ₹50,000 to CSR Project \"RIVER RESTORATION — INDORE STRETCH 1\"",
+      "statusBadge": "Grant Allocated",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793527206186",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Joined CSR Mission \"ZERO WASTE CAMPUS RAID\" sponsored by TechNova Industries",
+      "statusBadge": "Mission Enrolled",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527206109",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Redeemed voucher \"₹50 OFF Sustainable Brew at Green Cafe\" for Green Cafe Partner (-50 pts)",
+      "statusBadge": "Voucher Active",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527206047",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Donated 10 units to \"Solar-Powered Upcycled E-Waste Charging Kiosk\"",
+      "statusBadge": "Material Reused",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527205904",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Published Contribution to Community Social Feed",
+      "statusBadge": "Social Action",
+      "type": "project"
+    },
+    {
+      "id": "act-1793527205860",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Rescued 1 serving of \"Fresh Veg & Paneer Subs (Pack of 5)\" from Subway Central Campus",
+      "statusBadge": "Meal Rescued",
+      "type": "food"
+    },
+    {
+      "id": "act-1793527205834",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed surplus meals \"Fresh Veg & Paneer Subs (Pack of 5)\" on EcoFood (5 Servings)",
+      "statusBadge": "Food Saved",
+      "type": "food"
+    },
+    {
+      "id": "act-1793527205803",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Supplied 20 kg of Copper wire & High-Grade E-Scrap to ABC Recycling Pvt Ltd (Earned ₹6400)",
+      "statusBadge": "Match Complete",
+      "type": "industry"
+    },
+    {
+      "id": "act-1793527205765",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Listed \"Baled Clean PET Bottles (25 kg)\" on EcoMarket (25 kg)",
+      "statusBadge": "Market Active",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793527205715",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Logged civic grievance: Broken Main Water Valve Leaking at Sector 9 Hostels Quad",
+      "statusBadge": "Civic SLA Active",
+      "type": "ngo"
+    },
+    {
+      "id": "act-1793527205667",
+      "timestamp": "Just now",
+      "userOrOrg": "Municipal Field Team",
+      "actionText": "Cleaned & verified report: Sector 5 Overflowing Plastic Bin (Sector 5 Near Cafeteria East)",
+      "statusBadge": "Cleanup Complete",
+      "type": "waste"
+    },
+    {
+      "id": "act-1793527205626",
+      "timestamp": "Just now",
+      "userOrOrg": "Aayush Test Contestant",
+      "actionText": "Reported waste at Sector 5 Near Cafeteria East (18.5 kg)",
+      "statusBadge": "Verified Submission",
+      "type": "waste"
+    },
+    {
+      "id": "ACT-01",
+      "timestamp": "2 mins ago",
+      "userOrOrg": "Dheeraj (#456)",
+      "actionText": "reported plastic waste near Block B North Gate.",
+      "statusBadge": "AI Verified",
+      "type": "waste"
+    }
+  ],
+  "nearbyPartners": [
+    {
+      "id": "PART-STARBUCKS",
+      "name": "Starbucks Coffee",
+      "category": "Cafés",
+      "logo": "☕",
+      "x": 42,
+      "y": 38,
+      "lat": 22.7205,
+      "lng": 75.8565,
+      "distanceMeters": 400,
+      "rating": 4.8,
+      "address": "Campus Quad Plaza, SAGE University",
+      "isOpen": true,
+      "isEcoPartner": true,
+      "acceptsEcoPoints": true,
+      "badges": [
+        "☕ Reusable Cup Partner",
+        "🌱 Zero Single-Use",
+        "🎁 Rewards Partner"
+      ],
+      "rewardsOffer": "350 Points → Free Grande Coffee",
+      "pointsCost": 350,
+      "discountInr": 280,
+      "foodRescueAvailable": true,
+      "surplusMealsCount": 8,
+      "surplusPriceInr": 99,
+      "imageUrl": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=600"
+    },
+    {
+      "id": "PART-CHAAYOS",
+      "name": "Chaayos",
+      "category": "Cafés",
+      "logo": "🍵",
+      "x": 52,
+      "y": 32,
+      "lat": 22.7225,
+      "lng": 75.856,
+      "distanceMeters": 350,
+      "rating": 4.7,
+      "address": "Student Activity Hub",
+      "isOpen": true,
+      "isEcoPartner": true,
+      "acceptsEcoPoints": true,
+      "badges": [
+        "🍵 Bio Kulhad Partner",
+        "🎁 Rewards Partner"
+      ],
+      "rewardsOffer": "150 Points → Free Kulhad Chai & Snack",
+      "pointsCost": 150,
+      "discountInr": 120,
+      "foodRescueAvailable": true,
+      "surplusMealsCount": 14,
+      "surplusPriceInr": 49,
+      "imageUrl": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80&w=600"
+    },
+    {
+      "id": "PART-LENSKART",
+      "name": "Lenskart Store",
+      "category": "Shops",
+      "logo": "👓",
+      "x": 25,
+      "y": 58,
+      "lat": 22.726,
+      "lng": 75.848,
+      "distanceMeters": 1200,
+      "rating": 4.9,
+      "address": "City Mall Plaza 1.2km",
+      "isOpen": true,
+      "isEcoPartner": true,
+      "acceptsEcoPoints": true,
+      "badges": [
+        "👓 Eco Acetate Frame Partner",
+        "🎁 Rewards Partner"
+      ],
+      "rewardsOffer": "600 Points → ₹500 OFF Specs Voucher",
+      "pointsCost": 600,
+      "discountInr": 500,
+      "foodRescueAvailable": false,
+      "imageUrl": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&q=80&w=600"
+    },
+    {
+      "id": "PART-HM",
+      "name": "H&M Conscious Fashion",
+      "category": "Shops",
+      "logo": "👔",
+      "x": 32,
+      "y": 72,
+      "lat": 22.71,
+      "lng": 75.845,
+      "distanceMeters": 1500,
+      "rating": 4.6,
+      "address": "Central Urban Mall 1.5km",
+      "isOpen": true,
+      "isEcoPartner": true,
+      "acceptsEcoPoints": true,
+      "badges": [
+        "👔 Garment Recycling Drive",
+        "🎁 Rewards Partner"
+      ],
+      "rewardsOffer": "450 Points → 15% OFF Garment Recycling Voucher",
+      "pointsCost": 450,
+      "discountInr": 300,
+      "foodRescueAvailable": false,
+      "imageUrl": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=600"
+    },
+    {
+      "id": "PART-DOMINOS",
+      "name": "Domino's Pizza",
+      "category": "Restaurants",
+      "logo": "🍕",
+      "x": 68,
+      "y": 50,
+      "lat": 22.717,
+      "lng": 75.863,
+      "distanceMeters": 800,
+      "rating": 4.5,
+      "address": "Main Gate Commercial Block",
+      "isOpen": true,
+      "isEcoPartner": true,
+      "acceptsEcoPoints": true,
+      "badges": [
+        "🍕 Green Packaging Partner",
+        "🎁 Rewards Partner"
+      ],
+      "rewardsOffer": "300 Points → ₹150 OFF Medium Pizza",
+      "pointsCost": 300,
+      "discountInr": 150,
+      "foodRescueAvailable": true,
+      "surplusMealsCount": 15,
+      "surplusPriceInr": 89,
+      "imageUrl": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=600"
+    },
+    {
+      "id": "PART-DECATHLON",
+      "name": "Decathlon Sports",
+      "category": "Shops",
+      "logo": "🚲",
+      "x": 18,
+      "y": 82,
+      "lat": 22.705,
+      "lng": 75.87,
+      "distanceMeters": 2000,
+      "rating": 4.8,
+      "address": "Indore Bypass Sports Hub 2km",
+      "isOpen": true,
+      "isEcoPartner": true,
+      "acceptsEcoPoints": true,
+      "badges": [
+        "🚲 Green Mobility Partner",
+        "🎁 Rewards Partner"
+      ],
+      "rewardsOffer": "500 Points → ₹250 OFF Cycle & Sports Gear",
+      "pointsCost": 500,
+      "discountInr": 250,
+      "foodRescueAvailable": false,
+      "imageUrl": "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&q=80&w=600"
+    },
+    {
+      "id": "PART-01",
+      "name": "Green Café",
+      "category": "Cafés",
+      "logo": "🥗",
+      "x": 48,
+      "y": 35,
+      "lat": 22.721,
+      "lng": 75.859,
+      "distanceMeters": 420,
+      "rating": 4.6,
+      "address": "Central Canteen Quad, SAGE University",
+      "isOpen": true,
+      "isEcoPartner": true,
+      "acceptsEcoPoints": true,
+      "badges": [
+        "🌱 Food Rescue Champion",
+        "♻️ Waste Reduction Partner",
+        "🎁 Rewards Partner"
+      ],
+      "rewardsOffer": "100 Points → ₹50 OFF Voucher",
+      "pointsCost": 100,
+      "discountInr": 50,
+      "foodRescueAvailable": true,
+      "surplusMealsCount": 18,
+      "surplusPriceInr": 59,
+      "imageUrl": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=600"
+    }
+  ],
+  "redeemedVouchers": [
+    {
+      "id": "VOUCH-1793555929578",
+      "voucherCode": "ECO-2640-D4A6FA",
+      "businessName": "Green Cafe Partner",
+      "businessLogo": "🎁",
+      "rewardTitle": "₹50 OFF Sustainable Brew at Green Cafe",
+      "discountInr": 50,
+      "pointsCost": 50,
+      "redeemedDate": "Today",
+      "expiryDate": "2026-12-01",
+      "status": "Active",
+      "qrCodePlaceholder": "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=ECO-2640-D4A6FA",
+      "redeemedByUserId": "usr-1793555928192",
+      "createdAt": "2026-11-01T17:58:49.578Z"
+    },
+    {
+      "id": "VOUCH-1793532777085",
+      "voucherCode": "ECO-2369-14F3AA",
+      "businessName": "Green Cafe Partner",
+      "businessLogo": "🎁",
+      "rewardTitle": "₹50 OFF Sustainable Brew at Green Cafe",
+      "discountInr": 50,
+      "pointsCost": 50,
+      "redeemedDate": "Today",
+      "expiryDate": "2026-12-01",
+      "status": "Active",
+      "qrCodePlaceholder": "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=ECO-2369-14F3AA",
+      "redeemedByUserId": "usr-1793532775938",
+      "createdAt": "2026-11-01T11:32:57.085Z"
+    },
+    {
+      "id": "VOUCH-1793532025034",
+      "voucherCode": "ECO-9031-46C7ED",
+      "businessName": "Green Cafe Partner",
+      "businessLogo": "🎁",
+      "rewardTitle": "₹50 OFF Sustainable Brew at Green Cafe",
+      "discountInr": 50,
+      "pointsCost": 50,
+      "redeemedDate": "Today",
+      "expiryDate": "2026-12-01",
+      "status": "Active",
+      "qrCodePlaceholder": "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=ECO-9031-46C7ED",
+      "redeemedByUserId": "usr-1793532024468",
+      "createdAt": "2026-11-01T11:20:25.034Z"
+    },
+    {
+      "id": "VOUCH-1793531710492",
+      "voucherCode": "ECO-9111-4C0539",
+      "businessName": "Green Cafe Partner",
+      "businessLogo": "🎁",
+      "rewardTitle": "₹50 OFF Sustainable Brew at Green Cafe",
+      "discountInr": 50,
+      "pointsCost": 50,
+      "redeemedDate": "Today",
+      "expiryDate": "2026-12-01",
+      "status": "Active",
+      "qrCodePlaceholder": "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=ECO-9111-4C0539",
+      "redeemedByUserId": "usr-1793531709406",
+      "createdAt": "2026-11-01T11:15:10.492Z"
+    },
+    {
+      "id": "VOUCH-1793530993370",
+      "voucherCode": "ECO-4341-F2E190",
+      "businessName": "Green Cafe Partner",
+      "businessLogo": "🎁",
+      "rewardTitle": "₹50 OFF Sustainable Brew at Green Cafe",
+      "discountInr": 50,
+      "pointsCost": 50,
+      "redeemedDate": "Today",
+      "expiryDate": "2026-12-01",
+      "status": "Active",
+      "qrCodePlaceholder": "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=ECO-4341-F2E190",
+      "redeemedByUserId": "usr-1793530992191",
+      "createdAt": "2026-11-01T11:03:13.370Z"
+    },
+    {
+      "id": "VOUCH-1793527815244",
+      "voucherCode": "ECO-7170-580E2F",
+      "businessName": "Green Cafe Partner",
+      "businessLogo": "🎁",
+      "rewardTitle": "₹50 OFF Sustainable Brew at Green Cafe",
+      "discountInr": 50,
+      "pointsCost": 50,
+      "redeemedDate": "Today",
+      "expiryDate": "2026-12-01",
+      "status": "Active",
+      "qrCodePlaceholder": "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=ECO-7170-580E2F",
+      "redeemedByUserId": "usr-1793527814774",
+      "createdAt": "2026-11-01T10:10:15.244Z"
+    },
+    {
+      "id": "VOUCH-1793527388754",
+      "voucherCode": "ECO-1108-BE179B",
+      "businessName": "Green Cafe Partner",
+      "businessLogo": "🎁",
+      "rewardTitle": "₹50 OFF Sustainable Brew at Green Cafe",
+      "discountInr": 50,
+      "pointsCost": 50,
+      "redeemedDate": "Today",
+      "expiryDate": "2026-12-01",
+      "status": "Active",
+      "qrCodePlaceholder": "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=ECO-1108-BE179B",
+      "redeemedByUserId": "usr-1793527387957",
+      "createdAt": "2026-11-01T10:03:08.754Z"
+    },
+    {
+      "id": "VOUCH-1793527295046",
+      "voucherCode": "ECO-2234-15E09E",
+      "businessName": "Green Cafe Partner",
+      "businessLogo": "🎁",
+      "rewardTitle": "₹50 OFF Sustainable Brew at Green Cafe",
+      "discountInr": 50,
+      "pointsCost": 50,
+      "redeemedDate": "Today",
+      "expiryDate": "2026-12-01",
+      "status": "Active",
+      "qrCodePlaceholder": "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=ECO-2234-15E09E",
+      "redeemedByUserId": "usr-1793527294369",
+      "createdAt": "2026-11-01T10:01:35.046Z"
+    },
+    {
+      "id": "VOUCH-1793527206106",
+      "voucherCode": "ECO-5820-D71A8A",
+      "businessName": "Green Cafe Partner",
+      "businessLogo": "🎁",
+      "rewardTitle": "₹50 OFF Sustainable Brew at Green Cafe",
+      "discountInr": 50,
+      "pointsCost": 50,
+      "redeemedDate": "Today",
+      "expiryDate": "2026-12-01",
+      "status": "Active",
+      "qrCodePlaceholder": "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=ECO-5820-D71A8A",
+      "redeemedByUserId": "usr-1793527205295",
+      "createdAt": "2026-11-01T10:00:06.106Z"
+    },
+    {
+      "id": "VOUCH-101",
+      "voucherCode": "ECO-LENS-88",
+      "businessName": "Lenskart Store",
+      "businessLogo": "👓",
+      "rewardTitle": "₹500 OFF Recyclable Frame Voucher",
+      "discountInr": 500,
+      "pointsCost": 600,
+      "redeemedDate": "1 day ago",
+      "expiryDate": "30 Oct 2026",
+      "status": "Active",
+      "qrCodePlaceholder": "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ECO-LENS-88"
+    },
+    {
+      "id": "VOUCH-102",
+      "voucherCode": "ECO-HM-2026",
+      "businessName": "H&M Conscious",
+      "businessLogo": "👔",
+      "rewardTitle": "15% OFF Garment Recycling Voucher",
+      "discountInr": 300,
+      "pointsCost": 450,
+      "redeemedDate": "3 days ago",
+      "expiryDate": "15 Oct 2026",
+      "status": "Active",
+      "qrCodePlaceholder": "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ECO-HM-2026"
+    }
+  ],
+  "socialPosts": [
+    {
+      "id": "POST-1793532024883",
+      "authorName": "Aayush Test Contestant",
+      "authorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793532024421%40ecoverse.test",
+      "authorBadge": "Organization Admin (Host)",
+      "postType": "Contribution",
+      "timestamp": "Just now",
+      "locationTag": "Indore Sector 3 Park",
+      "content": "Cleaned up Sector 3 park with the Eco Warriors team! Diverted 25kg of PET plastics.",
+      "impactBadge": "🌱 25kg Diverted",
+      "pointsEarned": 50,
+      "likesCount": 0,
+      "isLiked": false,
+      "comments": [
+        {
+          "id": "cmt-1793532024911",
+          "authorName": "Aayush Test Contestant",
+          "authorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793532024421%40ecoverse.test",
+          "text": "Incredible work team! Inspired to do the same.",
+          "timestamp": "Just now",
+          "createdAt": "2026-11-01T11:20:24.911Z"
+        }
+      ],
+      "sharesCount": 0,
+      "createdAt": "2026-11-01T11:20:24.883Z",
+      "authorUserId": "usr-1793532024468"
+    },
+    {
+      "id": "POST-1793531710267",
+      "authorName": "Aayush Test Contestant",
+      "authorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793531709357%40ecoverse.test",
+      "authorBadge": "Organization Admin (Host)",
+      "postType": "Contribution",
+      "timestamp": "Just now",
+      "locationTag": "Indore Sector 3 Park",
+      "content": "Cleaned up Sector 3 park with the Eco Warriors team! Diverted 25kg of PET plastics.",
+      "impactBadge": "🌱 25kg Diverted",
+      "pointsEarned": 50,
+      "likesCount": 0,
+      "isLiked": false,
+      "comments": [
+        {
+          "id": "cmt-1793531710304",
+          "authorName": "Aayush Test Contestant",
+          "authorAvatar": "https://api.dicebear.com/7.x/bottts/svg?seed=testuser_1793531709357%40ecoverse.test",
+          "text": "Incredible work team! Inspired to do the same.",
+          "timestamp": "Just now",
+          "createdAt": "2026-11-01T11:15:10.304Z"
+        }
+      ],
+      "sharesCount": 0,
+      "createdAt": "2026-11-01T11:15:10.267Z",
+      "authorUserId": "usr-1793531709406"
+    },
+    {
+      "id": "POST-01",
+      "authorName": "Dheeraj (Contestant #456)",
+      "authorAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250",
+      "authorBadge": "Contestant #456 · 2h ago",
+      "postType": "Contribution",
+      "timestamp": "2 hours ago",
+      "locationTag": "SAGE University · Indore Campus Arena",
+      "content": "Joined the Zero Waste Campus Raid today! ♻️ Check out our verified community waste report & recycling progress on campus! Claimed +150 Eco Points on City Guardian 🚀🔥",
+      "imageUrl": "/images/squid-game/social-media-post.png",
+      "impactBadge": "12 kg Waste Diverted",
+      "pointsEarned": 150,
+      "likesCount": 342,
+      "isLiked": true,
+      "sharesCount": 28,
+      "comments": [
+        {
+          "id": "c1",
+          "authorName": "Aarav Sharma (Contestant #067)",
+          "authorAvatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250",
+          "text": "150 POINTS DEGA! Nice work brother 🔥",
+          "timestamp": "1 hour ago"
+        },
+        {
+          "id": "c2",
+          "authorName": "Priya Verma (Contestant #218)",
+          "authorAvatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=250",
+          "text": "Indore Campus Telemetry verified this report! ⚡",
+          "timestamp": "30 mins ago"
+        }
+      ]
+    }
+  ],
+  "ecoClubGroups": [
+    {
+      "id": "CLUB-01",
+      "name": "🌱 Green Campus Club",
+      "membersCount": 1284,
+      "topics": [
+        "Campus Sustainability",
+        "Zero Waste",
+        "Events"
+      ],
+      "logo": "🌿",
+      "isJoined": true,
+      "description": "The official campus green initiative driving recycling drives, solar audits, & sustainability workshops."
+    }
+  ],
+  "ecoEvents": [
+    {
+      "id": "EVT-01",
+      "title": "🌊 Narmada River Clean & Restoration Drive",
+      "dateTime": "Saturday · 8:00 AM",
+      "location": "Narmada Stream Stretch 1 (2.4 km away)",
+      "attendingCount": 84,
+      "goalLabel": "Extract 500 kg river floating plastic waste",
+      "isJoined": true,
+      "imageUrl": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=600"
+    }
+  ],
+  "csrCompanies": [
+    {
+      "id": "COMP-01",
+      "name": "TechNova Industries",
+      "logo": "⚡",
+      "csrBudgetInr": 2500000,
+      "allocatedInr": 1840000,
+      "remainingInr": 660000,
+      "activeProjects": 12,
+      "completedProjects": 24,
+      "impactScore": 942,
+      "rank": 1,
+      "rankShift": 3,
+      "badges": [
+        "🥇 CSR CHAMPION",
+        "💎 PLANET PARTNER",
+        "♻️ CIRCULAR LEADER"
+      ]
+    },
+    {
+      "id": "COMP-02",
+      "name": "GreenTech Solutions",
+      "logo": "🌿",
+      "csrBudgetInr": 2000000,
+      "allocatedInr": 1500000,
+      "remainingInr": 500000,
+      "activeProjects": 9,
+      "completedProjects": 18,
+      "impactScore": 918,
+      "rank": 2,
+      "rankShift": 1,
+      "badges": [
+        "🥈 CSR CONTRIBUTOR",
+        "🌊 WATER GUARDIAN"
+      ]
+    },
+    {
+      "id": "COMP-03",
+      "name": "FutureCorp Energy",
+      "logo": "🔋",
+      "csrBudgetInr": 3000000,
+      "allocatedInr": 2200000,
+      "remainingInr": 800000,
+      "activeProjects": 14,
+      "completedProjects": 21,
+      "impactScore": 891,
+      "rank": 3,
+      "rankShift": -1,
+      "badges": [
+        "🥉 CSR PARTICIPANT",
+        "🌱 GREEN INFRASTRUCTURE HERO"
+      ]
+    },
+    {
+      "id": "COMP-04",
+      "name": "EcoBuild Infrastructure",
+      "logo": "🏗️",
+      "csrBudgetInr": 1500000,
+      "allocatedInr": 1100000,
+      "remainingInr": 400000,
+      "activeProjects": 7,
+      "completedProjects": 12,
+      "impactScore": 840,
+      "rank": 4,
+      "rankShift": 2,
+      "badges": [
+        "♻️ RECYCLING PIONEER"
+      ]
+    }
+  ],
+  "csrMissions": [
+    {
+      "id": "CSR-MISSION-01",
+      "title": "ZERO WASTE CAMPUS RAID",
+      "subtitle": "Inter-Campus Waste Diversion & Material Recovery Tournament",
+      "sponsorName": "TechNova Industries",
+      "sponsorLogo": "⚡",
+      "category": "♻️ Waste Management",
+      "difficulty": "LEGENDARY",
+      "targetKg": 10000,
+      "currentKg": 7840,
+      "timeRemaining": "06D : 14H : 22M",
+      "playersCount": 4293,
+      "campusesCount": 18,
+      "ngoPartnersCount": 6,
+      "prizePoolInr": 200000,
+      "xpReward": 500,
+      "ecoPointsReward": 300,
+      "status": "LIVE",
+      "isJoined": true
+    },
+    {
+      "id": "CSR-MISSION-02",
+      "title": "E-WASTE RECOVERY HARVEST",
+      "subtitle": "Extract Heavy Metals & E-Waste Circuit Boards from City Zones",
+      "sponsorName": "GreenTech Solutions",
+      "sponsorLogo": "🌿",
+      "category": "💻 E-Waste",
+      "difficulty": "EPIC",
+      "targetKg": 5000,
+      "currentKg": 3420,
+      "timeRemaining": "04D : 08H : 10M",
+      "playersCount": 2140,
+      "campusesCount": 12,
+      "ngoPartnersCount": 4,
+      "prizePoolInr": 150000,
+      "xpReward": 400,
+      "ecoPointsReward": 250,
+      "status": "LIVE",
+      "isJoined": false
+    },
+    {
+      "id": "CSR-MISSION-03",
+      "title": "RIVER RESTORATION EXPEDITION",
+      "subtitle": "Extract Floating Plastic Waste & Debris from Narmada Riverbanks",
+      "sponsorName": "FutureCorp Energy",
+      "sponsorLogo": "🔋",
+      "category": "🌊 Water & River Cleanup",
+      "difficulty": "HARD",
+      "targetKg": 8000,
+      "currentKg": 5600,
+      "timeRemaining": "08D : 18H : 45M",
+      "playersCount": 3100,
+      "campusesCount": 15,
+      "ngoPartnersCount": 5,
+      "prizePoolInr": 180000,
+      "xpReward": 350,
+      "ecoPointsReward": 200,
+      "status": "LIVE",
+      "isJoined": false
+    }
+  ],
+  "csrProjects": [
+    {
+      "id": "CSR-PROJ-01",
+      "title": "RIVER RESTORATION — INDORE STRETCH 1",
+      "location": "Indore Narmada Riverbank Zone 4",
+      "category": "🌊 Water & River Cleanup",
+      "goalKg": 10000,
+      "fundingRequiredInr": 500000,
+      "fundingCurrentInr": 800000,
+      "ngoOperatorName": "Clean River Foundation",
+      "ngoVerified": true,
+      "participantsCount": 428,
+      "expectedImpact": "10 Tonnes Waste Removed & Water Flow Restored",
+      "budgetBreakdown": [
+        {
+          "category": "Collection Operations",
+          "amountInr": 200000
+        },
+        {
+          "category": "Transportation & Hauling",
+          "amountInr": 100000
+        },
+        {
+          "category": "Recycling / Processing",
+          "amountInr": 100000
+        },
+        {
+          "category": "Community Activities",
+          "amountInr": 50000
+        },
+        {
+          "category": "Player Rewards Pool",
+          "amountInr": 50000
+        }
+      ],
+      "status": "FUNDED"
+    },
+    {
+      "id": "CSR-PROJ-02",
+      "title": "URBAN CANOPY & CAMPUS PLANTATION RAID",
+      "location": "Indore Higher Ed Hub & Parks",
+      "category": "🌳 Plantation",
+      "goalKg": 5000,
+      "fundingRequiredInr": 800000,
+      "fundingCurrentInr": 800000,
+      "ngoOperatorName": "Green Earth Society",
+      "ngoVerified": true,
+      "participantsCount": 1240,
+      "expectedImpact": "5,000 Saplings Planted & Tracked via IoT Tags",
+      "budgetBreakdown": [
+        {
+          "category": "Saplings & Soil Mix",
+          "amountInr": 350000
+        },
+        {
+          "category": "Planting Logistics",
+          "amountInr": 200000
+        },
+        {
+          "category": "IoT Tracking & Care",
+          "amountInr": 150000
+        },
+        {
+          "category": "Student Rewards",
+          "amountInr": 100000
+        }
+      ],
+      "status": "FUNDED"
+    },
+    {
+      "id": "CSR-PROJ-03",
+      "title": "E-WASTE RECOVERY & CIRCUIT PROCESSING ALLIANCE",
+      "location": "Industrial Estate Block 3",
+      "category": "💻 E-Waste",
+      "goalKg": 15000,
+      "fundingRequiredInr": 600000,
+      "fundingCurrentInr": 420000,
+      "ngoOperatorName": "E-Cycle India Alliance",
+      "ngoVerified": true,
+      "participantsCount": 890,
+      "expectedImpact": "15 Tonnes E-Waste Recovered & Copper Recycled",
+      "budgetBreakdown": [
+        {
+          "category": "Hazardous Collection",
+          "amountInr": 250000
+        },
+        {
+          "category": "Refining Operations",
+          "amountInr": 200000
+        },
+        {
+          "category": "Disposal Compliance",
+          "amountInr": 100000
+        },
+        {
+          "category": "Bounty Rewards",
+          "amountInr": 50000
+        }
+      ],
+      "status": "ACTIVE"
+    }
+  ],
+  "csrReports": [
+    {
+      "id": "CSR-RPT-2026-01",
+      "companyName": "TechNova Industries",
+      "projectTitle": "Indore E-Waste & Campus Recovery Audit",
+      "investmentInr": 500000,
+      "wasteRecoveredKg": 9842,
+      "participantsCount": 4284,
+      "campusesCount": 18,
+      "partnersCount": 32,
+      "missionsCompleted": 1284,
+      "impactScore": 942,
+      "statusPercentage": 98,
+      "generatedDate": "August 22, 2026"
+    }
+  ],
+  "meta": {
+    "initializedAt": "2026-11-01T09:58:57.240Z",
+    "lastUpdated": "2026-11-01T21:06:56.234Z",
+    "version": "1.0.0"
+  }
+}

@@ -35,6 +35,7 @@ import {
   CsrReport,
   UserActivityLogItem,
   DailyMission,
+  UserLocationState,
 } from '../types';
 import {
   initialUserProfile,
@@ -76,6 +77,9 @@ interface EcoContextType {
   role: UserRole;
   setRole: (r: UserRole) => void;
   activeTab: MainTab;
+  theme: 'light' | 'dark';
+  setTheme: (t: 'light' | 'dark') => void;
+  toggleTheme: () => void;
   adminActiveSection: string;
   setAdminActiveSection: (sec: string) => void;
   setActiveTab: (tab: MainTab) => void;
@@ -107,6 +111,12 @@ interface EcoContextType {
   cleanupOperations: CleanupOperation[];
   businessPartners: BusinessPartner[];
   activityFeed: ActivityFeedItem[];
+
+  // Real GPS Location Tracking State
+  userLocation: UserLocationState;
+  isLocating: boolean;
+  detectUserLocation: () => Promise<void>;
+  setUserLocationManually: (lat: number, lng: number, cityName: string, areaName?: string) => void;
 
   // Nearby, Rewards & Social State
   nearbyPartners: NearbyPartner[];
@@ -171,7 +181,7 @@ interface EcoContextType {
   closeAuthModal: () => void;
   token: string | null;
   isAuthenticated: boolean;
-  login: (email: string, pass: string, selectedRole?: UserRole) => Promise<void>;
+  login: (email: string, pass: string, selectedRole?: UserRole) => Promise<{ role: UserRole; portalPath: string }>;
   register: (name: string, email: string, pass: string, userRole?: string) => Promise<void>;
   logout: () => void;
   promoteToAdmin: (emailOrId: string) => Promise<void>;
@@ -264,8 +274,52 @@ export const getDefaultDailyMissions = (dateStr: string): DailyMission[] => [
   },
 ];
 
+
+export const calculateDistanceMeters = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
+  const R = 6371e3;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return Math.round(R * c);
+};
+
+export const adaptPartnersAroundLocation = (
+  basePartners: NearbyPartner[],
+  userLat: number,
+  userLng: number,
+  cityName: string = 'Current Area'
+): NearbyPartner[] => {
+  const relativeOffsets = [
+    { dLat: 0.0022, dLng: 0.0018 },
+    { dLat: -0.0018, dLng: 0.0025 },
+    { dLat: 0.0035, dLng: -0.0022 },
+    { dLat: -0.0032, dLng: -0.0018 },
+    { dLat: 0.0048, dLng: 0.0038 },
+    { dLat: -0.0055, dLng: 0.0045 },
+    { dLat: 0.0068, dLng: -0.0052 },
+  ];
+
+  return basePartners.map((partner, index) => {
+    const offset = relativeOffsets[index % relativeOffsets.length];
+    const partnerLat = userLat + offset.dLat;
+    const partnerLng = userLng + offset.dLng;
+    const distanceMeters = calculateDistanceMeters(userLat, userLng, partnerLat, partnerLng);
+
+    return {
+      ...partner,
+      lat: partnerLat,
+      lng: partnerLng,
+      distanceMeters,
+      address: `${partner.name} Station, ${cityName}`,
+    };
+  });
+};
+
 export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://prototype-ecoverse-backend-jumu.onrender.com/api';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
@@ -353,12 +407,36 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const pathname = usePathname();
   const router = useRouter();
 
-  const [role, setRole] = useState<UserRole>('student');
+  const [role, setRoleState] = useState<UserRole>(() => {
+    if (typeof window !== 'undefined') {
+      const savedRole = localStorage.getItem('ecoverse_role') as UserRole;
+      if (savedRole) return savedRole;
+      if (window.location.pathname.startsWith('/csr')) return 'corporate';
+      if (window.location.pathname.startsWith('/organization')) return 'admin';
+    }
+    return 'student';
+  });
+
+  const setRole = (newRole: UserRole) => {
+    setRoleState(newRole);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('ecoverse_role', newRole);
+    }
+  };
   const [activeTabState, setActiveTabState] = useState<MainTab>('overview');
   const [adminActiveSection, setAdminActiveSection] = useState<string>('waste-reports');
 
   useEffect(() => {
     if (pathname) {
+      if (pathname.startsWith('/csr')) {
+        setRoleState('corporate');
+      } else if (pathname.startsWith('/organization')) {
+        setRoleState('admin');
+      } else if (pathname.startsWith('/user')) {
+        if (role !== 'admin' && role !== 'corporate') {
+          setRoleState('student');
+        }
+      }
       const parts = pathname.split('/').filter(Boolean);
       if (parts.length > 0) {
         const tab = (parts[1] || 'overview') as MainTab;
@@ -426,8 +504,46 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [businessPartners] = useState<BusinessPartner[]>(initialBusinessPartners);
   const [activityFeed, setActivityFeed] = useState<ActivityFeedItem[]>(initialActivityFeed);
 
+    // Theme State (Defaulting to bright / light theme)
+  const [theme, setThemeState] = useState<'light' | 'dark'>('light');
+
+  const setTheme = (t: 'light' | 'dark') => {
+    setThemeState(t);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('ecoverse_theme', t);
+      if (t === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.remove('light');
+        document.documentElement.classList.add('dark');
+      }
+    }
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = (localStorage.getItem('ecoverse_theme') as 'light' | 'dark') || 'light';
+      setTheme(savedTheme);
+    }
+  }, []);
+
   // Nearby, Rewards & Social State Providers
-  const [nearbyPartners] = useState<NearbyPartner[]>(initialNearbyPartners);
+  // User Real Geolocation State
+  const [userLocation, setUserLocation] = useState<UserLocationState>({
+    lat: 12.9716,
+    lng: 77.5946,
+    cityName: 'Bengaluru',
+    areaName: 'Current Area',
+    fullAddress: 'Detecting Location in India...',
+    isRealGps: false,
+  });
+  const [isLocating, setIsLocating] = useState<boolean>(false);
+  const [nearbyPartners, setNearbyPartners] = useState<NearbyPartner[]>(initialNearbyPartners);
   const [selectedPartnerOnMap, setSelectedPartnerOnMap] = useState<NearbyPartner | null>(initialNearbyPartners[0]);
   const [redeemedVouchers, setRedeemedVouchers] = useState<RedeemedVoucher[]>(initialRedeemedVouchers);
   const [socialPosts, setSocialPosts] = useState<SocialPost[]>(initialSocialPosts);
@@ -733,7 +849,7 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   }, [token, API_URL]);
 
-  const login = async (email: string, pass: string, selectedRole?: UserRole) => {
+  const login = async (email: string, pass: string, selectedRole?: UserRole): Promise<{ role: UserRole; portalPath: string }> => {
     const cleanEmail = email.trim().toLowerCase();
     
     // Direct Admin Recognition for thakrethe@gmail.com
@@ -742,6 +858,7 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setToken(adminToken);
       if (typeof window !== 'undefined') {
         localStorage.setItem('ecoverse_token', adminToken);
+        localStorage.setItem('ecoverse_role', 'admin');
       }
       setRole('admin');
       setProfile((prev) => ({
@@ -759,7 +876,7 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         role: 'admin',
       }));
       addToast('Organization Access Granted.', 'info');
-      return;
+      return { role: 'admin', portalPath: '/organization' };
     }
 
     try {
@@ -773,9 +890,22 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         throw new Error(data.message || 'Login failed');
       }
       setToken(data.token);
+
+      let userRole: UserRole = 'student';
+      if (data.user && data.user.role) {
+        userRole = data.user.role as UserRole;
+      } else if (cleanEmail.includes('csr') || cleanEmail.includes('corporate') || selectedRole === 'corporate') {
+        userRole = 'corporate';
+      } else if (cleanEmail.includes('admin') || cleanEmail.includes('government') || cleanEmail.includes('gov') || selectedRole === 'admin') {
+        userRole = 'admin';
+      }
+
       if (typeof window !== 'undefined') {
         localStorage.setItem('ecoverse_token', data.token);
+        localStorage.setItem('ecoverse_role', userRole);
       }
+      setRole(userRole);
+
       if (data.user) {
         setProfile((prev) => ({
           ...prev,
@@ -790,33 +920,43 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           followingCount: data.user.followingCount ?? 0,
           level: data.user.level || 'Rookie Contestant (Tier 1)',
           avatar: data.user.avatar || prev.avatar,
-          role: data.user.role || prev.role,
+          role: userRole,
         }));
-        if (data.user.role) {
-          setRole(data.user.role as UserRole);
-        }
       }
+
+      const portalPath = userRole === 'admin' ? '/organization' : userRole === 'corporate' ? '/csr' : '/user';
       addToast('Login successful! Welcome back.', 'success');
+      return { role: userRole, portalPath };
     } catch (err: any) {
       // Fallback local authentication for seamless experience
       const mockToken = 'ecoverse_user_token_' + Date.now();
       setToken(mockToken);
+
+      let finalRole: UserRole = 'student';
+      if (cleanEmail.includes('csr') || cleanEmail.includes('corporate') || selectedRole === 'corporate') {
+        finalRole = 'corporate';
+      } else if (cleanEmail.includes('admin') || cleanEmail.includes('government') || cleanEmail.includes('gov') || cleanEmail.includes('thakre') || selectedRole === 'admin') {
+        finalRole = 'admin';
+      } else if (selectedRole) {
+        finalRole = selectedRole;
+      }
+
       if (typeof window !== 'undefined') {
         localStorage.setItem('ecoverse_token', mockToken);
+        localStorage.setItem('ecoverse_role', finalRole);
       }
-      const isCandidateAdmin = cleanEmail.includes('admin') || cleanEmail.includes('thakre');
-      
-      setProfile((prev) => {
-        const finalRole = isCandidateAdmin ? 'admin' : (selectedRole || prev.role);
-        setRole(finalRole as UserRole);
-        return {
-          ...prev,
-          name: cleanEmail.split('@')[0].toUpperCase(),
-          playerNumber: '#' + Math.floor(100 + Math.random() * 899),
-          role: finalRole,
-        };
-      });
+      setRole(finalRole);
+
+      setProfile((prev) => ({
+        ...prev,
+        name: cleanEmail.split('@')[0].toUpperCase(),
+        playerNumber: '#' + Math.floor(100 + Math.random() * 899),
+        role: finalRole,
+      }));
+
+      const portalPath = finalRole === 'admin' ? '/organization' : finalRole === 'corporate' ? '/csr' : '/user';
       addToast('Authenticated successfully!', 'success');
+      return { role: finalRole, portalPath };
     }
   };
 
@@ -862,10 +1002,15 @@ export const EcoProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (typeof window !== 'undefined') {
       localStorage.removeItem('ecoverse_token');
       localStorage.removeItem('ecoverse_profile');
+      localStorage.removeItem('ecoverse_role');
+      sessionStorage.removeItem('ecoverse_token');
     }
     setRole('student');
-    setProfile(initialUserProfile);
+    setProfileState(initialUserProfile);
     addToast('Logged out of EcoVerse', 'info');
+    if (typeof window !== 'undefined') {
+      window.location.href = '/';
+    }
   };
 
   const promoteToAdmin = async (emailOrId: string) => {
@@ -1126,7 +1271,7 @@ Options available:
       sellerRole: 'Contestant',
       sellerAvatar: profile.avatar,
       sellerPlayerNumber: profile.playerNumber,
-      location: item.location || 'Indore Campus Tech Lab',
+      location: item.location || `${userLocation.cityName} Tech Lab`,
       condition: item.condition || 'Good',
       description: item.description || 'High quality upcycled item saved from landfill.',
       imageUrl,
@@ -1243,7 +1388,7 @@ Options available:
 
     logUserActivity({
       title: `B2B Material Offer (${demand?.companyName || 'Corporate Partner'})`,
-      location: 'Indore Industrial Zone',
+      location: `${userLocation.cityName} Industrial Zone`,
       type: 'Recycling',
       details: `Offered ${actualQuantityKg} kg of ${demand?.materialNeeded || 'Scrap Material'} (Token: ${tokenCode})`,
       status: 'Token Issued',
@@ -1333,7 +1478,7 @@ Options available:
 
     logUserActivity({
       title: `Guild Project: ${newProject.title}`,
-      location: 'Indore Campus',
+      location: `${userLocation.cityName} Campus`,
       type: 'Projects',
       details: `Created new Guild Project (${newProject.reusedImpactLabel})`,
       status: 'Created',
@@ -1607,11 +1752,11 @@ Options available:
       id: 'CIV-' + Math.floor(1000 + Math.random() * 9000),
       title: issue.title || 'Civic Environmental Issue',
       category: issue.category || 'Illegal Dumping',
-      location: issue.location || 'Indore Campus Perimeter',
+      location: issue.location || `${userLocation.areaName || userLocation.cityName}, ${userLocation.cityName}`,
       severity: issue.severity || 'High',
       confirmationsCount: 1,
       status: 'Reported',
-      authorityTag: 'Indore Municipal Corporation / ULB',
+      authorityTag: `${userLocation.cityName} Municipal Corporation / ULB`,
       reportedTime: 'Just now',
       imageUrl: issue.imageUrl || 'https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&q=80&w=600',
     };
@@ -1637,6 +1782,117 @@ Options available:
   };
 
   // --- NEW MAP, REWARDS & SOCIAL ACTIONS ---
+
+
+  const detectUserLocation = async () => {
+    if (typeof window === 'undefined') return;
+    setIsLocating(true);
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const accuracy = position.coords.accuracy;
+
+          try {
+            const res = await fetch(`${API_URL}/location/detect?lat=${lat}&lng=${lng}`);
+            const data = await res.json();
+            if (data.success) {
+              const newLoc: UserLocationState = {
+                lat,
+                lng,
+                cityName: data.city || 'Current City',
+                areaName: data.area || 'Current Area',
+                fullAddress: data.fullAddress || `${lat.toFixed(4)}° N, ${lng.toFixed(4)}° E`,
+                isRealGps: true,
+                accuracy,
+              };
+              setUserLocation(newLoc);
+              setNearbyPartners(adaptPartnersAroundLocation(initialNearbyPartners, lat, lng, data.city));
+              localStorage.setItem('ecoverse_user_location', JSON.stringify(newLoc));
+              addToast(`📍 Real GPS Acquired: ${newLoc.areaName}, ${newLoc.cityName}`, 'success');
+            }
+          } catch {
+            const fallbackLoc: UserLocationState = {
+              lat,
+              lng,
+              cityName: 'Local Area',
+              areaName: `${lat.toFixed(4)}° N, ${lng.toFixed(4)}° E`,
+              fullAddress: `GPS Location (${lat.toFixed(4)}° N, ${lng.toFixed(4)}° E), India`,
+              isRealGps: true,
+              accuracy,
+            };
+            setUserLocation(fallbackLoc);
+            setNearbyPartners(adaptPartnersAroundLocation(initialNearbyPartners, lat, lng, 'Local Area'));
+          } finally {
+            setIsLocating(false);
+          }
+        },
+        async (err) => {
+          console.warn('Browser GPS prompt was denied or timed out:', err.message);
+          try {
+            const res = await fetch(`${API_URL}/location/detect`);
+            const data = await res.json();
+            if (data.success && data.lat && data.lng) {
+              const ipLoc: UserLocationState = {
+                lat: data.lat,
+                lng: data.lng,
+                cityName: data.city || 'Local City',
+                areaName: data.area || 'Region',
+                fullAddress: data.fullAddress || 'India',
+                isRealGps: false,
+              };
+              setUserLocation(ipLoc);
+              setNearbyPartners(adaptPartnersAroundLocation(initialNearbyPartners, data.lat, data.lng, data.city));
+              localStorage.setItem('ecoverse_user_location', JSON.stringify(ipLoc));
+              addToast(`📍 Location set to: ${ipLoc.cityName}`, 'info');
+            }
+          } catch {
+          } finally {
+            setIsLocating(false);
+          }
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+      );
+    } else {
+      setIsLocating(false);
+    }
+  };
+
+  const setUserLocationManually = (lat: number, lng: number, cityName: string, areaName?: string) => {
+    const loc: UserLocationState = {
+      lat,
+      lng,
+      cityName,
+      areaName: areaName || cityName,
+      fullAddress: `${areaName || cityName}, ${cityName}, India`,
+      isRealGps: false,
+    };
+    setUserLocation(loc);
+    setNearbyPartners(adaptPartnersAroundLocation(initialNearbyPartners, lat, lng, cityName));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('ecoverse_user_location', JSON.stringify(loc));
+    }
+    addToast(`📍 Location centered on: ${cityName}`, 'info');
+  };
+
+  // Initial Geolocation Auto-Detection on Mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedLoc = localStorage.getItem('ecoverse_user_location');
+      if (savedLoc) {
+        try {
+          const parsed = JSON.parse(savedLoc);
+          if (parsed && parsed.lat && parsed.lng) {
+            setUserLocation(parsed);
+            setNearbyPartners(adaptPartnersAroundLocation(initialNearbyPartners, parsed.lat, parsed.lng, parsed.cityName));
+          }
+        } catch {}
+      }
+      detectUserLocation();
+    }
+  }, []);
 
   const selectPartnerOnMap = (partnerId: string | null) => {
     if (!partnerId) {
@@ -2061,6 +2317,11 @@ Options available:
   return (
     <EcoContext.Provider
       value={{
+        theme,
+        setTheme,
+        toggleTheme,
+        adminActiveSection,
+        setAdminActiveSection,
         isMobileMenuOpen,
         setIsMobileMenuOpen,
         toggleMobileMenu,
@@ -2089,6 +2350,10 @@ Options available:
         cleanupOperations,
         businessPartners,
         activityFeed,
+        userLocation,
+        isLocating,
+        detectUserLocation,
+        setUserLocationManually,
         nearbyPartners,
         selectedPartnerOnMap,
         redeemedVouchers,

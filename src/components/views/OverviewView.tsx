@@ -119,7 +119,24 @@ const TOTAL_DAY_SEC = 86400;
 const TOTAL_WEEK_SEC = 604800;
 
 export const OverviewView: React.FC = () => {
-  const { profile, wasteReports, setActiveTab, dailyMissions, completeDailyMission } = useEco();
+  const { profile, wasteReports, setActiveTab, dailyMissions, completeDailyMission, addToast, addEcoPoints } = useEco();
+
+  const [isQuestionBlockBumping, setIsQuestionBlockBumping] = useState(false);
+  const [coinPopups, setCoinPopups] = useState<{ id: number; text: string }[]>([]);
+
+  const handleHitQuestionBlock = () => {
+    setIsQuestionBlockBumping(true);
+    setTimeout(() => setIsQuestionBlockBumping(false), 300);
+
+    const newCoin = { id: Date.now(), text: '+50 🪙' };
+    setCoinPopups((prev) => [...prev, newCoin]);
+    setTimeout(() => {
+      setCoinPopups((prev) => prev.filter((c) => c.id !== newCoin.id));
+    }, 1000);
+
+    if (addEcoPoints) addEcoPoints(50, 'Mario Lucky ? Block');
+    if (addToast) addToast('⭐ YAHOO! You hit the Mario ? Block! +50 Eco Coins added to Clan Pool!', 'success');
+  };
 
   const completedCount = dailyMissions.filter((t) => t.done).length;
   const progressPercent = dailyMissions.length > 0 ? Math.round((completedCount / dailyMissions.length) * 100) : 0;
@@ -141,41 +158,107 @@ export const OverviewView: React.FC = () => {
 
   return (
     <div className="space-y-6 font-mono select-none animate-in fade-in duration-300">
-      {/* HUD Header Banner */}
-      <div className="bg-[#0D0F17] border border-[#FF007A]/50 rounded-lg p-4 md:p-6 space-y-3 relative overflow-hidden">
+      {/* 🍄 Super Mario Eco-Arena Hero Banner with Animated Graphics */}
+      <div className="relative overflow-hidden rounded-2xl border-2 border-sky-300 shadow-xl bg-gradient-to-r from-[#60B5FF] via-[#7DD3FC] to-[#BAE6FD] text-slate-900 p-5 sm:p-6 md:p-8 space-y-4">
+        {/* Mario World Scene Background */}
         <div
-          className="absolute inset-0 opacity-20 pointer-events-none bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/squid-game/media_1787398142284.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center pointer-events-none opacity-40 mix-blend-overlay"
+          style={{ backgroundImage: "url('/images/mario/mario-banner.jpg')" }}
         />
-        <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-          <div className="text-[10px] text-[#03E5B7] flex items-center gap-2 font-bold">
-            <span className="w-2 h-2 rounded-full bg-[#FF007A] animate-ping flex-shrink-0" />
-            <span>◯ SQUID ECO-ARENA // CONTESTANT #456 CONTROL</span>
+
+        {/* Floating Clouds Background Animation */}
+        <div className="absolute top-2 inset-x-0 pointer-events-none overflow-hidden h-10 opacity-70 flex justify-between px-8">
+          <span className="text-2xl animate-pulse select-none">☁️</span>
+          <span className="text-xl animate-bounce select-none">☁️</span>
+          <span className="text-3xl animate-pulse select-none">☁️</span>
+        </div>
+
+        {/* Top Ticker & Copilot Action */}
+        <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-2 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-sky-300 text-[11px] font-black text-slate-800 shadow-sm">
+            <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping flex-shrink-0" />
+            <span className="tracking-wider">🍄 SUPER MARIO WORLD 1-1 // CLAN ADVENTURE ARENA</span>
           </div>
+
           <button
             onClick={() => setActiveTab('eco-ai')}
-            className="text-[10px] text-[#FF007A] border border-[#FF007A]/50 bg-[#160B18] px-3 py-1 rounded hover:bg-[#FF007A]/20 transition-all flex items-center gap-1 font-bold glow-pink"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-300 hover:to-amber-300 text-slate-950 font-black text-xs transition-all shadow-md hover:scale-105 active:scale-95 border border-yellow-200"
           >
-            <Bot className="w-3.5 h-3.5" />
-            <span>FRONT MAN COPILOT</span>
+            <Bot className="w-4 h-4 text-red-600" />
+            <span>MARIO AI COPILOT 🍄</span>
           </button>
         </div>
 
-        <div className="relative z-10">
-          <h1 className="text-2xl md:text-3xl font-black text-white tracking-widest flex items-center gap-3">
-            CITY GUARDIAN <span className="text-[#FF007A]">SQUID ARENA</span>
-          </h1>
-          <p className="text-xs text-[#03E5B7] tracking-wider mt-0.5 font-bold">
-            &quot;SURVIVE THE WASTE. DIVERT THE RECYCLABLES. WIN THE CASH POOL.&quot;
-          </p>
+        {/* Main Banner Content */}
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+          <div className="md:col-span-2 space-y-2">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-wider drop-shadow-md flex flex-wrap items-center gap-2.5">
+              <span className="text-slate-900 drop-shadow-xs">CITY GUARDIAN</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E52521] via-red-600 to-[#F59E0B] drop-shadow-[0_2px_10px_rgba(255,255,255,0.9)]">
+                SUPER MARIO ARENA
+              </span>
+              <span className="inline-block animate-bounce text-2xl">⭐</span>
+            </h1>
+            <p className="text-xs sm:text-sm text-slate-800 font-extrabold tracking-wide leading-relaxed drop-shadow-xs">
+              &quot;JUMP OVER CIVIC WASTE • HIT QUESTION BLOCKS • COLLECT RECYCLED COINS • RESCUE THE GREEN KINGDOM!&quot;
+            </p>
+          </div>
+
+          {/* Right Side: Animated Mario Artwork & Interactive [?] Block */}
+          <div className="flex items-center justify-center md:justify-end gap-3.5 relative">
+            {/* Pop-up Coins Container */}
+            <div className="absolute -top-7 right-14 pointer-events-none">
+              {coinPopups.map((c) => (
+                <div
+                  key={c.id}
+                  className="text-yellow-300 font-black text-base animate-bounce drop-shadow-[0_2px_8px_rgba(234,179,8,0.9)]"
+                >
+                  {c.text}
+                </div>
+              ))}
+            </div>
+
+            {/* Interactive Question Block */}
+            <div className="flex flex-col items-center gap-1">
+              <button
+                type="button"
+                onClick={handleHitQuestionBlock}
+                className={`w-14 h-14 rounded-xl bg-gradient-to-b from-amber-300 via-amber-400 to-amber-600 border-4 border-amber-200 shadow-xl flex items-center justify-center text-slate-950 font-black text-2xl cursor-pointer hover:brightness-110 transition-transform active:scale-95 ${
+                  isQuestionBlockBumping ? 'scale-125 -translate-y-3' : 'animate-bounce'
+                }`}
+                title="Tap to hit the Lucky ? Block!"
+                style={{
+                  boxShadow: '0 6px 0 #b45309, 0 10px 15px rgba(0,0,0,0.3)',
+                }}
+              >
+                ?
+              </button>
+              <span className="text-[9px] font-black text-amber-900 uppercase tracking-widest drop-shadow-xs">
+                TAP BLOCK
+              </span>
+            </div>
+
+            {/* Mario Jumping Avatar Frame */}
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-3 border-amber-300/80 shadow-2xl bg-sky-300/20 backdrop-blur-xs flex items-center justify-center group hover:scale-105 transition-transform">
+              <img
+                src="/images/mario/mario-banner.jpg"
+                alt="Super Mario Jumping"
+                className="w-full h-full object-cover object-center transform hover:scale-115 transition-transform duration-500"
+              />
+              <span className="absolute bottom-1 right-1 text-sm select-none animate-pulse">🍄</span>
+            </div>
+          </div>
         </div>
 
-        <div className="relative z-10 pt-2 border-t border-[#1D2133] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-[10px]">
-          <span className="text-[#FF007A] flex items-center gap-1.5 font-bold">
-            <span className="text-sm">◯ △ □</span>
-            ROUND 7 // LIVE CAMPUS RECYCLING PROTOCOL
+        {/* Lower Banner Info Strip */}
+        <div className="relative z-10 pt-3 border-t border-sky-400/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs font-bold">
+          <span className="flex items-center gap-2 text-slate-900 drop-shadow-xs font-black">
+            <span className="text-base animate-pulse">🏰</span>
+            <span>PEACH&apos;S CASTLE ECO-PROTOCOL // CLAN WORLD 1-1</span>
           </span>
-          <span className="text-[#FFC700] font-bold">💰 VAULT POOL: ₹45.6 BILLION</span>
+          <span className="text-amber-900 bg-white/90 px-3 py-1 rounded-lg border border-amber-300 shadow-xs flex items-center gap-1.5 font-black">
+            <span>⭐ STAR COIN VAULT: ₹45.6 BILLION (999,999 COINS)</span>
+          </span>
         </div>
       </div>
 
@@ -244,11 +327,11 @@ export const OverviewView: React.FC = () => {
       </div>
 
       {/* 🚀 FEATURED MISSION CARD */}
-      <div className="bg-[#0D0F17] border-2 border-[#FF007A] rounded-lg p-5 md:p-6 relative overflow-hidden grid grid-cols-1 lg:grid-cols-3 gap-6 glow-pink">
+      <div className="bg-white/70 dark:bg-[#0D0F17]/75 backdrop-blur-xl border-2 border-[#E52521] rounded-2xl p-5 md:p-6 relative overflow-hidden grid grid-cols-1 lg:grid-cols-3 gap-6 shadow-xl ring-1 ring-white/60 dark:ring-white/5">
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center gap-2 text-[10px] text-[#FF007A] font-bold">
             <span className="w-2 h-2 rounded-full bg-[#FF007A] animate-ping" />
-            <span>PRIMARY MISSION // SQUID ARENA</span>
+            <span>PRIMARY MISSION // MARIO VILLAGE ARENA</span>
           </div>
 
           <div>
@@ -279,7 +362,7 @@ export const OverviewView: React.FC = () => {
               onClick={() => setActiveTab('challenges')}
               className="px-5 py-2.5 bg-[#FF007A] text-white font-black text-xs rounded hover:bg-[#FF007A]/90 transition-all flex items-center gap-2 glow-pink"
             >
-              <span>ENTER SQUID ARENA</span>
+              <span>ENTER MARIO ARENA 🏰</span>
               <ChevronRight className="w-4 h-4" />
             </button>
             <button
@@ -343,7 +426,7 @@ export const OverviewView: React.FC = () => {
             {dailyMissions.map((task) => (
               <div
                 key={task.id}
-                className={`p-3 rounded bg-[#050B08] border transition-all flex items-center justify-between text-xs group ${
+                className={`p-3 rounded-xl backdrop-blur-md bg-white/75 dark:bg-[#050B08]/75 border border-slate-200/70 dark:border-[#12281D] transition-all flex items-center justify-between text-xs group shadow-sm ${
                   task.done
                     ? 'border-[#12281D] text-slate-500 line-through'
                     : 'border-[#12281D] text-white hover:border-[#00FF66]/50'

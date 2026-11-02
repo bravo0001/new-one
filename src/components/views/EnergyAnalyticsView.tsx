@@ -29,7 +29,7 @@ interface LiveEnergyData {
 }
 
 export const EnergyAnalyticsView: React.FC = () => {
-  const { addToast } = useEco();
+  const { addToast, userLocation } = useEco();
   const [liveData, setLiveData] = useState<LiveEnergyData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
@@ -192,7 +192,7 @@ export const EnergyAnalyticsView: React.FC = () => {
         <div className="flex items-center gap-2 text-slate-300">
           <span className="w-2 h-2 rounded-full bg-[#03E5B7] animate-ping" />
           <span className="font-bold">SCRAPED LIVE FROM OPEN-METEO SATELLITE API</span>
-          <span className="text-slate-500">• Lat: 22.7196° N, Lng: 75.8577° E (Indore Region)</span>
+          <span className="text-slate-500">• Lat: {userLocation.lat.toFixed(4)}° N, Lng: {userLocation.lng.toFixed(4)}° E ({userLocation.cityName} Region)</span>
         </div>
         <div className="text-[11px] text-[#FFC700] font-bold font-mono">
           Last Synced: {liveData?.lastUpdated || 'Just now'}
